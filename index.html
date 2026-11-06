@@ -18,7 +18,7 @@
       --navy-dark: #04244E;
       --blue: #0877D1;
       --gold: #FFAE0B;
-      --gold-deep: #946200;
+      --gold-deep: #8F5B00;
       --green: #16A455;
       --green-deep: #0F8A47;
       --alice: #EDF5FC;
@@ -205,12 +205,12 @@
       flex-shrink: 0;
     }
 
-    /* ───────── 3. CARD PREVIEW PROPOSTE & 3 CATEGORIE ───────── */
+    /* ───────── 3. CARD PRIORITÀ ───────── */
     .card {
       position: relative;
       background: var(--white);
       border-radius: var(--radius);
-      padding: 18px 15px 16px;
+      padding: 20px 16px 16px;
       box-shadow: 0 16px 36px rgba(0, 0, 0, .24);
     }
 
@@ -219,7 +219,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       padding: 0 2px;
     }
 
@@ -236,83 +236,31 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: .71rem;
+      font-size: .72rem;
       font-weight: 800;
       white-space: nowrap;
-      background: var(--alice);
-      color: var(--navy);
+      background: rgba(22, 164, 85, .12);
+      color: var(--green-deep);
       padding: 5px 10px;
       border-radius: 99px;
-      border: 1px solid var(--border);
     }
 
-    /* FILTRI 3 CATEGORIE GOOGLE DOCS IN HOME */
-    .cat-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-      background: var(--alice);
-      padding: 5px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      margin-bottom: 8px;
-    }
-
-    .cat-tab {
-      appearance: none;
-      border: none;
-      background: transparent;
-      font-family: inherit;
-      font-size: .68rem;
-      font-weight: 800;
-      color: var(--muted);
-      padding: 7px 4px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      line-height: 1.15;
-      text-align: center;
-      transition: all .15s;
-    }
-
-    .cat-dot {
-      width: 8px;
-      height: 8px;
+    .live-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(22, 164, 85, .5);
+      animation: pulse 2s infinite;
     }
 
-    .cat-dot.all   { background: var(--navy); }
-    .cat-dot.dir   { background: var(--green); }
-    .cat-dot.ris   { background: var(--gold); }
-    .cat-dot.org   { background: var(--blue); }
-
-    .cat-tab.active {
-      background: var(--white);
-      color: var(--navy);
-      box-shadow: 0 2px 8px rgba(7, 59, 122, .12);
+    @keyframes pulse {
+      70%  { box-shadow: 0 0 0 7px rgba(22, 164, 85, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 164, 85, 0); }
     }
 
-    .cat-helper {
-      font-size: .74rem;
-      font-weight: 600;
-      color: var(--muted);
-      background: #F8FAFC;
-      border-left: 3px solid var(--navy);
-      padding: 7px 10px;
-      border-radius: 0 10px 10px 0;
-      margin-bottom: 12px;
-      line-height: 1.35;
-    }
-
-    .cat-helper strong {
-      color: var(--navy);
-      font-weight: 800;
-    }
-
-    /* ───────── ACCORDION PREVIEW PROPOSTE ───────── */
+    /* ───────── ACCORDION PRIORITÀ ───────── */
     .item-list {
       display: flex;
       flex-direction: column;
@@ -322,8 +270,6 @@
     details.topic-item {
       --accent: var(--blue);
       --on: var(--white);
-      --badge-bg: rgba(8, 119, 209, .12);
-      --badge-fg: var(--blue);
       background: var(--alice);
       border: 1.5px solid var(--border);
       border-radius: 16px;
@@ -331,19 +277,8 @@
       transition: background .2s, border-color .2s, box-shadow .2s;
     }
 
-    details.topic-item.gold {
-      --accent: var(--gold);
-      --on: var(--navy-dark);
-      --badge-bg: rgba(255, 174, 11, .2);
-      --badge-fg: var(--gold-deep);
-    }
-
-    details.topic-item.green {
-      --accent: var(--green-deep);
-      --on: var(--white);
-      --badge-bg: rgba(22, 164, 85, .14);
-      --badge-fg: var(--green-deep);
-    }
+    details.topic-item.gold  { --accent: var(--gold);       --on: var(--navy-dark); }
+    details.topic-item.green { --accent: var(--green-deep); --on: var(--white); }
 
     details.topic-item[open] {
       background: var(--white);
@@ -353,12 +288,16 @@
 
     summary.topic-summary {
       list-style: none;
-      min-height: 60px;
-      padding: 10px 13px 10px 11px;
+      min-height: 58px;
+      padding: 10px 14px 10px 12px;
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 12px;
       cursor: pointer;
+      font-weight: 800;
+      font-size: .9rem;
+      line-height: 1.25;
+      color: var(--navy);
       user-select: none;
     }
 
@@ -377,32 +316,7 @@
       color: var(--on);
     }
 
-    .topic-head {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .topic-cat-badge {
-      align-self: flex-start;
-      font-size: .64rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-      padding: 2px 7px;
-      border-radius: 99px;
-      background: var(--badge-bg);
-      color: var(--badge-fg);
-    }
-
-    .topic-title {
-      font-weight: 800;
-      font-size: .88rem;
-      line-height: 1.22;
-      color: var(--navy);
-    }
+    .topic-title { flex: 1; }
 
     .topic-chevron {
       width: 20px;
@@ -417,50 +331,41 @@
     }
 
     .topic-body {
-      padding: 0 14px 14px 54px;
-      font-size: .84rem;
+      padding: 0 16px 16px 56px;
+      font-size: .88rem;
       font-weight: 500;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
+      animation: fade .3s var(--ease);
     }
 
-    .topic-foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 9px;
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: none; }
     }
 
     .topic-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: .71rem;
+      gap: 7px;
+      margin-top: 10px;
+      font-size: .74rem;
       font-weight: 800;
       line-height: 1.3;
       color: var(--navy);
       background: var(--alice);
       border: 1px solid var(--border);
-      padding: 4px 9px;
+      padding: 5px 10px;
       border-radius: 99px;
     }
 
     .topic-tag::before {
       content: "";
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
-    }
-
-    .topic-more {
-      font-size: .73rem;
-      font-weight: 800;
-      color: var(--blue);
-      text-decoration: none;
     }
 
     /* PULSANTE VERSO PAGINA PROPOSTE */
@@ -475,7 +380,7 @@
       color: var(--white);
       text-decoration: none;
       border-radius: 15px;
-      font-size: .85rem;
+      font-size: .86rem;
       font-weight: 800;
       box-shadow: 0 8px 20px rgba(7, 59, 122, .22);
       transition: transform .15s var(--ease), background .15s;
@@ -497,9 +402,8 @@
       color: var(--navy-dark);
       font-size: .72rem;
       font-weight: 900;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 99px;
-      white-space: nowrap;
     }
 
     /* ───────── 4. SCHEDA CANDIDATO ───────── */
@@ -592,93 +496,6 @@
     }
 
     .dock a.ext { color: var(--gold); }
-
-    /* ── LAYOUT: su telefono i wrapper sono trasparenti ── */
-    .side { display: contents; }
-    .candidate { order: 10; }
-
-    /* ── DESKTOP ── */
-    @media (min-width: 900px) {
-      body {
-        align-items: flex-start;
-        padding: 108px 40px 64px;
-      }
-
-      .shell {
-        max-width: 1180px;
-        display: grid;
-        grid-template-columns: 340px minmax(0, 1fr);
-        gap: 40px;
-        align-items: start;
-      }
-
-      .side {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        position: sticky;
-        top: 108px;
-      }
-
-      .candidate { order: 0; }
-      .logo-wrap { width: 214px; height: 214px; margin-bottom: 22px; }
-
-      .card { padding: 30px 30px 28px; }
-      .card-title { font-size: 1.15rem; }
-      .card-header { margin-bottom: 16px; }
-      .live-pill { font-size: .76rem; }
-
-      .cat-tabs { gap: 6px; padding: 6px; margin-bottom: 12px; }
-      .cat-tab { flex-direction: row; justify-content: center; gap: 8px; font-size: .8rem; padding: 11px 8px; }
-      .cat-helper { font-size: .84rem; padding: 10px 14px; margin-bottom: 18px; }
-
-      .item-list { gap: 12px; }
-      summary.topic-summary { min-height: 72px; padding: 12px 18px 12px 16px; gap: 16px; }
-      .topic-num { width: 38px; height: 38px; font-size: .95rem; }
-      .topic-title { font-size: 1.02rem; }
-      .topic-cat-badge { font-size: .68rem; }
-      .topic-body { font-size: .94rem; padding: 0 22px 20px 70px; max-width: 760px; }
-
-      /* barra di navigazione: in alto, al centro */
-      .dock {
-        top: 22px;
-        bottom: auto;
-        width: auto;
-        grid-template-columns: repeat(3, auto);
-        gap: 4px;
-        padding: 5px;
-        border-radius: 999px;
-      }
-
-      .dock a {
-        flex-direction: row;
-        gap: 9px;
-        min-height: 46px;
-        padding: 0 24px;
-        border-radius: 999px;
-        font-size: .86rem;
-      }
-
-      .dock a svg { width: 20px; height: 20px; }
-    }
-
-    /* portatili con poca altezza: colonna sinistra non fissa, logo più piccolo */
-    @media (min-width: 900px) and (max-height: 760px) {
-      .side { position: static; }
-      .logo-wrap { width: 170px; height: 170px; margin-bottom: 16px; }
-    }
-
-    @media (min-width: 1500px) {
-      .shell { max-width: 1320px; grid-template-columns: 380px minmax(0, 1fr); gap: 48px; }
-    }
-
-    /* interazioni solo con mouse */
-    @media (hover: hover) and (pointer: fine) {
-      .dock a:hover { color: var(--white); background: rgba(255, 255, 255, .09); }
-      .dock a.active:hover, .dock a.ext:hover { color: var(--gold); }
-      .candidate { transition: background .2s, border-color .2s; }
-      .candidate:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .28); }
-    }
   </style>
 </head>
 <body>
@@ -692,8 +509,6 @@
   </svg>
 
   <main class="shell">
-
-    <div class="side">
 
     <!-- 1. HERO -->
     <header class="hero reveal">
@@ -718,144 +533,71 @@
       <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
     </a>
 
-    <!-- 4. CANDIDATO & MASCOTTE -->
-    <footer class="candidate reveal">
-      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-      <div>
-        <strong>Dario Nitu</strong>
-        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-      </div>
-      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-    </footer>
-
-    </div>
-
-    <div class="content">
-
-    <!-- 3. PREVIEW PROPOSTE DIVISE NELLE 3 CATEGORIE -->
+    <!-- 3. COMITATO & CANTIERE APERTO -->
     <section class="card reveal" id="cantiere" aria-labelledby="t-cantiere">
       <div class="card-header">
-        <h2 class="card-title" id="t-cantiere">Preview Proposte</h2>
-        <span class="live-pill">3 categorie · 5 punti</span>
+        <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
+        <span class="live-pill">5 priorità</span>
       </div>
 
-      <!-- SELETTORE 3 CATEGORIE DEL GOOGLE DOCS -->
-      <div class="cat-tabs" role="tablist" aria-label="Filtra per categoria di competenza">
-        <button class="cat-tab active" onclick="filterHome('all', this)">
-          <span class="cat-dot all"></span>
-          Tutte (5)
-        </button>
-        <button class="cat-tab" onclick="filterHome('dirette', this)">
-          <span class="cat-dot dir"></span>
-          Dirette
-        </button>
-        <button class="cat-tab" onclick="filterHome('risorse', this)">
-          <span class="cat-dot ris"></span>
-          Con risorse
-        </button>
-        <button class="cat-tab" onclick="filterHome('organi', this)">
-          <span class="cat-dot org"></span>
-          Altri organi
-        </button>
-      </div>
-
-      <div class="cat-helper" id="cat-helper-box">
-        <strong>Trasparenza sulle competenze:</strong> distinguiamo ciò che realizziamo direttamente da ciò che richiede risorse o decisioni di altri organi.
-      </div>
-
-      <div class="item-list" id="home-items">
-        <!-- 1. Altri organi -->
-        <details class="topic-item" data-cat="organi" name="priorita" open>
+      <div class="item-list">
+        <details class="topic-item gold" name="priorita" open>
           <summary class="topic-summary">
             <span class="topic-num">1</span>
-            <div class="topic-head">
-              <span class="topic-cat-badge">Di competenza di altri organi</span>
-              <span class="topic-title">Libri digitali e tablet</span>
-            </div>
+            <span class="topic-title">Libri digitali e tablet</span>
             <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
-            Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari tra classi.
-            <div class="topic-foot">
-              <span class="topic-tag">Impegno: Proposta entro 15 giorni</span>
-              <a href="proposte.html#p1" class="topic-more">Scheda completa →</a>
-            </div>
+            Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
+            <div><span class="topic-tag">Impegno: Presentazione entro 15 giorni</span></div>
           </div>
         </details>
 
-        <!-- 2. Altri organi -->
-        <details class="topic-item" data-cat="organi" name="priorita">
+        <details class="topic-item" name="priorita">
           <summary class="topic-summary">
             <span class="topic-num">2</span>
-            <div class="topic-head">
-              <span class="topic-cat-badge">Di competenza di altri organi</span>
-              <span class="topic-title">Verifiche e valutazioni</span>
-            </div>
+            <span class="topic-title">Verifiche e valutazioni</span>
             <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
-            Chiarezza sulle griglie di valutazione e confronto sul carico settimanale per evitare concentrazioni eccessive.
-            <div class="topic-foot">
-              <span class="topic-tag">Competenza: Presidenza / Docenti</span>
-              <a href="proposte.html#p2" class="topic-more">Scheda completa →</a>
-            </div>
+            Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
+            <div><span class="topic-tag">Stato: Raccolta segnalazioni classi</span></div>
           </div>
         </details>
 
-        <!-- 3. Altri organi -->
-        <details class="topic-item" data-cat="organi" name="priorita">
+        <details class="topic-item green" name="priorita">
           <summary class="topic-summary">
             <span class="topic-num">3</span>
-            <div class="topic-head">
-              <span class="topic-cat-badge">Di competenza di altri organi</span>
-              <span class="topic-title">Assemblee e rispetto reciproco</span>
-            </div>
+            <span class="topic-title">Assemblee e rispetto reciproco</span>
             <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
-            Assemblee effettive e provvedimenti sempre chiari, motivati e proporzionati, senza reazioni sproporzionate.
-            <div class="topic-foot">
-              <span class="topic-tag">Competenza: Dirigenza / Referenti</span>
-              <a href="proposte.html#p3" class="topic-more">Scheda completa →</a>
-            </div>
+            Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
+            <div><span class="topic-tag">Stato: Linea operativa pronta</span></div>
           </div>
         </details>
 
-        <!-- 4. Con risorse o autorizzazioni -->
-        <details class="topic-item gold" data-cat="risorse" name="priorita">
+        <details class="topic-item" name="priorita">
           <summary class="topic-summary">
             <span class="topic-num">4</span>
-            <div class="topic-head">
-              <span class="topic-cat-badge">Con risorse o autorizzazioni</span>
-              <span class="topic-title">Aule, riscaldamento, bagni e spazi</span>
-            </div>
+            <span class="topic-title">Aule, riscaldamento e bagni</span>
             <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
-            Monitoraggio per piano e aula di temperature, bagni e spazi comuni con verifica di fattibilità, costi e permessi.
-            <div class="topic-foot">
-              <span class="topic-tag">Ruolo: Richiesta + verifica esito</span>
-              <a href="proposte.html#p4" class="topic-more">Scheda completa →</a>
-            </div>
+            Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
+            <div><span class="topic-tag">Stato: Monitoraggio aperto</span></div>
           </div>
         </details>
 
-        <!-- 5. Realizzabili direttamente -->
-        <details class="topic-item green" data-cat="dirette" name="priorita">
+        <details class="topic-item gold" name="priorita">
           <summary class="topic-summary">
             <span class="topic-num">5</span>
-            <div class="topic-head">
-              <span class="topic-cat-badge">Realizzabili direttamente</span>
-              <span class="topic-title">Comitato attivo, registro e resoconti</span>
-            </div>
+            <span class="topic-title">Comitato Studentesco attivo</span>
             <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
-            Confronto periodico con i rappresentanti di classe, raccolta segnalazioni, registro pubblico delle proposte e resoconti.
-            <div class="topic-foot">
-              <span class="topic-tag">Ruolo: Azione diretta nostra</span>
-              <a href="proposte.html#p5" class="topic-more">Scheda completa →</a>
-            </div>
+            Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
+            <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
           </div>
         </details>
       </div>
@@ -870,7 +612,15 @@
       </a>
     </section>
 
-    </div>
+    <!-- 4. CANDIDATO & MASCOTTE -->
+    <footer class="candidate reveal">
+      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+      <div>
+        <strong>Dario Nitu</strong>
+        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+      </div>
+      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
+    </footer>
 
   </main>
 
@@ -895,31 +645,6 @@
 
     document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
     document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti & Reel";
-
-    const CAT_HELPERS = {
-      all: "<strong>Trasparenza sulle competenze:</strong> distinguiamo ciò che realizziamo direttamente da ciò che richiede risorse o decisioni di altri organi.",
-      dirette: "🟢 <strong>Realizzabili direttamente:</strong> dipendono al 100% da noi (confronto classi, raccolta segnalazioni, registro proposte e resoconti).",
-      risorse: "🟡 <strong>Con risorse o autorizzazioni:</strong> prepariamo richieste concrete su aule, bagni, spazi e attività, verificando costi e permessi.",
-      organi: "🔵 <strong>Di competenza di altri organi:</strong> raccogliamo le esigenze degli studenti, le portiamo formalmente in Dirigenza/CdI e pubblichiamo le risposte."
-    };
-
-    function filterHome(cat, btn) {
-      document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
-      if (btn) btn.classList.add("active");
-
-      const helper = document.getElementById("cat-helper-box");
-      helper.innerHTML = CAT_HELPERS[cat] || CAT_HELPERS.all;
-
-      let firstShown = null;
-      document.querySelectorAll("#home-items details.topic-item").forEach(item => {
-        const show = (cat === "all" || item.dataset.cat === cat);
-        item.style.display = show ? "block" : "none";
-        if (show && !firstShown) firstShown = item;
-      });
-      if (cat !== "all" && firstShown) {
-        firstShown.open = true;
-      }
-    }
 
     // Reindirizzamento automatico da QR code (?to=ig | ?to=proposte | ?to=cantiere)
     const params = new URLSearchParams(window.location.search);
