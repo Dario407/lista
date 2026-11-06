@@ -2,5 +2,8 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 300,
+  "livePreview.autoRefreshPreview": "onChangesToSavedFiles"
 }
