@@ -2,9 +2,13 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#073B7A" />
   <title>DALLA NOSTRA PARTE · Carducci-Dante</title>
   <meta name="description" content="Dalla Nostra Parte · Dario Nitu — ISIS Carducci-Dante Trieste" />
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="assets/logo-440.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,11 +19,14 @@
       --blue: #0877D1;
       --gold: #FFAE0B;
       --green: #16A455;
+      --green-deep: #0F8A47;
       --alice: #EDF5FC;
       --white: #FFFFFF;
       --text: #0F172A;
-      --muted: #64748B;
+      --muted: #475569;
       --border: #DCE8F5;
+      --radius: 22px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
     }
 
     * {
@@ -29,371 +36,621 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background-color: var(--navy-dark);
-      background-image: radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 45%, var(--navy-dark) 100%);
+      background-image:
+        radial-gradient(520px 320px at 85% -40px, rgba(255, 174, 11, .16), transparent 70%),
+        radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 42%, var(--navy-dark) 100%);
+      background-attachment: fixed;
       color: var(--text);
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
-      padding: 20px 16px 36px;
+      padding:
+        calc(22px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-right))
+        calc(104px + env(safe-area-inset-bottom))
+        calc(16px + env(safe-area-inset-left));
     }
 
-    /* CONTENITORE UNICO MOBILE-FIRST */
-    .phone-shell {
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    svg.i {
+      width: 1.25em;
+      height: 1.25em;
+      flex-shrink: 0;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .shell {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
-    /* 1. HEADER COMPATTO */
-    .hero-header {
+    /* entrata a cascata */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .6s var(--ease) forwards;
+      animation-delay: calc(var(--i, 0) * 80ms);
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ───────── 1. HERO ───────── */
+    .hero {
       text-align: center;
       color: var(--white);
-      padding: 8px 4px 6px;
+      padding: 4px 0 2px;
     }
 
     .logo-wrap {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 12px;
+      position: relative;
+      width: 172px;
+      height: 172px;
+      margin: 0 auto 18px;
       border-radius: 50%;
-      border: 2.5px solid var(--gold);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      background: var(--navy);
+      box-shadow:
+        0 0 0 3px var(--gold),
+        0 0 0 9px rgba(255, 174, 11, .16),
+        0 22px 44px rgba(0, 0, 0, .42);
     }
 
     .logo-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
+      border-radius: 50%;
     }
 
-    .hero-header h1 {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      line-height: 1.1;
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .hero-header h1 span {
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 0.78rem;
+    .pill {
+      font-size: .78rem;
       font-weight: 700;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    .hero-motto {
-      font-size: 0.84rem;
-      font-weight: 500;
       color: var(--alice);
-      opacity: 0.9;
-      margin-top: 6px;
-      line-height: 1.35;
+      padding: 7px 13px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid rgba(255, 255, 255, .18);
     }
 
-    /* 2. BOTTONE PRINCIPALE INSTAGRAM */
+    /* ───────── 2. CTA INSTAGRAM ───────── */
     .btn-instagram {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(135deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
-      color: var(--white);
+      gap: 14px;
+      min-height: 68px;
+      padding: 10px 16px 10px 12px;
+      background: var(--gold);
+      color: var(--navy-dark);
       text-decoration: none;
-      padding: 15px 18px;
-      border-radius: 16px;
-      box-shadow: 0 8px 22px rgba(225, 48, 108, 0.35);
-      transition: transform 0.15s;
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(255, 174, 11, .28), 0 2px 0 rgba(255, 255, 255, .35) inset;
+      transition: transform .15s var(--ease), box-shadow .15s;
     }
 
     .btn-instagram:active {
-      transform: scale(0.98);
+      transform: scale(.975);
+      box-shadow: 0 6px 16px rgba(255, 174, 11, .25);
     }
 
-    .ig-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .ig-tile {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(135deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
+      box-shadow: 0 4px 10px rgba(131, 58, 180, .35);
+      flex-shrink: 0;
     }
 
-    .ig-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-    }
+    .ig-tile svg { width: 24px; height: 24px; }
+
+    .ig-text { flex: 1; min-width: 0; }
 
     .ig-text strong {
       display: block;
-      font-size: 0.95rem;
-      font-weight: 800;
+      font-size: 1rem;
+      font-weight: 900;
       line-height: 1.15;
     }
 
     .ig-text span {
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0.92;
+      display: block;
+      margin-top: 2px;
+      font-size: .78rem;
+      font-weight: 700;
+      line-height: 1.3;
+      opacity: .82;
     }
 
     .ig-arrow {
-      font-size: 1.15rem;
-      font-weight: 900;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy-dark);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
 
-    /* 3. CARD BIANCA MINIMAL: PREVIEW COMITATO & PROPOSTE */
+    /* ───────── 3. CARD ───────── */
     .card {
+      position: relative;
       background: var(--white);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius);
+      padding: 20px 16px 16px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, .24);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 0 2px;
     }
 
     .card-title {
-      font-size: 0.92rem;
+      font-size: .95rem;
       font-weight: 900;
       color: var(--navy);
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: .4px;
+      line-height: 1.2;
     }
 
     .live-pill {
-      font-size: 0.68rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .72rem;
       font-weight: 800;
-      background: rgba(22, 164, 85, 0.12);
-      color: var(--green);
-      padding: 3px 8px;
+      white-space: nowrap;
+      background: rgba(22, 164, 85, .12);
+      color: var(--green-deep);
+      padding: 5px 10px;
       border-radius: 99px;
     }
 
-    /* LISTA COMPATTE ACCORDION */
+    .live-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(22, 164, 85, .5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      70%  { box-shadow: 0 0 0 7px rgba(22, 164, 85, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 164, 85, 0); }
+    }
+
+    /* ───────── ACCORDION PRIORITÀ ───────── */
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
 
     details.topic-item {
+      --accent: var(--blue);
+      --on: var(--white);
       background: var(--alice);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
       overflow: hidden;
-      transition: background 0.15s;
+      transition: background .2s, border-color .2s, box-shadow .2s;
     }
+
+    details.topic-item.gold  { --accent: var(--gold);       --on: var(--navy-dark); }
+    details.topic-item.green { --accent: var(--green-deep); --on: var(--white); }
 
     details.topic-item[open] {
       background: var(--white);
-      border-color: var(--blue);
+      border-color: var(--accent);
+      box-shadow: 0 6px 18px rgba(7, 59, 122, .1);
     }
 
     summary.topic-summary {
       list-style: none;
-      padding: 12px 14px;
+      min-height: 58px;
+      padding: 10px 14px 10px 12px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
-      font-weight: 700;
-      font-size: 0.85rem;
+      font-weight: 800;
+      font-size: .9rem;
+      line-height: 1.25;
       color: var(--navy);
+      user-select: none;
     }
 
-    summary.topic-summary::-webkit-details-marker {
-      display: none;
-    }
+    summary.topic-summary::-webkit-details-marker { display: none; }
 
-    .topic-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .topic-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--blue);
+    .topic-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
       flex-shrink: 0;
+      font-size: .85rem;
+      font-weight: 900;
+      background: var(--accent);
+      color: var(--on);
     }
 
-    .topic-dot.gold { background: var(--gold); }
-    .topic-dot.green { background: var(--green); }
+    .topic-title { flex: 1; }
 
     .topic-chevron {
-      font-size: 0.75rem;
+      width: 20px;
+      height: 20px;
       color: var(--muted);
-      transition: transform 0.2s;
+      transition: transform .25s var(--ease), color .2s;
     }
 
     details.topic-item[open] .topic-chevron {
       transform: rotate(180deg);
-      color: var(--blue);
+      color: var(--navy);
     }
 
     .topic-body {
-      padding: 0 14px 12px 32px;
-      font-size: 0.78rem;
+      padding: 0 16px 16px 56px;
+      font-size: .88rem;
       font-weight: 500;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.55;
+      animation: fade .3s var(--ease);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: none; }
     }
 
     .topic-tag {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 0.68rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 10px;
+      font-size: .74rem;
       font-weight: 800;
+      line-height: 1.3;
       color: var(--navy);
       background: var(--alice);
-      padding: 2px 7px;
-      border-radius: 5px;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 99px;
     }
 
-    /* 4. BOX RAPIDO SEGNALAZIONE (2 CAMPI) */
+    .topic-tag::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ───────── 4. SEGNALAZIONI ───────── */
+    #segnala { margin-top: 54px; scroll-margin-top: 84px; }
+
+    .owl {
+      position: absolute;
+      right: 14px;
+      bottom: calc(100% - 44px);
+      width: 84px;
+      height: auto;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25));
+    }
+
+    #segnala .card-header {
+      display: block;
+      padding-right: 84px;
+      margin-bottom: 16px;
+    }
+
+    .card-sub {
+      margin-top: 5px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
     .quick-form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
+    .field { display: flex; flex-direction: column; gap: 6px; }
+
+    .field label {
+      font-size: .75rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      padding-left: 2px;
+    }
+
+    /* 16px: evita lo zoom automatico di iOS al focus */
     .input-minimal {
       width: 100%;
-      padding: 11px 13px;
-      border-radius: 10px;
+      min-height: 52px;
+      padding: 13px 14px;
+      border-radius: 14px;
       border: 1.5px solid var(--border);
       background: var(--alice);
       font-family: inherit;
-      font-size: 0.82rem;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text);
+      transition: border-color .15s, background .15s, box-shadow .15s;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     .input-minimal:focus {
       outline: none;
       border-color: var(--blue);
       background: var(--white);
+      box-shadow: 0 0 0 4px rgba(8, 119, 209, .15);
+    }
+
+    select.input-minimal {
+      padding-right: 44px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23073B7A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
     }
 
     textarea.input-minimal {
-      min-height: 74px;
+      min-height: 120px;
       resize: none;
       font-weight: 500;
+      line-height: 1.5;
     }
 
+    .input-minimal::placeholder { color: #7B8AA0; font-weight: 500; }
+
     .btn-send {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      margin-top: 2px;
       background: var(--navy);
       color: var(--white);
       border: none;
-      border-radius: 11px;
-      padding: 13px;
+      border-radius: 16px;
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: .95rem;
       font-weight: 800;
       cursor: pointer;
-      transition: background 0.15s;
+      box-shadow: 0 8px 18px rgba(7, 59, 122, .3);
+      transition: transform .15s var(--ease), background .15s;
     }
 
     .btn-send:active {
+      transform: scale(.98);
       background: var(--blue);
     }
 
     .toast-ok {
       display: none;
-      text-align: center;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--green);
-      background: rgba(22, 164, 85, 0.1);
-      padding: 9px;
-      border-radius: 8px;
-    }
-
-    /* 5. MINI FOOTER CANDIDATO */
-    .mini-footer {
-      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding-top: 4px;
-      color: var(--alice);
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0.9;
+      gap: 8px;
+      text-align: center;
+      font-size: .85rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      background: rgba(22, 164, 85, .12);
+      padding: 12px;
+      border-radius: 12px;
     }
 
-    .mini-footer img {
-      width: 30px;
-      height: 30px;
+    .toast-ok.show { display: flex; animation: fade .3s var(--ease); }
+
+    /* ───────── 5. SCHEDA CANDIDATO ───────── */
+    .candidate {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 20px;
+    }
+
+    .candidate img {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      border: 1.5px solid var(--gold);
       object-fit: cover;
+      border: 2.5px solid var(--gold);
+      background: var(--alice);
+      flex-shrink: 0;
+    }
+
+    .candidate strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .candidate span {
+      display: block;
+      margin-top: 2px;
+      font-size: .78rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--alice);
+      opacity: .88;
+    }
+
+    /* ───────── NAVIGAZIONE IN BASSO (zona del pollice) ───────── */
+    .dock {
+      position: fixed;
+      left: 50%;
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      z-index: 10;
+      width: min(calc(100% - 24px), 440px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 6px;
+      background: rgba(4, 36, 78, .82);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
+      transition: transform .25s var(--ease), opacity .2s;
+    }
+
+    .dock.hide {
+      transform: translate(-50%, 140%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .dock a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-height: 56px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-size: .7rem;
+      font-weight: 800;
+      color: rgba(237, 245, 252, .72);
+      transition: color .2s, background .2s;
+    }
+
+    .dock a svg { width: 22px; height: 22px; }
+
+    .dock a.active {
+      color: var(--gold);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .dock a.ext { color: var(--gold); }
+
+    @media (max-height: 460px) {
+      .dock { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
 
-  <main class="phone-shell">
+  <!-- icone riutilizzabili -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4 18-7z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 20.5l1.5-4.9A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  </svg>
 
-    <!-- 1. HEADER MINIMAL -->
-    <header class="hero-header">
+  <main class="shell">
+
+    <!-- 1. HERO -->
+    <header class="hero reveal" style="--i:0">
+      <h1 class="sr-only">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</h1>
       <div class="logo-wrap">
-        <img src="assets/logo-scuro.png" alt="Logo Dalla Nostra Parte" />
+        <img src="assets/logo-440.webp" width="172" height="172" fetchpriority="high" alt="Logo Dalla Nostra Parte — Carducci-Dante" />
       </div>
-      <h1>DALLA NOSTRA PARTE<span>.</span></h1>
-      <div class="hero-sub">ISIS Carducci-Dante · Trieste</div>
-      <p class="hero-motto">Proposte realistiche. Priorità chiare. Dialogo e risultati.</p>
+      <div class="pills" aria-label="Il nostro metodo">
+        <span class="pill">Proposte realistiche</span>
+        <span class="pill">Priorità chiare</span>
+        <span class="pill">Dialogo e risultati</span>
+      </div>
     </header>
 
-    <!-- 2. PULSANTE INSTAGRAM IN PRIMO PIANO -->
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn-instagram js-ig-link">
-      <div class="ig-left">
-        <div class="ig-icon">📸</div>
-        <div class="ig-text">
-          <strong>Seguici su Instagram</strong>
-          <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti & Reel</span>
-        </div>
-      </div>
-      <div class="ig-arrow">→</div>
+    <!-- 2. INSTAGRAM -->
+    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="btn-instagram js-ig-link reveal" style="--i:1">
+      <span class="ig-tile"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
+      <span class="ig-text">
+        <strong>Seguici su Instagram</strong>
+        <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti &amp; Reel</span>
+      </span>
+      <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
     </a>
 
-    <!-- 3. PREVIEW COMITATO & CANTIERE APERTO (ACCORDION COMPATTO) -->
-    <section class="card" id="cantiere">
+    <!-- 3. COMITATO & CANTIERE APERTO -->
+    <section class="card reveal" id="cantiere" style="--i:2" aria-labelledby="t-cantiere">
       <div class="card-header">
-        <span class="card-title">📋 Comitato & Cantiere Aperto</span>
-        <span class="live-pill">● 5 Priorità</span>
+        <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
+        <span class="live-pill">5 priorità</span>
       </div>
 
       <div class="item-list">
-        <details class="topic-item" open>
+        <details class="topic-item gold" name="priorita" open>
           <summary class="topic-summary">
-            <div class="topic-left">
-              <span class="topic-dot gold"></span>
-              <span>1. Libri digitali e tablet</span>
-            </div>
-            <span class="topic-chevron">▼</span>
+            <span class="topic-num">1</span>
+            <span class="topic-title">Libri digitali e tablet</span>
+            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
             Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
@@ -401,13 +658,11 @@
           </div>
         </details>
 
-        <details class="topic-item">
+        <details class="topic-item" name="priorita">
           <summary class="topic-summary">
-            <div class="topic-left">
-              <span class="topic-dot"></span>
-              <span>2. Verifiche e valutazioni</span>
-            </div>
-            <span class="topic-chevron">▼</span>
+            <span class="topic-num">2</span>
+            <span class="topic-title">Verifiche e valutazioni</span>
+            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
             Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
@@ -415,13 +670,11 @@
           </div>
         </details>
 
-        <details class="topic-item">
+        <details class="topic-item green" name="priorita">
           <summary class="topic-summary">
-            <div class="topic-left">
-              <span class="topic-dot green"></span>
-              <span>3. Assemblee e rispetto reciproco</span>
-            </div>
-            <span class="topic-chevron">▼</span>
+            <span class="topic-num">3</span>
+            <span class="topic-title">Assemblee e rispetto reciproco</span>
+            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
             Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
@@ -429,13 +682,11 @@
           </div>
         </details>
 
-        <details class="topic-item">
+        <details class="topic-item" name="priorita">
           <summary class="topic-summary">
-            <div class="topic-left">
-              <span class="topic-dot"></span>
-              <span>4. Aule, riscaldamento e bagni</span>
-            </div>
-            <span class="topic-chevron">▼</span>
+            <span class="topic-num">4</span>
+            <span class="topic-title">Aule, riscaldamento e bagni</span>
+            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
             Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
@@ -443,13 +694,11 @@
           </div>
         </details>
 
-        <details class="topic-item">
+        <details class="topic-item gold" name="priorita">
           <summary class="topic-summary">
-            <div class="topic-left">
-              <span class="topic-dot gold"></span>
-              <span>5. Comitato Studentesco attivo</span>
-            </div>
-            <span class="topic-chevron">▼</span>
+            <span class="topic-num">5</span>
+            <span class="topic-title">Comitato Studentesco attivo</span>
+            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
           </summary>
           <div class="topic-body">
             Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
@@ -459,36 +708,67 @@
       </div>
     </section>
 
-    <!-- 4. SPORTELLO RAPIDO SEGNALAZIONI (SOLO 2 CAMPI) -->
-    <section class="card" id="segnala">
+    <!-- 4. SPORTELLO SEGNALAZIONI -->
+    <section class="card reveal" id="segnala" style="--i:3" aria-labelledby="t-segnala">
+      <img class="owl" src="assets/civetta-360.webp" width="84" height="112" alt="" loading="lazy" />
+
       <div class="card-header">
-        <span class="card-title">💬 Segnala o Proponi al Comitato</span>
+        <h2 class="card-title" id="t-segnala">Segnala o proponi al Comitato</h2>
+        <p class="card-sub">Anche in modo anonimo.</p>
       </div>
 
       <form class="quick-form" onsubmit="sendQuickReport(event)">
-        <select class="input-minimal" required>
-          <option value="">Scegli argomento (Aula, Verifiche, Libri, Idea...)</option>
-          <option value="libri">📱 Libri digitali e dispositivi</option>
-          <option value="didattica">📚 Didattica e carico verifiche</option>
-          <option value="spazi">🏫 Aule, freddo/caldo e bagni</option>
-          <option value="assemblee">🤝 Assemblee e regole</option>
-          <option value="comitato">💡 Proposta per il Comitato</option>
-        </select>
+        <div class="field">
+          <label for="f-topic">Argomento</label>
+          <select id="f-topic" class="input-minimal" required>
+            <option value="">Scegli un argomento</option>
+            <option value="libri">📱 Libri digitali e dispositivi</option>
+            <option value="didattica">📚 Didattica e carico verifiche</option>
+            <option value="spazi">🏫 Aule, freddo/caldo e bagni</option>
+            <option value="assemblee">🤝 Assemblee e regole</option>
+            <option value="comitato">💡 Proposta per il Comitato</option>
+          </select>
+        </div>
 
-        <textarea class="input-minimal" required placeholder="Scrivi qui il problema o la tua proposta (anche in modo anonimo, indicando se vuoi classe o aula)..."></textarea>
+        <div class="field">
+          <label for="f-msg">Il tuo messaggio</label>
+          <textarea id="f-msg" class="input-minimal" required placeholder="Scrivi il problema o la tua proposta. Se vuoi, indica classe o aula."></textarea>
+        </div>
 
-        <button type="submit" class="btn-send">Invia alla Rappresentanza</button>
-        <div id="ok-msg" class="toast-ok">✓ Segnalazione ricevuta!</div>
+        <button type="submit" class="btn-send">
+          <svg class="i" aria-hidden="true"><use href="#i-send"/></svg>
+          Invia alla Rappresentanza
+        </button>
+        <div id="ok-msg" class="toast-ok" role="status" aria-live="polite">
+          <svg class="i" aria-hidden="true"><use href="#i-check"/></svg>
+          Segnalazione ricevuta!
+        </div>
       </form>
     </section>
 
-    <!-- 5. FOOTER COMPATTO -->
-    <footer class="mini-footer">
-      <img src="assets/dario-ritratto.jpg" alt="Dario Nitu" />
-      <span>Dario Nitu · Candidato Rappresentante d'Istituto</span>
+    <!-- 5. CANDIDATO -->
+    <footer class="candidate reveal" style="--i:4">
+      <img src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+      <div>
+        <strong>Dario Nitu</strong>
+        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+      </div>
     </footer>
 
   </main>
+
+  <!-- NAVIGAZIONE IN BASSO -->
+  <nav class="dock" id="dock" aria-label="Navigazione rapida">
+    <a href="#cantiere" data-target="cantiere">
+      <svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Priorità
+    </a>
+    <a href="#segnala" data-target="segnala">
+      <svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Segnala
+    </a>
+    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
+      <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
+    </a>
+  </nav>
 
   <script>
     /**
@@ -508,14 +788,38 @@
     const to = (params.get("to") || params.get("qr") || "").toLowerCase();
     if (to === "ig" || to === "instagram") {
       window.location.replace(CONFIG.instagramUrl);
-    } else if (to === "segnala") {
-      document.getElementById("segnala")?.scrollIntoView({ behavior: "smooth" });
+    } else if (to === "segnala" || to === "cantiere") {
+      window.addEventListener("load", () => {
+        document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
+      });
     }
+
+    // Evidenzia nella barra in basso la sezione visibile
+    const links = [...document.querySelectorAll(".dock a[data-target]")];
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            links.forEach(l => l.classList.toggle("active", l.dataset.target === en.target.id));
+          }
+        });
+      }, { rootMargin: "-35% 0px -45% 0px" });
+      links.forEach(l => io.observe(document.getElementById(l.dataset.target)));
+    }
+
+    // Nasconde la barra mentre si scrive, così non copre la tastiera
+    const dock = document.getElementById("dock");
+    document.addEventListener("focusin", e => {
+      if (e.target.matches("input, textarea, select")) dock.classList.add("hide");
+    });
+    document.addEventListener("focusout", () => dock.classList.remove("hide"));
 
     function sendQuickReport(e) {
       e.preventDefault();
-      document.getElementById("ok-msg").style.display = "block";
+      const ok = document.getElementById("ok-msg");
+      ok.classList.add("show");
       e.target.reset();
+      setTimeout(() => ok.classList.remove("show"), 6000);
     }
   </script>
 </body>
