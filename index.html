@@ -88,7 +88,7 @@
     /* ───────── LAYOUT BASE (MOBILE) ───────── */
     .shell {
       width: 100%;
-      max-width: 440px;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
       gap: 22px;
@@ -501,18 +501,18 @@
     /* ═══════════════════════════════════════════════
        VISTA SPECIFICA PER PC & DESKTOP (>= 860px)
        ═══════════════════════════════════════════════ */
-    @media (min-width: 860px) {
+    @media (min-width: 768px) {
       body {
         padding: 40px 32px 60px;
         align-items: flex-start;
       }
 
       .shell {
-        max-width: 1060px;
+        max-width: 1240px;
         display: grid;
-        grid-template-columns: 340px 1fr;
+        grid-template-columns: 410px 1fr;
         grid-template-rows: auto auto;
-        column-gap: 32px;
+        column-gap: 36px;
         row-gap: 24px;
         align-items: start;
       }
