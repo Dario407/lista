@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#073B7A" />
   <title>DALLA NOSTRA PARTE · Carducci-Dante</title>
-  <meta name="description" content="Dalla Nostra Parte · Dario Nitu — ISIS Carducci-Dante Trieste" />
+  <meta name="description" content="Dalla Nostra Parte · Dario Nitu â€” ISIS Carducci-Dante Trieste" />
   <link rel="icon" type="image/png" href="assets/favicon-64.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preload" as="image" href="assets/logo-440.webp" type="image/webp" />
@@ -93,19 +93,17 @@
       gap: 16px;
     }
 
-    /* entrata a cascata */
+    /* entrata immediata e solida */
     .reveal {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: rise .6s var(--ease) forwards;
-      animation-delay: calc(var(--i, 0) * 80ms);
+      opacity: 1;
+      transform: none;
     }
 
     @keyframes rise {
       to { opacity: 1; transform: none; }
     }
 
-    /* ───────── 1. HERO ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 1. HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .hero {
       text-align: center;
       color: var(--white);
@@ -148,7 +146,7 @@
       border: 1px solid rgba(255, 255, 255, .18);
     }
 
-    /* ───────── 2. CTA INSTAGRAM ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 2. CTA INSTAGRAM â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .btn-instagram {
       display: flex;
       align-items: center;
@@ -211,7 +209,7 @@
       flex-shrink: 0;
     }
 
-    /* ───────── 3. CARD ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 3. CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .card {
       position: relative;
       background: var(--white);
@@ -266,7 +264,7 @@
       100% { box-shadow: 0 0 0 0 rgba(22, 164, 85, 0); }
     }
 
-    /* ───────── ACCORDION PRIORITÀ ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ ACCORDION PRIORITÃ€ â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .item-list {
       display: flex;
       flex-direction: column;
@@ -374,14 +372,14 @@
       flex-shrink: 0;
     }
 
-    /* ───────── 4. SEGNALAZIONI ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 4. SEGNALAZIONI â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #segnala { margin-top: 54px; scroll-margin-top: 84px; }
 
     .owl {
       position: absolute;
-      right: 14px;
-      bottom: calc(100% - 44px);
-      width: 84px;
+      right: 18px;
+      bottom: calc(100% - 38px);
+      width: 94px;
       height: auto;
       pointer-events: none;
       filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25));
@@ -389,7 +387,7 @@
 
     #segnala .card-header {
       display: block;
-      padding-right: 84px;
+      padding-right: 94px;
       margin-bottom: 16px;
     }
 
@@ -498,7 +496,7 @@
 
     .toast-ok.show { display: flex; animation: fade .3s var(--ease); }
 
-    /* ───────── 5. SCHEDA CANDIDATO ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 5. SCHEDA CANDIDATO â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .candidate {
       display: flex;
       align-items: center;
@@ -536,7 +534,7 @@
       opacity: .88;
     }
 
-    /* ───────── NAVIGAZIONE IN BASSO (zona del pollice) ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ NAVIGAZIONE IN BASSO (zona del pollice) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .dock {
       position: fixed;
       left: 50%;
@@ -619,11 +617,11 @@
     <header class="hero reveal" style="--i:0">
       <h1 class="sr-only">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</h1>
       <div class="logo-wrap">
-        <img src="assets/logo-440.webp" width="172" height="172" fetchpriority="high" alt="Logo Dalla Nostra Parte — Carducci-Dante" />
+        <img src="assets/logo-440.webp" width="172" height="172" fetchpriority="high" alt="Logo Dalla Nostra Parte â€” Carducci-Dante" />
       </div>
       <div class="pills" aria-label="Il nostro metodo">
         <span class="pill">Proposte realistiche</span>
-        <span class="pill">Priorità chiare</span>
+        <span class="pill">PrioritÃ  chiare</span>
         <span class="pill">Dialogo e risultati</span>
       </div>
     </header>
@@ -642,7 +640,7 @@
     <section class="card reveal" id="cantiere" style="--i:2" aria-labelledby="t-cantiere">
       <div class="card-header">
         <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
-        <span class="live-pill">5 priorità</span>
+        <span class="live-pill">5 prioritÃ </span>
       </div>
 
       <div class="item-list">
@@ -702,7 +700,7 @@
           </summary>
           <div class="topic-body">
             Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
-            <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
+            <div><span class="topic-tag">Metodo: Raccolta â†’ Verifica â†’ Risultato</span></div>
           </div>
         </details>
       </div>
@@ -710,7 +708,7 @@
 
     <!-- 4. SPORTELLO SEGNALAZIONI -->
     <section class="card reveal" id="segnala" style="--i:3" aria-labelledby="t-segnala">
-      <img class="owl" src="assets/civetta-360.webp" width="84" height="112" alt="" loading="lazy" />
+      <img class="owl" src="assets/civetta-360.webp" width="94" height="126" alt="" loading="lazy" />
 
       <div class="card-header">
         <h2 class="card-title" id="t-segnala">Segnala o proponi al Comitato</h2>
@@ -722,11 +720,11 @@
           <label for="f-topic">Argomento</label>
           <select id="f-topic" class="input-minimal" required>
             <option value="">Scegli un argomento</option>
-            <option value="libri">📱 Libri digitali e dispositivi</option>
-            <option value="didattica">📚 Didattica e carico verifiche</option>
-            <option value="spazi">🏫 Aule, freddo/caldo e bagni</option>
-            <option value="assemblee">🤝 Assemblee e regole</option>
-            <option value="comitato">💡 Proposta per il Comitato</option>
+            <option value="libri">ðŸ“± Libri digitali e dispositivi</option>
+            <option value="didattica">ðŸ“š Didattica e carico verifiche</option>
+            <option value="spazi">ðŸ« Aule, freddo/caldo e bagni</option>
+            <option value="assemblee">ðŸ¤ Assemblee e regole</option>
+            <option value="comitato">ðŸ’¡ Proposta per il Comitato</option>
           </select>
         </div>
 
@@ -760,7 +758,7 @@
   <!-- NAVIGAZIONE IN BASSO -->
   <nav class="dock" id="dock" aria-label="Navigazione rapida">
     <a href="#cantiere" data-target="cantiere">
-      <svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Priorità
+      <svg class="i" aria-hidden="true"><use href="#i-list"/></svg>PrioritÃ 
     </a>
     <a href="#segnala" data-target="segnala">
       <svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Segnala
@@ -807,7 +805,7 @@
       links.forEach(l => io.observe(document.getElementById(l.dataset.target)));
     }
 
-    // Nasconde la barra mentre si scrive, così non copre la tastiera
+    // Nasconde la barra mentre si scrive, cosÃ¬ non copre la tastiera
     const dock = document.getElementById("dock");
     document.addEventListener("focusin", e => {
       if (e.target.matches("input, textarea, select")) dock.classList.add("hide");
@@ -824,3 +822,5 @@
   </script>
 </body>
 </html>
+
+
