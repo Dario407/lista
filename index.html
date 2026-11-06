@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>DALLA NOSTRA PARTE · Carducci-Dante</title>
+  <meta name="description" content="Dalla Nostra Parte · Dario Nitu — ISIS Carducci-Dante Trieste" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #073B7A;
+      --navy-dark: #04244E;
+      --blue: #0877D1;
+      --gold: #FFAE0B;
+      --green: #16A455;
+      --alice: #EDF5FC;
+      --white: #FFFFFF;
+      --text: #0F172A;
+      --muted: #64748B;
+      --border: #DCE8F5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--navy-dark);
+      background-image: radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 45%, var(--navy-dark) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 20px 16px 36px;
+    }
+
+    /* CONTENITORE UNICO MOBILE-FIRST */
+    .phone-shell {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* 1. HEADER COMPATTO */
+    .hero-header {
+      text-align: center;
+      color: var(--white);
+      padding: 8px 4px 6px;
+    }
+
+    .logo-wrap {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-header h1 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .hero-header h1 span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .hero-motto {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--alice);
+      opacity: 0.9;
+      margin-top: 6px;
+      line-height: 1.35;
+    }
+
+    /* 2. BOTTONE PRINCIPALE INSTAGRAM */
+    .btn-instagram {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
+      color: var(--white);
+      text-decoration: none;
+      padding: 15px 18px;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(225, 48, 108, 0.35);
+      transition: transform 0.15s;
+    }
+
+    .btn-instagram:active {
+      transform: scale(0.98);
+    }
+
+    .ig-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ig-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .ig-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .ig-text span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0.92;
+    }
+
+    .ig-arrow {
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    /* 3. CARD BIANCA MINIMAL: PREVIEW COMITATO & PROPOSTE */
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .live-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      background: rgba(22, 164, 85, 0.12);
+      color: var(--green);
+      padding: 3px 8px;
+      border-radius: 99px;
+    }
+
+    /* LISTA COMPATTE ACCORDION */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    details.topic-item {
+      background: var(--alice);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background 0.15s;
+    }
+
+    details.topic-item[open] {
+      background: var(--white);
+      border-color: var(--blue);
+    }
+
+    summary.topic-summary {
+      list-style: none;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--navy);
+    }
+
+    summary.topic-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .topic-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topic-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .topic-dot.gold { background: var(--gold); }
+    .topic-dot.green { background: var(--green); }
+
+    .topic-chevron {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    details.topic-item[open] .topic-chevron {
+      transform: rotate(180deg);
+      color: var(--blue);
+    }
+
+    .topic-body {
+      padding: 0 14px 12px 32px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .topic-tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--navy);
+      background: var(--alice);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    /* 4. BOX RAPIDO SEGNALAZIONE (2 CAMPI) */
+    .quick-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-minimal {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--alice);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .input-minimal:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: var(--white);
+    }
+
+    textarea.input-minimal {
+      min-height: 74px;
+      resize: none;
+      font-weight: 500;
+    }
+
+    .btn-send {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 11px;
+      padding: 13px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-send:active {
+      background: var(--blue);
+    }
+
+    .toast-ok {
+      display: none;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(22, 164, 85, 0.1);
+      padding: 9px;
+      border-radius: 8px;
+    }
+
+    /* 5. MINI FOOTER CANDIDATO */
+    .mini-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 4px;
+      color: var(--alice);
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .mini-footer img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="phone-shell">
+
+    <!-- 1. HEADER MINIMAL -->
+    <header class="hero-header">
+      <div class="logo-wrap">
+        <img src="assets/logo-scuro.png" alt="Logo Dalla Nostra Parte" />
+      </div>
+      <h1>DALLA NOSTRA PARTE<span>.</span></h1>
+      <div class="hero-sub">ISIS Carducci-Dante · Trieste</div>
+      <p class="hero-motto">Proposte realistiche. Priorità chiare. Dialogo e risultati.</p>
+    </header>
+
+    <!-- 2. PULSANTE INSTAGRAM IN PRIMO PIANO -->
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn-instagram js-ig-link">
+      <div class="ig-left">
+        <div class="ig-icon">📸</div>
+        <div class="ig-text">
+          <strong>Seguici su Instagram</strong>
+          <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti & Reel</span>
+        </div>
+      </div>
+      <div class="ig-arrow">→</div>
+    </a>
+
+    <!-- 3. PREVIEW COMITATO & CANTIERE APERTO (ACCORDION COMPATTO) -->
+    <section class="card" id="cantiere">
+      <div class="card-header">
+        <span class="card-title">📋 Comitato & Cantiere Aperto</span>
+        <span class="live-pill">● 5 Priorità</span>
+      </div>
+
+      <div class="item-list">
+        <details class="topic-item" open>
+          <summary class="topic-summary">
+            <div class="topic-left">
+              <span class="topic-dot gold"></span>
+              <span>1. Libri digitali e tablet</span>
+            </div>
+            <span class="topic-chevron">▼</span>
+          </summary>
+          <div class="topic-body">
+            Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
+            <div><span class="topic-tag">Impegno: Presentazione entro 15 giorni</span></div>
+          </div>
+        </details>
+
+        <details class="topic-item">
+          <summary class="topic-summary">
+            <div class="topic-left">
+              <span class="topic-dot"></span>
+              <span>2. Verifiche e valutazioni</span>
+            </div>
+            <span class="topic-chevron">▼</span>
+          </summary>
+          <div class="topic-body">
+            Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
+            <div><span class="topic-tag">Stato: Raccolta segnalazioni classi</span></div>
+          </div>
+        </details>
+
+        <details class="topic-item">
+          <summary class="topic-summary">
+            <div class="topic-left">
+              <span class="topic-dot green"></span>
+              <span>3. Assemblee e rispetto reciproco</span>
+            </div>
+            <span class="topic-chevron">▼</span>
+          </summary>
+          <div class="topic-body">
+            Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
+            <div><span class="topic-tag">Stato: Linea operativa pronta</span></div>
+          </div>
+        </details>
+
+        <details class="topic-item">
+          <summary class="topic-summary">
+            <div class="topic-left">
+              <span class="topic-dot"></span>
+              <span>4. Aule, riscaldamento e bagni</span>
+            </div>
+            <span class="topic-chevron">▼</span>
+          </summary>
+          <div class="topic-body">
+            Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
+            <div><span class="topic-tag">Stato: Monitoraggio aperto</span></div>
+          </div>
+        </details>
+
+        <details class="topic-item">
+          <summary class="topic-summary">
+            <div class="topic-left">
+              <span class="topic-dot gold"></span>
+              <span>5. Comitato Studentesco attivo</span>
+            </div>
+            <span class="topic-chevron">▼</span>
+          </summary>
+          <div class="topic-body">
+            Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
+            <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 4. SPORTELLO RAPIDO SEGNALAZIONI (SOLO 2 CAMPI) -->
+    <section class="card" id="segnala">
+      <div class="card-header">
+        <span class="card-title">💬 Segnala o Proponi al Comitato</span>
+      </div>
+
+      <form class="quick-form" onsubmit="sendQuickReport(event)">
+        <select class="input-minimal" required>
+          <option value="">Scegli argomento (Aula, Verifiche, Libri, Idea...)</option>
+          <option value="libri">📱 Libri digitali e dispositivi</option>
+          <option value="didattica">📚 Didattica e carico verifiche</option>
+          <option value="spazi">🏫 Aule, freddo/caldo e bagni</option>
+          <option value="assemblee">🤝 Assemblee e regole</option>
+          <option value="comitato">💡 Proposta per il Comitato</option>
+        </select>
+
+        <textarea class="input-minimal" required placeholder="Scrivi qui il problema o la tua proposta (anche in modo anonimo, indicando se vuoi classe o aula)..."></textarea>
+
+        <button type="submit" class="btn-send">Invia alla Rappresentanza</button>
+        <div id="ok-msg" class="toast-ok">✓ Segnalazione ricevuta!</div>
+      </form>
+    </section>
+
+    <!-- 5. FOOTER COMPATTO -->
+    <footer class="mini-footer">
+      <img src="assets/dario-ritratto.jpg" alt="Dario Nitu" />
+      <span>Dario Nitu · Candidato Rappresentante d'Istituto</span>
+    </footer>
+
+  </main>
+
+  <script>
+    /**
+     * CONFIGURAZIONE LINK INSTAGRAM & QR REDIRECT
+     * Ti basta cambiare `instagramUrl` qui sotto quando avrai il link definitivo.
+     */
+    const CONFIG = {
+      instagramHandle: "@dallanostraparte.cd",
+      instagramUrl: "https://www.instagram.com/dallanostraparte.cd/"
+    };
+
+    document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
+    document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti & Reel";
+
+    // Reindirizzamento automatico da QR code (?to=ig | ?to=segnala | ?to=cantiere)
+    const params = new URLSearchParams(window.location.search);
+    const to = (params.get("to") || params.get("qr") || "").toLowerCase();
+    if (to === "ig" || to === "instagram") {
+      window.location.replace(CONFIG.instagramUrl);
+    } else if (to === "segnala") {
+      document.getElementById("segnala")?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function sendQuickReport(e) {
+      e.preventDefault();
+      document.getElementById("ok-msg").style.display = "block";
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

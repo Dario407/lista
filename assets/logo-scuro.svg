@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs><clipPath id="c"><circle cx="500" cy="500" r="474"/></clipPath></defs>
+  <circle cx="500" cy="500" r="480" fill="#073B7A"/>
+  <g clip-path="url(#c)">
+    <g transform="translate(500, 395) scale(1.0)">
+      <rect x="-276" y="-128" width="206" height="58" fill="#E8DDB4"/>
+      <rect x="-276" y="-135" width="206" height="7" fill="#E8E3D8"/>
+      <rect x="-256" y="-116" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-220" y="-116" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-184" y="-116" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-148" y="-116" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-112" y="-116" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-256" y="-92" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-220" y="-92" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-184" y="-92" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-148" y="-92" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-112" y="-92" width="18" height="16" rx="2" fill="#AFC0C9"/>
+      <rect x="-276" y="-70" width="206" height="70" fill="#8A3F2D"/>
+      <rect x="-256" y="-54" width="18" height="26" fill="#E8DDB4"/>
+      <rect x="-256" y="-28" width="18" height="28" fill="#E8E3D8"/>
+      <rect x="-212" y="-54" width="18" height="26" fill="#E8DDB4"/>
+      <rect x="-212" y="-28" width="18" height="28" fill="#E8E3D8"/>
+      <rect x="-168" y="-54" width="18" height="26" fill="#E8DDB4"/>
+      <rect x="-168" y="-28" width="18" height="28" fill="#E8E3D8"/>
+      <rect x="-124" y="-54" width="18" height="26" fill="#E8DDB4"/>
+      <rect x="-124" y="-28" width="18" height="28" fill="#E8E3D8"/>
+      <rect x="-70" y="-200" width="346" height="132" fill="#B0583E"/>
+      <rect x="-76" y="-210" width="358" height="10" rx="3" fill="#E8E3D8"/>
+      <rect x="-50" y="-182" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="-23" y="-182" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="-50" y="-165" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="28" y="-182" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="55" y="-182" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="28" y="-165" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="106" y="-182" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="133" y="-182" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="106" y="-165" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="184" y="-182" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="211" y="-182" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="184" y="-165" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="-50" y="-128" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="-23" y="-128" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="-50" y="-111" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="28" y="-128" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="55" y="-128" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="28" y="-111" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="106" y="-128" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="133" y="-128" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="106" y="-111" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="184" y="-128" width="58" height="38" rx="3" fill="#AFC0C9"/>
+      <rect x="211" y="-128" width="4" height="38" fill="#E8E3D8"/>
+      <rect x="184" y="-111" width="58" height="4" fill="#E8E3D8"/>
+      <rect x="-70" y="-68" width="346" height="68" fill="#8A3F2D"/>
+      <rect x="-78" y="-82" width="362" height="18" rx="2" fill="#E8E3D8"/>
+      <rect x="118" y="-54" width="42" height="54" rx="2" fill="#6B3F2C"/>
+      <rect x="-72" y="-64" width="26" height="64" fill="#E8E3D8"/>
+      <rect x="10" y="-64" width="26" height="64" fill="#E8E3D8"/>
+      <rect x="90" y="-64" width="26" height="64" fill="#E8E3D8"/>
+      <rect x="168" y="-64" width="26" height="64" fill="#E8E3D8"/>
+      <rect x="248" y="-64" width="26" height="64" fill="#E8E3D8"/>
+      <rect x="-305" y="0" width="610" height="10" rx="5" fill="#FFAE0B"/>
+    </g>
+    <g text-anchor="middle" font-family="'Montserrat', sans-serif">
+      <text x="500" y="492" font-weight="800" font-size="62" letter-spacing="10" fill="#FFAE0B">DALLA</text>
+      <text x="500" y="614" font-weight="900" font-size="128" letter-spacing="1" fill="#FFFFFF">NOSTRA</text>
+      <text x="500" y="720" font-weight="900" font-size="98" letter-spacing="4" fill="#FFFFFF">PARTE<tspan fill="#FFAE0B">.</tspan></text>
+      <rect x="355" y="752" width="290" height="10" rx="5" fill="#FFAE0B"/>
+      <text x="500" y="806" font-weight="700" font-size="25" letter-spacing="6" fill="#EDF5FC">CARDUCCI - DANTE</text>
+    </g>
+  </g>
+  
+  <circle cx="500" cy="500" r="480" fill="none" stroke="#0877D1" stroke-width="12"/>
+</svg>

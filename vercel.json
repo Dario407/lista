@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/ig", "destination": "/index.html?to=ig" },
+    { "source": "/instagram", "destination": "/index.html?to=ig" },
+    { "source": "/qr", "destination": "/index.html" },
+    { "source": "/segnala", "destination": "/index.html?to=segnala" },
+    { "source": "/cantiere", "destination": "/index.html?to=cantiere" },
+    { "source": "/comitato", "destination": "/index.html?to=cantiere" }
+  ]
+}
