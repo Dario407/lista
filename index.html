@@ -508,7 +508,7 @@
       border-radius: 20px;
     }
 
-    .candidate img {
+    .candidate .c-avatar {
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -516,6 +516,16 @@
       border: 2.5px solid var(--gold);
       background: var(--alice);
       flex-shrink: 0;
+    }
+
+    .candidate .c-mascot {
+      width: 58px;
+      height: auto;
+      border: none;
+      background: transparent;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35));
+      flex-shrink: 0;
+      margin-left: auto;
     }
 
     .candidate strong {
@@ -706,51 +716,16 @@
       </div>
     </section>
 
-    <!-- 4. SPORTELLO SEGNALAZIONI -->
-    <section class="card reveal" id="segnala" style="--i:3" aria-labelledby="t-segnala">
-      <img class="owl" src="assets/civetta-360.webp" width="94" height="126" alt="" loading="lazy" />
-
-      <div class="card-header">
-        <h2 class="card-title" id="t-segnala">Segnala o proponi al Comitato</h2>
-        <p class="card-sub">Anche in modo anonimo.</p>
-      </div>
-
-      <form class="quick-form" onsubmit="sendQuickReport(event)">
-        <div class="field">
-          <label for="f-topic">Argomento</label>
-          <select id="f-topic" class="input-minimal" required>
-            <option value="">Scegli un argomento</option>
-            <option value="libri">ðŸ“± Libri digitali e dispositivi</option>
-            <option value="didattica">ðŸ“š Didattica e carico verifiche</option>
-            <option value="spazi">ðŸ« Aule, freddo/caldo e bagni</option>
-            <option value="assemblee">ðŸ¤ Assemblee e regole</option>
-            <option value="comitato">ðŸ’¡ Proposta per il Comitato</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-msg">Il tuo messaggio</label>
-          <textarea id="f-msg" class="input-minimal" required placeholder="Scrivi il problema o la tua proposta. Se vuoi, indica classe o aula."></textarea>
-        </div>
-
-        <button type="submit" class="btn-send">
-          <svg class="i" aria-hidden="true"><use href="#i-send"/></svg>
-          Invia alla Rappresentanza
-        </button>
-        <div id="ok-msg" class="toast-ok" role="status" aria-live="polite">
-          <svg class="i" aria-hidden="true"><use href="#i-check"/></svg>
-          Segnalazione ricevuta!
-        </div>
-      </form>
-    </section>
+    
 
     <!-- 5. CANDIDATO -->
-    <footer class="candidate reveal" style="--i:4">
-      <img src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+    <footer class="candidate reveal" style="--i:3">
+      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
       <div>
         <strong>Dario Nitu</strong>
         <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
       </div>
+      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
     </footer>
 
   </main>
@@ -760,9 +735,7 @@
     <a href="#cantiere" data-target="cantiere">
       <svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Priorità
     </a>
-    <a href="#segnala" data-target="segnala">
-      <svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Segnala
-    </a>
+    
     <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
       <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
     </a>
