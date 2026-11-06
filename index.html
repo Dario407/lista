@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -99,11 +99,7 @@
       transform: none;
     }
 
-    @keyframes rise {
-      to { opacity: 1; transform: none; }
-    }
-
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 1. HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── 1. HERO ── */
     .hero {
       text-align: center;
       color: var(--white);
@@ -146,7 +142,7 @@
       border: 1px solid rgba(255, 255, 255, .18);
     }
 
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 2. CTA INSTAGRAM â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── 2. CTA INSTAGRAM ── */
     .btn-instagram {
       display: flex;
       align-items: center;
@@ -209,7 +205,7 @@
       flex-shrink: 0;
     }
 
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 3. CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── 3. CARD ── */
     .card {
       position: relative;
       background: var(--white);
@@ -264,7 +260,7 @@
       100% { box-shadow: 0 0 0 0 rgba(22, 164, 85, 0); }
     }
 
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ ACCORDION PRIORITÃ€ â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── ACCORDION PRIORITÀ ── */
     .item-list {
       display: flex;
       flex-direction: column;
@@ -372,131 +368,7 @@
       flex-shrink: 0;
     }
 
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 4. SEGNALAZIONI â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    #segnala { margin-top: 54px; scroll-margin-top: 84px; }
-
-    .owl {
-      position: absolute;
-      right: 18px;
-      bottom: calc(100% - 38px);
-      width: 94px;
-      height: auto;
-      pointer-events: none;
-      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25));
-    }
-
-    #segnala .card-header {
-      display: block;
-      padding-right: 94px;
-      margin-bottom: 16px;
-    }
-
-    .card-sub {
-      margin-top: 5px;
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .quick-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .field { display: flex; flex-direction: column; gap: 6px; }
-
-    .field label {
-      font-size: .75rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      padding-left: 2px;
-    }
-
-    /* 16px: evita lo zoom automatico di iOS al focus */
-    .input-minimal {
-      width: 100%;
-      min-height: 52px;
-      padding: 13px 14px;
-      border-radius: 14px;
-      border: 1.5px solid var(--border);
-      background: var(--alice);
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text);
-      transition: border-color .15s, background .15s, box-shadow .15s;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    .input-minimal:focus {
-      outline: none;
-      border-color: var(--blue);
-      background: var(--white);
-      box-shadow: 0 0 0 4px rgba(8, 119, 209, .15);
-    }
-
-    select.input-minimal {
-      padding-right: 44px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23073B7A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-    }
-
-    textarea.input-minimal {
-      min-height: 120px;
-      resize: none;
-      font-weight: 500;
-      line-height: 1.5;
-    }
-
-    .input-minimal::placeholder { color: #7B8AA0; font-weight: 500; }
-
-    .btn-send {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 54px;
-      margin-top: 2px;
-      background: var(--navy);
-      color: var(--white);
-      border: none;
-      border-radius: 16px;
-      font-family: inherit;
-      font-size: .95rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(7, 59, 122, .3);
-      transition: transform .15s var(--ease), background .15s;
-    }
-
-    .btn-send:active {
-      transform: scale(.98);
-      background: var(--blue);
-    }
-
-    .toast-ok {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-align: center;
-      font-size: .85rem;
-      font-weight: 800;
-      color: var(--green-deep);
-      background: rgba(22, 164, 85, .12);
-      padding: 12px;
-      border-radius: 12px;
-    }
-
-    .toast-ok.show { display: flex; animation: fade .3s var(--ease); }
-
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ 5. SCHEDA CANDIDATO â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── 5. SCHEDA CANDIDATO ── */
     .candidate {
       display: flex;
       align-items: center;
@@ -544,7 +416,7 @@
       opacity: .88;
     }
 
-    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ NAVIGAZIONE IN BASSO (zona del pollice) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── NAVIGAZIONE IN BASSO (zona del pollice) ── */
     .dock {
       position: fixed;
       left: 50%;
@@ -606,95 +478,107 @@
       }
       .reveal { opacity: 1; transform: none; }
     }
-  
-    /* ───────── SEZIONE PROPOSTE ───────── */
-    #proposte {
-      scroll-margin-top: 24px;
-    }
 
-    .proposte-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 14px;
+    /* ── SEZIONE PROPOSTE ── */
+    #proposte { scroll-margin-top: 20px; }
+
+    .prop-intro {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.45;
+      margin: -4px 2px 14px;
     }
 
     .prop-card {
+      --accent: var(--blue);
+      --on: var(--white);
       background: var(--alice);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 16px;
-      transition: transform .15s, border-color .15s;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: background .2s, border-color .2s, box-shadow .2s;
     }
 
-    .prop-card:hover {
-      border-color: var(--blue);
-      background: #FFFFFF;
+    .prop-card.gold  { --accent: var(--gold);       --on: var(--navy-dark); }
+    .prop-card.green { --accent: var(--green-deep); --on: var(--white); }
+
+    .prop-card[open] {
+      background: var(--white);
+      border-color: var(--accent);
+      box-shadow: 0 6px 18px rgba(7, 59, 122, .1);
     }
 
-    .prop-card-head {
+    .prop-card summary {
+      list-style: none;
+      min-height: 62px;
+      padding: 10px 14px 10px 12px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .prop-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
+    .prop-card summary::-webkit-details-marker { display: none; }
+
+    .prop-card .topic-num { background: var(--accent); color: var(--on); }
+
+    .prop-head { flex: 1; min-width: 0; }
+
+    .prop-title {
+      display: block;
+      font-size: .9rem;
       font-weight: 800;
+      line-height: 1.25;
       color: var(--navy);
-      letter-spacing: 0.3px;
     }
 
     .prop-tag {
-      font-size: 0.68rem;
+      display: inline-block;
+      margin-top: 4px;
+      font-size: .68rem;
       font-weight: 800;
+      letter-spacing: .3px;
+      text-transform: uppercase;
       padding: 2px 8px;
       border-radius: 99px;
-      background: rgba(8, 119, 209, 0.12);
-      color: var(--blue);
+      background: rgba(8, 119, 209, .12);
+      color: #0662AB;
     }
 
-    .prop-tag.gold {
-      background: rgba(255, 174, 11, 0.2);
-      color: #9E6500;
-    }
+    .prop-tag.gold  { background: rgba(255, 174, 11, .22); color: #8A5700; }
+    .prop-tag.green { background: rgba(22, 164, 85, .14);  color: var(--green-deep); }
 
-    .prop-tag.green {
-      background: rgba(22, 164, 85, 0.15);
-      color: var(--green);
-    }
+    .prop-card[open] .topic-chevron { transform: rotate(180deg); color: var(--navy); }
 
     .prop-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin: 0;
-      padding: 0;
+      gap: 10px;
+      padding: 2px 16px 16px 16px;
+      animation: fade .3s var(--ease);
     }
 
     .prop-list li {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #334155;
-      line-height: 1.4;
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
+      font-size: .87rem;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.5;
     }
 
     .prop-list li::before {
-      content: '✓';
-      color: var(--green);
-      font-weight: 900;
-      font-size: 0.85rem;
-      line-height: 1.3;
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-top: 1px;
+      border-radius: 50%;
       flex-shrink: 0;
+      background: rgba(22, 164, 85, .14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F8A47' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center / 12px no-repeat;
     }
 
   </style>
@@ -708,6 +592,7 @@
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4 18-7z"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 20.5l1.5-4.9A8 8 0 1 1 21 12z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   </svg>
@@ -741,7 +626,7 @@
     <section class="card reveal" id="cantiere" style="--i:2" aria-labelledby="t-cantiere">
       <div class="card-header">
         <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
-        <span class="live-pill">5 prioritÃ </span>
+        <span class="live-pill">5 priorità</span>
       </div>
 
       <div class="item-list">
@@ -801,7 +686,7 @@
           </summary>
           <div class="topic-body">
             Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
-            <div><span class="topic-tag">Metodo: Raccolta â†’ Verifica â†’ Risultato</span></div>
+            <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
           </div>
         </details>
       </div>
@@ -811,79 +696,95 @@
 
     <!-- 5. CANDIDATO -->
     
-    <!-- 4. SEZIONE PROPOSTE -->
+    <!-- 4. PROPOSTE -->
     <section class="card reveal" id="proposte" style="--i:3" aria-labelledby="t-proposte">
       <div class="card-header">
-        <h2 class="card-title" id="t-proposte">Tutte le Proposte</h2>
-        <span class="live-pill">5 Aree</span>
+        <h2 class="card-title" id="t-proposte">Tutte le proposte</h2>
+        <span class="live-pill">5 aree</span>
       </div>
+      <p class="prop-intro">Tocca un'area per vedere i punti concreti del programma.</p>
 
-      <div class="proposte-grid">
-        <!-- Card 1 -->
-        <article class="prop-card">
-          <div class="prop-card-head">
-            <span class="prop-badge">📱 1. Libri Digitali & Dispositivi</span>
+      <div class="item-list">
+      <details class="prop-card gold" name="proposta" open>
+        <summary>
+          <span class="topic-num">1</span>
+          <span class="prop-head">
+            <span class="prop-title">Libri digitali e dispositivi</span>
             <span class="prop-tag gold">Priorità</span>
-          </div>
-          <ul class="prop-list">
-            <li>Linee guida certe e condivise sull'uso di tablet ed ebook in classe durante le lezioni</li>
-            <li>Stop ai divieti arbitrari o disparità di trattamento per chi studia su supporto digitale</li>
-            <li>Presentazione formale della proposta scritta entro 15 giorni dalla nomina</li>
-          </ul>
-        </article>
+          </span>
+          <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
+        <ul class="prop-list">
+          <li>Linee guida certe e condivise sull'uso di tablet ed ebook in classe durante le lezioni</li>
+          <li>Stop ai divieti arbitrari o disparità di trattamento per chi studia su supporto digitale</li>
+          <li>Presentazione formale della proposta scritta entro 15 giorni dalla nomina</li>
+        </ul>
+      </details>
 
-        <!-- Card 2 -->
-        <article class="prop-card">
-          <div class="prop-card-head">
-            <span class="prop-badge">📚 2. Didattica & Verifiche</span>
-            <span class="prop-tag">Didattica</span>
-          </div>
-          <ul class="prop-list">
-            <li>Massima trasparenza sui criteri e sulle griglie di valutazione utilizzate dai docenti</li>
-            <li>Coordinamento del calendario per evitare concentrazioni eccessive nella stessa settimana</li>
-            <li>Canale di confronto continuo per chiarire differenze organizzative tra sezioni</li>
-          </ul>
-        </article>
+      <details class="prop-card" name="proposta">
+        <summary>
+          <span class="topic-num">2</span>
+          <span class="prop-head">
+            <span class="prop-title">Didattica e verifiche</span>
+            <span class="prop-tag ">Didattica</span>
+          </span>
+          <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
+        <ul class="prop-list">
+          <li>Massima trasparenza sui criteri e sulle griglie di valutazione utilizzate dai docenti</li>
+          <li>Coordinamento del calendario per evitare concentrazioni eccessive nella stessa settimana</li>
+          <li>Canale di confronto continuo per chiarire differenze organizzative tra sezioni</li>
+        </ul>
+      </details>
 
-        <!-- Card 3 -->
-        <article class="prop-card">
-          <div class="prop-card-head">
-            <span class="prop-badge">🤝 3. Assemblee & Rispetto Reciproco</span>
+      <details class="prop-card green" name="proposta">
+        <summary>
+          <span class="topic-num">3</span>
+          <span class="prop-head">
+            <span class="prop-title">Assemblee e rispetto reciproco</span>
             <span class="prop-tag green">Diritti</span>
-          </div>
-          <ul class="prop-list">
-            <li>Assemblee d'istituto vive e partecipate, con ospiti, dibattiti e temi votati dagli studenti</li>
-            <li>Provvedimenti disciplinari sempre motivati, chiari e proporzionati alla situazione</li>
-            <li>Clima di rispetto reciproco evitando sanzioni punitive sproporzionate per lievi distrazioni</li>
-          </ul>
-        </article>
+          </span>
+          <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
+        <ul class="prop-list">
+          <li>Assemblee d'istituto vive e partecipate, con ospiti, dibattiti e temi votati dagli studenti</li>
+          <li>Provvedimenti disciplinari sempre motivati, chiari e proporzionati alla situazione</li>
+          <li>Clima di rispetto reciproco evitando sanzioni punitive sproporzionate per lievi distrazioni</li>
+        </ul>
+      </details>
 
-        <!-- Card 4 -->
-        <article class="prop-card">
-          <div class="prop-card-head">
-            <span class="prop-badge">🏫 4. Aule, Strutture & Spazi</span>
-            <span class="prop-tag">Edificio</span>
-          </div>
-          <ul class="prop-list">
-            <li>Monitoraggio costante delle temperature e del riscaldamento (segnalazione tempestiva aule fredde)</li>
-            <li>Segnalazione immediata dei guasti e cura delle condizioni dei servizi igienici</li>
-            <li>Manutenzione e valorizzazione degli spazi comuni, laboratori e attrezzature scolastiche</li>
-            <li>Registro pubblico con lo stato di avanzamento delle richieste inoltrate all'ente competente</li>
-          </ul>
-        </article>
+      <details class="prop-card" name="proposta">
+        <summary>
+          <span class="topic-num">4</span>
+          <span class="prop-head">
+            <span class="prop-title">Aule, strutture e spazi</span>
+            <span class="prop-tag ">Edificio</span>
+          </span>
+          <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
+        <ul class="prop-list">
+          <li>Monitoraggio costante delle temperature e del riscaldamento (segnalazione tempestiva aule fredde)</li>
+          <li>Segnalazione immediata dei guasti e cura delle condizioni dei servizi igienici</li>
+          <li>Manutenzione e valorizzazione degli spazi comuni, laboratori e attrezzature scolastiche</li>
+          <li>Registro pubblico con lo stato di avanzamento delle richieste inoltrate all'ente competente</li>
+        </ul>
+      </details>
 
-        <!-- Card 5 -->
-        <article class="prop-card">
-          <div class="prop-card-head">
-            <span class="prop-badge">🏛️ 5. Comitato Studentesco & Iniziative</span>
+      <details class="prop-card gold" name="proposta">
+        <summary>
+          <span class="topic-num">5</span>
+          <span class="prop-head">
+            <span class="prop-title">Comitato Studentesco e iniziative</span>
             <span class="prop-tag gold">Partecipazione</span>
-          </div>
-          <ul class="prop-list">
-            <li>Tavolo periodico di confronto continuo con tutti i rappresentanti di classe</li>
-            <li>Organizzazione di tornei sportivi scolastici, laboratori pomeridiani e conferenze tematiche</li>
-            <li>Resoconti sintetici e trasparenti dopo ogni riunione e Consiglio d'Istituto</li>
-          </ul>
-        </article>
+          </span>
+          <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
+        <ul class="prop-list">
+          <li>Tavolo periodico di confronto continuo con tutti i rappresentanti di classe</li>
+          <li>Organizzazione di tornei sportivi scolastici, laboratori pomeridiani e conferenze tematiche</li>
+          <li>Resoconti sintetici e trasparenti dopo ogni riunione e Consiglio d'Istituto</li>
+        </ul>
+      </details>
       </div>
     </section>
 
@@ -903,7 +804,9 @@
     <a href="#cantiere" data-target="cantiere">
       <svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Priorità
     </a>
-    
+    <a href="#proposte" data-target="proposte">
+      <svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Proposte
+    </a>
     <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
       <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
     </a>
@@ -922,12 +825,12 @@
     document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
     document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti & Reel";
 
-    // Reindirizzamento automatico da QR code (?to=ig | ?to=segnala | ?to=cantiere)
+    // Reindirizzamento automatico da QR code (?to=ig | ?to=cantiere | ?to=proposte)
     const params = new URLSearchParams(window.location.search);
     const to = (params.get("to") || params.get("qr") || "").toLowerCase();
     if (to === "ig" || to === "instagram") {
       window.location.replace(CONFIG.instagramUrl);
-    } else if (to === "segnala" || to === "cantiere") {
+    } else if (to === "cantiere" || to === "proposte") {
       window.addEventListener("load", () => {
         document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
       });
@@ -946,22 +849,7 @@
       links.forEach(l => io.observe(document.getElementById(l.dataset.target)));
     }
 
-    // Nasconde la barra mentre si scrive, cosÃ¬ non copre la tastiera
-    const dock = document.getElementById("dock");
-    document.addEventListener("focusin", e => {
-      if (e.target.matches("input, textarea, select")) dock.classList.add("hide");
-    });
-    document.addEventListener("focusout", () => dock.classList.remove("hide"));
 
-    function sendQuickReport(e) {
-      e.preventDefault();
-      const ok = document.getElementById("ok-msg");
-      ok.classList.add("show");
-      e.target.reset();
-      setTimeout(() => ok.classList.remove("show"), 6000);
-    }
   </script>
 </body>
 </html>
-
-
