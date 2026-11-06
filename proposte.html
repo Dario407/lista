@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#073B7A" />
+  <title>Proposte · DALLA NOSTRA PARTE · Carducci-Dante</title>
+  <meta name="description" content="Tutte le proposte del programma elettorale Dalla Nostra Parte · Dario Nitu — ISIS Carducci-Dante Trieste" />
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #073B7A;
+      --navy-dark: #04244E;
+      --blue: #0877D1;
+      --gold: #FFAE0B;
+      --green: #16A455;
+      --green-deep: #0F8A47;
+      --alice: #EDF5FC;
+      --white: #FFFFFF;
+      --text: #0F172A;
+      --muted: #475569;
+      --border: #DCE8F5;
+      --radius: 22px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--navy-dark);
+      background-image:
+        radial-gradient(520px 320px at 85% -40px, rgba(255, 174, 11, .16), transparent 70%),
+        radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 42%, var(--navy-dark) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      padding:
+        calc(18px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-right))
+        calc(108px + env(safe-area-inset-bottom))
+        calc(16px + env(safe-area-inset-left));
+    }
+
+    svg.i {
+      width: 1.25em;
+      height: 1.25em;
+      flex-shrink: 0;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ───────── 1. TOP BAR & HEADER PAGINA ───────── */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: var(--white);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 800;
+      transition: background .15s;
+    }
+
+    .btn-back:active {
+      background: rgba(255, 255, 255, .22);
+    }
+
+    .mini-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .mini-brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+    }
+
+    .mini-brand span {
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .4px;
+    }
+
+    .page-hero {
+      color: var(--white);
+      padding: 4px 2px 2px;
+    }
+
+    .page-eyebrow {
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 4px;
+    }
+
+    .page-hero h1 {
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+
+    .page-hero p {
+      margin-top: 6px;
+      font-size: .84rem;
+      font-weight: 500;
+      color: var(--alice);
+      opacity: .9;
+      line-height: 1.45;
+    }
+
+    /* ───────── 2. FILTRI RAPIDI PER CATEGORIA ───────── */
+    .filter-bar {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 2px 0 4px;
+      scrollbar-width: none;
+    }
+
+    .filter-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-chip {
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, .08);
+      color: var(--alice);
+      font-family: inherit;
+      font-size: .75rem;
+      font-weight: 800;
+      padding: 8px 13px;
+      border-radius: 99px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .filter-chip.active {
+      background: var(--gold);
+      color: var(--navy-dark);
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(255, 174, 11, .3);
+    }
+
+    /* ───────── 3. CARD PROPOSTE ───────── */
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .prop-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .24);
+      border-top: 4px solid var(--blue);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .prop-card.gold  { border-top-color: var(--gold); }
+    .prop-card.green { border-top-color: var(--green); }
+
+    .prop-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .prop-num-wrap {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .prop-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .82rem;
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .prop-card.gold .prop-num {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .prop-card.green .prop-num {
+      background: var(--green-deep);
+      color: var(--white);
+    }
+
+    .prop-cat-label {
+      font-size: .73rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--muted);
+    }
+
+    .prop-status {
+      font-size: .68rem;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 99px;
+      background: var(--alice);
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .prop-card.gold .prop-status {
+      background: rgba(255, 174, 11, .2);
+      color: #8F5B00;
+    }
+
+    .prop-card.green .prop-status {
+      background: rgba(22, 164, 85, .14);
+      color: var(--green-deep);
+    }
+
+    .prop-card h2 {
+      font-size: 1.04rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .prop-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--alice);
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .prop-list li {
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.42;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .prop-list li::before {
+      content: "✓";
+      color: var(--green-deep);
+      font-weight: 900;
+      font-size: .88rem;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    .prop-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+      padding-top: 2px;
+      font-size: .74rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .prop-meta strong {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    /* ───────── 4. CARD METODO 5 PASSAGGI ───────── */
+    .method-card {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      color: var(--white);
+    }
+
+    .method-card h3 {
+      font-size: .92rem;
+      font-weight: 900;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
+    }
+
+    .steps-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--alice);
+    }
+
+    .steps-mini div {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .steps-mini b {
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    /* ───────── 5. CANDIDATO & DOCK ───────── */
+    .candidate {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 20px;
+    }
+
+    .candidate .c-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid var(--gold);
+      background: var(--alice);
+      flex-shrink: 0;
+    }
+
+    .candidate .c-mascot {
+      width: 58px;
+      height: auto;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35));
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .candidate strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .candidate span {
+      display: block;
+      margin-top: 2px;
+      font-size: .78rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--alice);
+      opacity: .88;
+    }
+
+    .dock {
+      position: fixed;
+      left: 50%;
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      z-index: 10;
+      width: min(calc(100% - 24px), 440px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 6px;
+      background: rgba(4, 36, 78, .86);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
+    }
+
+    .dock a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-height: 54px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-size: .7rem;
+      font-weight: 800;
+      color: rgba(237, 245, 252, .75);
+      transition: color .2s, background .2s;
+    }
+
+    .dock a svg { width: 21px; height: 21px; }
+
+    .dock a.active {
+      color: var(--gold);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .dock a.ext { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/></symbol>
+  </svg>
+
+  <main class="shell">
+
+    <!-- 1. TOP BAR -->
+    <div class="top-nav">
+      <a href="index.html" class="btn-back">
+        <svg class="i" aria-hidden="true"><use href="#i-back"/></svg>
+        Home
+      </a>
+      <a href="index.html" class="mini-brand">
+        <span>DALLA NOSTRA PARTE.</span>
+        <img src="assets/logo-440.webp" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- 2. TITOLO PAGINA -->
+    <header class="page-hero">
+      <div class="page-eyebrow">Programma Elettorale · Carducci-Dante</div>
+      <h1>Tutte le Proposte</h1>
+      <p>Punti realistici, divisi per area d'intervento, con impegni verificabili e organi competenti.</p>
+    </header>
+
+    <!-- 3. FILTRI RAPIDI -->
+    <div class="filter-bar" role="tablist" aria-label="Filtra proposte per argomento">
+      <button class="filter-chip active" onclick="filterCards('all', this)">Tutte (5)</button>
+      <button class="filter-chip" onclick="filterCards('libri', this)">📱 Libri Digitali</button>
+      <button class="filter-chip" onclick="filterCards('didattica', this)">📚 Didattica</button>
+      <button class="filter-chip" onclick="filterCards('assemblee', this)">🤝 Assemblee</button>
+      <button class="filter-chip" onclick="filterCards('aule', this)">🏫 Aule &amp; Spazi</button>
+      <button class="filter-chip" onclick="filterCards('comitato', this)">🏛️ Comitato</button>
+    </div>
+
+    <!-- 4. ELENCO CARD PROPOSTE -->
+    <section class="cards-stack" id="cards-list">
+
+      <!-- Card 1 -->
+      <article class="prop-card gold" data-cat="libri">
+        <div class="prop-top">
+          <div class="prop-num-wrap">
+            <span class="prop-num">1</span>
+            <span class="prop-cat-label">Libri Digitali &amp; Dispositivi</span>
+          </div>
+          <span class="prop-status">● Priorità #1</span>
+        </div>
+        <h2>Regole chiare sull'utilizzo di libri digitali e tablet in classe</h2>
+        <ul class="prop-list">
+          <li>Definire indicazioni chiare e condivise sull'uso di libri digitali e dispositivi durante le attività didattiche</li>
+          <li>Evitare divieti arbitrari o differenze di trattamento tra classi per chi utilizza regolarmente i testi in formato digitale</li>
+          <li>Raccogliere le esigenze degli studenti e depositare una proposta scritta formale entro 15 giorni dalla nomina</li>
+          <li>Comunicare pubblicamente la data di presentazione e tutti i passaggi successivi</li>
+        </ul>
+        <div class="prop-meta">
+          <span><strong>Competenza:</strong> Dirigenza / Collegio Docenti</span>
+          <span><strong>Tempi:</strong> Entro 15 giorni</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="prop-card" data-cat="didattica">
+        <div class="prop-top">
+          <div class="prop-num-wrap">
+            <span class="prop-num">2</span>
+            <span class="prop-cat-label">Didattica &amp; Valutazione</span>
+          </div>
+          <span class="prop-status">● Didattica</span>
+        </div>
+        <h2>Chiarezza sui criteri di valutazione e organizzazione verifiche</h2>
+        <ul class="prop-list">
+          <li>Promuovere una comunicazione più chiara sui criteri di valutazione e sulle griglie utilizzate</li>
+          <li>Aprire un confronto sull'organizzazione delle verifiche e sul carico settimanale per evitare concentrazioni eccessive quando è possibile coordinarle</li>
+          <li>Raccogliere segnalazioni su comunicazioni poco chiare o differenze organizzative tra classi e sottoporle agli organi competenti</li>
+        </ul>
+        <div class="prop-meta">
+          <span><strong>Competenza:</strong> Presidenza / Coordinatori</span>
+          <span><strong>Stato:</strong> Raccolta classi</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="prop-card green" data-cat="assemblee">
+        <div class="prop-top">
+          <div class="prop-num-wrap">
+            <span class="prop-num">3</span>
+            <span class="prop-cat-label">Assemblee &amp; Rispetto Reciproco</span>
+          </div>
+          <span class="prop-status">● Vita Scolastica</span>
+        </div>
+        <h2>Assemblee effettive, regole chiare e provvedimenti proporzionati</h2>
+        <ul class="prop-list">
+          <li>Rendere le assemblee momenti effettivi di confronto su temi sentiti dagli studenti</li>
+          <li>Chiedere che eventuali provvedimenti siano sempre chiari, motivati e proporzionati alla situazione</li>
+          <li>Evitare che episodi di lieve entità diventino occasione per minacce o reazioni sproporzionate</li>
+          <li>Raccogliere i problemi ricorrenti nella gestione delle assemblee e portarli ai referenti competenti</li>
+        </ul>
+        <div class="prop-meta">
+          <span><strong>Competenza:</strong> Dirigenza / Referenti</span>
+          <span><strong>Obiettivo:</strong> Dialogo e rispetto</span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="prop-card" data-cat="aule">
+        <div class="prop-top">
+          <div class="prop-num-wrap">
+            <span class="prop-num">4</span>
+            <span class="prop-cat-label">Spazi, Servizi &amp; Aule</span>
+          </div>
+          <span class="prop-status">● Ambiente</span>
+        </div>
+        <h2>Temperature delle aule, servizi igienici e spazi comuni</h2>
+        <ul class="prop-list">
+          <li>Monitoraggio ordinato per piano e aula delle temperature e dei problemi di riscaldamento ricorrenti</li>
+          <li>Segnalazione puntuale delle criticità e delle condizioni dei servizi igienici</li>
+          <li>Verifica dello stato degli spazi comuni, delle attrezzature e dei materiali utilizzati dagli studenti</li>
+          <li>Comunicazione trasparente dell'avvenuta segnalazione e della risposta o intervento ricevuto</li>
+        </ul>
+        <div class="prop-meta">
+          <span><strong>Competenza:</strong> Scuola / Ufficio Tecnico / Ente</span>
+          <span><strong>Metodo:</strong> Registro tracciato</span>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="prop-card gold" data-cat="comitato">
+        <div class="prop-top">
+          <div class="prop-num-wrap">
+            <span class="prop-num">5</span>
+            <span class="prop-cat-label">Partecipazione &amp; Iniziative</span>
+          </div>
+          <span class="prop-status">● Comitato</span>
+        </div>
+        <h2>Comitato Studentesco attivo e confronto con i rappresentanti</h2>
+        <ul class="prop-list">
+          <li>Organizzare momenti periodici di confronto con i rappresentanti di classe</li>
+          <li>Raccogliere proposte per attività culturali, incontri e laboratori verificando prima spazi, risorse e autorizzazioni</li>
+          <li>Consultare gli studenti sui temi che incidono sulla vita scolastica, evitando consultazioni puramente formali</li>
+          <li>Pubblicare resoconti sintetici degli incontri, relazione di metà anno e relazione finale</li>
+        </ul>
+        <div class="prop-meta">
+          <span><strong>Competenza:</strong> Rappresentanza d'Istituto</span>
+          <span><strong>Impegno:</strong> Report periodici</span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 5. SINTESI DEL METODO -->
+    <section class="method-card">
+      <h3>⚙️ Il Metodo in 5 Passaggi</h3>
+      <div class="steps-mini">
+        <div><b>1. Raccolta:</b> segnalazioni e proposte divise per argomento.</div>
+        <div><b>2. Verifica:</b> chiarire il problema e capire a chi compete intervenire.</div>
+        <div><b>3. Preparazione:</b> proposta precisa con obiettivo, passaggi e limiti.</div>
+        <div><b>4. Presentazione:</b> invio all'organo competente con data registrata.</div>
+        <div><b>5. Aggiornamento:</b> pubblicazione della risposta e dello stato reale.</div>
+      </div>
+    </section>
+
+    <!-- 6. CANDIDATO -->
+    <footer class="candidate">
+      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+      <div>
+        <strong>Dario Nitu</strong>
+        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+      </div>
+      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
+    </footer>
+
+  </main>
+
+  <!-- NAVIGAZIONE IN BASSO -->
+  <nav class="dock" aria-label="Navigazione rapida">
+    <a href="index.html">
+      <svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home
+    </a>
+    <a href="proposte.html" class="active">
+      <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Proposte
+    </a>
+    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
+      <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
+    </a>
+  </nav>
+
+  <script>
+    const CONFIG = {
+      instagramHandle: "@dallanostraparte.cd",
+      instagramUrl: "https://www.instagram.com/dallanostraparte.cd/"
+    };
+
+    document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
+
+    function filterCards(cat, btn) {
+      document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      document.querySelectorAll(".prop-card").forEach(card => {
+        card.style.display = (cat === "all" || card.dataset.cat === cat) ? "flex" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

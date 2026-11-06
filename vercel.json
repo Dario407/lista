@@ -4,7 +4,8 @@
     { "source": "/ig", "destination": "/index.html?to=ig" },
     { "source": "/instagram", "destination": "/index.html?to=ig" },
     { "source": "/qr", "destination": "/index.html" },
-    { "source": "/segnala", "destination": "/index.html?to=segnala" },
+    { "source": "/proposte", "destination": "/proposte.html" },
+    { "source": "/programma", "destination": "/proposte.html" },
     { "source": "/cantiere", "destination": "/index.html?to=cantiere" },
     { "source": "/comitato", "destination": "/index.html?to=cantiere" }
   ]
