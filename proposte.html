@@ -77,6 +77,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+      margin: 0 auto;
     }
 
     /* ───────── 1. TOP BAR & HEADER PAGINA ───────── */
@@ -266,7 +267,7 @@
       background: var(--navy);
     }
 
-    /* BOX SPIEGAZIONE CATEGORIA (DA TABELLA 3 GOOGLE DOCS) */
+    /* BOX SPIEGAZIONE CATEGORIA */
     .cat-explain {
       background: rgba(4, 36, 78, .65);
       border-left: 3.5px solid var(--gold);
@@ -627,119 +628,161 @@
 
     .dock a.ext { color: var(--gold); }
 
-    /* ── LAYOUT: su telefono i wrapper sono trasparenti ── */
-    .side { display: contents; }
+    .desktop-nav {
+      display: none;
+    }
 
-    /* ── DESKTOP ── */
-    @media (min-width: 900px) {
+    /* ═══════════════════════════════════════════════
+       VISTA SPECIFICA PER PC & DESKTOP (>= 860px)
+       ═══════════════════════════════════════════════ */
+    @media (min-width: 860px) {
       body {
+        padding: 40px 32px 60px;
         align-items: flex-start;
-        padding: 108px 40px 64px;
       }
 
       .shell {
-        max-width: 1180px;
+        max-width: 1060px;
         display: grid;
-        grid-template-columns: 340px minmax(0, 1fr);
-        gap: 28px 40px;
+        grid-template-columns: 340px 1fr;
+        column-gap: 32px;
+        row-gap: 24px;
         align-items: start;
       }
 
-      /* la navigazione è nella barra in alto */
-      .top-nav { display: none; }
+      /* Navbar fissa in alto per PC */
+      .desktop-nav {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(4, 36, 78, .8);
+        border: 1px solid rgba(255, 255, 255, .16);
+        border-radius: 20px;
+        padding: 12px 24px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+      }
 
-      .side {
+      .desktop-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 900;
+        letter-spacing: .5px;
+        font-size: .92rem;
+      }
+
+      .desktop-brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+      }
+
+      .desktop-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .desktop-links a {
+        color: var(--alice);
+        text-decoration: none;
+        font-size: .84rem;
+        font-weight: 800;
+        padding: 8px 16px;
+        border-radius: 12px;
+        transition: all .15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .desktop-links a:hover,
+      .desktop-links a.active {
+        color: var(--navy-dark);
+        background: var(--gold);
+      }
+
+      .top-nav {
+        display: none;
+      }
+
+      /* Sidebar Desktop: Titolo, Filtri e Metodo sticky */
+      .proposte-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        position: sticky;
+        top: 24px;
+      }
+
+      .page-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .page-hero p {
+        font-size: .88rem;
+      }
+
+      .cat-panel {
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      .cat-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .cat-btn {
+        padding: 10px 12px;
+      }
+
+      .cat-btn-text strong {
+        font-size: .82rem;
+      }
+
+      /* Area Principale: Schede Proposte */
+      .proposte-content {
         display: flex;
         flex-direction: column;
         gap: 18px;
-        position: sticky;
-        top: 108px;
       }
 
-      .content { min-width: 0; }
-      .candidate { grid-column: 1 / -1; justify-self: start; width: min(100%, 560px); }
-
-      .page-eyebrow { font-size: .76rem; margin-bottom: 8px; }
-      .page-hero h1 { font-size: 2.15rem; line-height: 1.08; }
-      .page-hero p { font-size: .92rem; margin-top: 12px; line-height: 1.55; }
-
-      .cat-panel { padding: 16px; gap: 14px; }
-      .cat-grid { grid-template-columns: 1fr; gap: 8px; }
-      .cat-btn { padding: 12px 14px; gap: 12px; }
-      .cat-btn-text strong { font-size: .84rem; }
-      .cat-btn-text span { font-size: .74rem; }
-      .cat-explain { font-size: .82rem; padding: 12px 14px; }
-
-      .cards-stack { gap: 20px; }
-      .prop-card { padding: 22px 22px 20px; gap: 14px; }
-      .prop-card h2 { font-size: 1.1rem; }
-
-      .method-card { grid-column: 1 / -1; padding: 26px 30px 28px; }
-      .method-card h3 { font-size: .95rem; margin-bottom: 16px; }
-      .steps-mini {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 14px;
-        font-size: .86rem;
-        line-height: 1.5;
+      .prop-card {
+        padding: 22px 20px;
+        border-radius: 24px;
       }
-      .steps-mini div {
-        flex-direction: column;
-        gap: 6px;
+
+      .prop-card h2 {
+        font-size: 1.15rem;
+      }
+
+      .preview-grid {
         padding: 14px 16px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, .07);
-        border: 1px solid rgba(255, 255, 255, .12);
-      }
-      .steps-mini b { font-size: .95rem; }
-
-      /* barra di navigazione: in alto, al centro */
-      .dock {
-        top: 22px;
-        bottom: auto;
-        width: auto;
-        grid-template-columns: repeat(3, auto);
-        gap: 4px;
-        padding: 5px;
-        border-radius: 999px;
-      }
-
-      .dock a {
-        flex-direction: row;
         gap: 9px;
-        min-height: 46px;
-        padding: 0 24px;
-        border-radius: 999px;
+      }
+
+      .preview-row {
+        font-size: .88rem;
+      }
+
+      .preview-label {
+        font-size: .72rem;
+        padding: 3px 9px;
+      }
+
+      .prop-list li {
         font-size: .86rem;
       }
 
-      .dock a svg { width: 20px; height: 20px; }
-    }
-
-    @media (min-width: 900px) and (max-height: 840px) {
-      .side { position: static; }
-    }
-
-    /* schermi larghi: schede su due colonne */
-    @media (min-width: 1360px) {
-      .shell { max-width: 1320px; grid-template-columns: 360px minmax(0, 1fr); gap: 28px 48px; }
-      .cards-stack { display: block; column-count: 2; column-gap: 22px; }
-      .cards-stack .prop-card { break-inside: avoid; margin-bottom: 22px; }
-    }
-
-    /* interazioni solo con mouse */
-    @media (hover: hover) and (pointer: fine) {
-      .dock a:hover { color: var(--white); background: rgba(255, 255, 255, .09); }
-      .dock a.active:hover, .dock a.ext:hover { color: var(--gold); }
-      .candidate { transition: background .2s, border-color .2s; }
-      .candidate:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .28); }
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .cat-btn:not(.active):hover { background: rgba(4, 36, 78, .8); border-color: rgba(255, 255, 255, .35); }
-      .btn-toggle-all:hover { background: rgba(255, 255, 255, .2); }
-      .prop-card { transition: transform .2s, box-shadow .2s; }
-      .prop-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0, 0, 0, .3); }
+      .dock {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -754,320 +797,330 @@
 
   <main class="shell">
 
-    <!-- 1. TOP BAR -->
-    <div class="top-nav">
-      <a href="index.html" class="btn-back">
-        <svg class="i" aria-hidden="true"><use href="#i-back"/></svg>
-        Home
+    <!-- BARRA DI NAVIGAZIONE DESKTOP (VISIBILE SOLO SU PC) -->
+    <header class="desktop-nav">
+      <a href="index.html" class="desktop-brand">
+        <img src="assets/logo-440.webp" alt="Logo Dalla Nostra Parte" />
+        <span>DALLA NOSTRA PARTE · CARDUCCI-DANTE</span>
       </a>
-      <a href="index.html" class="mini-brand">
-        <span>DALLA NOSTRA PARTE.</span>
-        <img src="assets/logo-440.webp" alt="Logo" />
-      </a>
-    </div>
-
-    <div class="side">
-
-    <!-- 2. TITOLO PAGINA -->
-    <header class="page-hero">
-      <div class="page-eyebrow">Programma Elettorale · Carducci-Dante</div>
-      <h1>Proposte per Categoria</h1>
-      <p>Divise nelle 3 categorie di competenza: nessuna promessa irrealistica, ma chiarezza su cosa facciamo direttamente e cosa portiamo negli organi scolastici.</p>
+      <nav class="desktop-links" aria-label="Menu Principale">
+        <a href="index.html"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Home</a>
+        <a href="proposte.html" class="active"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg> Tutte le Proposte</a>
+        <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext-link js-ig-link"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg> Instagram</a>
+      </nav>
     </header>
 
-    <!-- 3. SISTEMA DELLE 3 CATEGORIE (DAL GOOGLE DOCS CAP. 3) -->
-    <section class="cat-panel" aria-label="Le 3 categorie di proposte">
-      <div class="cat-panel-top">
-        <span class="cat-panel-title">Filtra per le 3 Categorie</span>
-        <button class="btn-toggle-all" id="btn-toggle-all" onclick="toggleAllDetails()">Espandi tutti i dettagli</button>
+    <!-- COLONNA SINISTRA (SIDEBAR SU DESKTOP, HEADER + FILTRI SU MOBILE) -->
+    <aside class="proposte-sidebar">
+      <!-- 1. TOP BAR (SOLO MOBILE) -->
+      <div class="top-nav">
+        <a href="index.html" class="btn-back">
+          <svg class="i" aria-hidden="true"><use href="#i-back"/></svg>
+          Home
+        </a>
+        <a href="index.html" class="mini-brand">
+          <span>DALLA NOSTRA PARTE.</span>
+          <img src="assets/logo-440.webp" alt="Logo" />
+        </a>
       </div>
 
-      <div class="cat-grid" role="tablist">
-        <button class="cat-btn all active" onclick="filterByCat('all', this)">
-          <span class="c-indicator"></span>
-          <span class="cat-btn-text">
-            <strong>Tutte le proposte</strong>
-            <span>5 schede in preview</span>
-          </span>
-        </button>
+      <!-- 2. TITOLO PAGINA -->
+      <header class="page-hero">
+        <div class="page-eyebrow">Programma Elettorale · Carducci-Dante</div>
+        <h1>Proposte per Categoria</h1>
+        <p>Divise nelle 3 categorie di competenza: nessuna promessa irrealistica, ma chiarezza su cosa facciamo direttamente e cosa portiamo negli organi scolastici.</p>
+      </header>
 
-        <button class="cat-btn dir" onclick="filterByCat('dirette', this)">
-          <span class="c-indicator"></span>
-          <span class="cat-btn-text">
-            <strong>Realizzabili direttamente</strong>
-            <span>Dipendono da noi</span>
-          </span>
-        </button>
+      <!-- 3. SISTEMA DELLE 3 CATEGORIE -->
+      <section class="cat-panel" aria-label="Le 3 categorie di proposte">
+        <div class="cat-panel-top">
+          <span class="cat-panel-title">Filtra per le 3 Categorie</span>
+          <button class="btn-toggle-all" id="btn-toggle-all" onclick="toggleAllDetails()">Espandi dettagli</button>
+        </div>
 
-        <button class="cat-btn ris" onclick="filterByCat('risorse', this)">
-          <span class="c-indicator"></span>
-          <span class="cat-btn-text">
-            <strong>Con risorse o permessi</strong>
-            <span>Spazi, aule, attività</span>
-          </span>
-        </button>
+        <div class="cat-grid" role="tablist">
+          <button class="cat-btn all active" onclick="filterByCat('all', this)">
+            <span class="c-indicator"></span>
+            <span class="cat-btn-text">
+              <strong>Tutte le proposte</strong>
+              <span>5 schede complete</span>
+            </span>
+          </button>
 
-        <button class="cat-btn org" onclick="filterByCat('organi', this)">
-          <span class="c-indicator"></span>
-          <span class="cat-btn-text">
-            <strong>Di altri organi</strong>
-            <span>Dirigenza / Docenti / CdI</span>
-          </span>
-        </button>
-      </div>
+          <button class="cat-btn dir" onclick="filterByCat('dirette', this)">
+            <span class="c-indicator"></span>
+            <span class="cat-btn-text">
+              <strong>Realizzabili direttamente</strong>
+              <span>Dipendono da noi</span>
+            </span>
+          </button>
 
-      <div class="cat-explain" id="cat-explain">
-        <strong>Principio di trasparenza:</strong> ogni proposta indica subito se dipende direttamente dalla rappresentanza, se richiede risorse/autorizzazioni o se spetta ad altri organi scolastici.
-      </div>
-    </section>
+          <button class="cat-btn ris" onclick="filterByCat('risorse', this)">
+            <span class="c-indicator"></span>
+            <span class="cat-btn-text">
+              <strong>Con risorse o permessi</strong>
+              <span>Spazi, aule, attività</span>
+            </span>
+          </button>
 
+          <button class="cat-btn org" onclick="filterByCat('organi', this)">
+            <span class="c-indicator"></span>
+            <span class="cat-btn-text">
+              <strong>Di altri organi</strong>
+              <span>Dirigenza / Docenti / CdI</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="cat-explain" id="cat-explain">
+          <strong>Principio di trasparenza:</strong> ogni proposta indica subito se dipende direttamente dalla rappresentanza, se richiede risorse/autorizzazioni o se spetta ad altri organi scolastici.
+        </div>
+      </section>
+
+      <!-- 5. SINTESI DEL METODO -->
+      <section class="method-card">
+        <h3>⚙️ Il Metodo in 5 Passaggi</h3>
+        <div class="steps-mini">
+          <div><b>1. Raccolta:</b> segnalazioni e proposte divise per argomento.</div>
+          <div><b>2. Verifica:</b> chiarire il problema e capire a chi compete intervenire.</div>
+          <div><b>3. Preparazione:</b> proposta precisa con obiettivo, passaggi e limiti.</div>
+          <div><b>4. Presentazione:</b> invio all'organo competente con data registrata.</div>
+          <div><b>5. Aggiornamento:</b> pubblicazione della risposta e dello stato reale.</div>
+        </div>
+      </section>
+
+      <!-- 6. CANDIDATO -->
+      <footer class="candidate">
+        <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+        <div>
+          <strong>Dario Nitu</strong>
+          <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+        </div>
+        <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
+      </footer>
+    </aside>
+
+    <!-- COLONNA DESTRA (ELENCO SCHEDE PROPOSTE) -->
+    <div class="proposte-content">
+      <!-- 4. ELENCO CARD CON SISTEMA DI PREVIEW + ESPANSIONE -->
+      <section class="cards-stack" id="cards-list">
+
+        <!-- Card 1: Di competenza di altri organi -->
+        <article class="prop-card" id="p1" data-cat="organi">
+          <div class="prop-top">
+            <div class="prop-num-wrap">
+              <span class="prop-num">1</span>
+              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
+            </div>
+            <span class="prop-area-tag">Libri Digitali</span>
+          </div>
+
+          <h2>Regole chiare sull'utilizzo di libri digitali e tablet in classe</h2>
+
+          <div class="preview-grid">
+            <div class="preview-row">
+              <span class="preview-label">Problema</span>
+              <p>Incertezze e divieti diversi da classe a classe per chi usa regolarmente i libri di testo in digitale.</p>
+            </div>
+            <div class="preview-row highlight">
+              <span class="preview-label">Impegno</span>
+              <p>Depositare una proposta scritta formale entro <strong>15 giorni dalla nomina</strong> e pubblicare ogni passaggio.</p>
+            </div>
+          </div>
+
+          <div class="prop-meta">
+            <span><strong>Organo:</strong> Dirigenza / Collegio Docenti</span>
+            <span><strong>Tempi lista:</strong> Entro 15 giorni</span>
+          </div>
+
+          <details class="prop-details" open>
+            <summary class="prop-expand-btn">
+              <span>Azioni previste nella proposta</span>
+              <span class="exp-icon">4 punti ▾</span>
+            </summary>
+            <ul class="prop-list">
+              <li>Definire indicazioni chiare e condivise sull'uso di libri digitali e dispositivi durante le attività didattiche</li>
+              <li>Evitare divieti arbitrari o differenze di trattamento tra classi per chi utilizza i testi in formato digitale</li>
+              <li>Raccogliere prima le esigenze degli studenti e depositare la proposta scritta entro 15 giorni dalla nomina</li>
+              <li>Comunicare pubblicamente la data di presentazione e tutti gli aggiornamenti sull'esito</li>
+            </ul>
+          </details>
+        </article>
+
+        <!-- Card 2: Di competenza di altri organi -->
+        <article class="prop-card" id="p2" data-cat="organi">
+          <div class="prop-top">
+            <div class="prop-num-wrap">
+              <span class="prop-num">2</span>
+              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
+            </div>
+            <span class="prop-area-tag">Didattica</span>
+          </div>
+
+          <h2>Chiarezza sui criteri di valutazione e organizzazione verifiche</h2>
+
+          <div class="preview-grid">
+            <div class="preview-row">
+              <span class="preview-label">Problema</span>
+              <p>Concentrazioni eccessive di verifiche nella stessa settimana e criteri di valutazione non sempre esplicitati.</p>
+            </div>
+            <div class="preview-row highlight">
+              <span class="preview-label">Impegno</span>
+              <p>Raccogliere le segnalazioni delle classi e portarle nelle sedi corrette per favorire griglie chiare e coordinamento.</p>
+            </div>
+          </div>
+
+          <div class="prop-meta">
+            <span><strong>Organo:</strong> Presidenza / Docenti / Coordinatori</span>
+            <span><strong>Ruolo:</strong> Raccolta e confronto</span>
+          </div>
+
+          <details class="prop-details">
+            <summary class="prop-expand-btn">
+              <span>Azioni previste nella proposta</span>
+              <span class="exp-icon">3 punti ▾</span>
+            </summary>
+            <ul class="prop-list">
+              <li>Promuovere una comunicazione più chiara sui criteri di valutazione e sulle griglie utilizzate</li>
+              <li>Aprire un confronto sull'organizzazione delle verifiche e sul carico settimanale quando è possibile coordinarle</li>
+              <li>Raccogliere segnalazioni su comunicazioni poco chiare o differenze organizzative tra classi e sottoporle agli organi competenti</li>
+            </ul>
+          </details>
+        </article>
+
+        <!-- Card 3: Di competenza di altri organi -->
+        <article class="prop-card" id="p3" data-cat="organi">
+          <div class="prop-top">
+            <div class="prop-num-wrap">
+              <span class="prop-num">3</span>
+              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
+            </div>
+            <span class="prop-area-tag">Assemblee &amp; Regole</span>
+          </div>
+
+          <h2>Assemblee effettive, regole chiare e provvedimenti proporzionati</h2>
+
+          <div class="preview-grid">
+            <div class="preview-row">
+              <span class="preview-label">Problema</span>
+              <p>Assemblee a volte poco incisive o reazioni sproporzionate per episodi di lieve entità.</p>
+            </div>
+            <div class="preview-row highlight">
+              <span class="preview-label">Impegno</span>
+              <p>Chiedere provvedimenti sempre motivati e proporzionati e portare i problemi ricorrenti ai referenti competenti.</p>
+            </div>
+          </div>
+
+          <div class="prop-meta">
+            <span><strong>Organo:</strong> Dirigenza / Referenti d'Istituto</span>
+            <span><strong>Ruolo:</strong> Tutela e dialogo</span>
+          </div>
+
+          <details class="prop-details">
+            <summary class="prop-expand-btn">
+              <span>Azioni previste nella proposta</span>
+              <span class="exp-icon">4 punti ▾</span>
+            </summary>
+            <ul class="prop-list">
+              <li>Rendere le assemblee momenti effettivi di confronto su temi sentiti dagli studenti</li>
+              <li>Chiedere che eventuali provvedimenti siano sempre chiari, motivati e proporzionati alla situazione</li>
+              <li>Evitare che episodi di lieve entità diventino occasione per minacce o reazioni sproporzionate</li>
+              <li>Raccogliere i problemi ricorrenti nella gestione delle assemblee e sottoporli ai referenti competenti</li>
+            </ul>
+          </details>
+        </article>
+
+        <!-- Card 4: Con risorse o autorizzazioni -->
+        <article class="prop-card gold" id="p4" data-cat="risorse">
+          <div class="prop-top">
+            <div class="prop-num-wrap">
+              <span class="prop-num">4</span>
+              <span class="prop-cat-pill">🟡 Con risorse o autorizzazioni</span>
+            </div>
+            <span class="prop-area-tag">Aule, Spazi &amp; Attività</span>
+          </div>
+
+          <h2>Aule, riscaldamento, bagni, spazi comuni e iniziative</h2>
+
+          <div class="preview-grid">
+            <div class="preview-row">
+              <span class="preview-label">Problema</span>
+              <p>Criticità ricorrenti su riscaldamento, bagni e attrezzature, o proposte di attività che richiedono spazi e permessi.</p>
+            </div>
+            <div class="preview-row highlight">
+              <span class="preview-label">Impegno</span>
+              <p>Mappare le criticità per piano/aula, verificare prima spazi, costi e autorizzazioni e pubblicare data di invio ed esito.</p>
+            </div>
+          </div>
+
+          <div class="prop-meta">
+            <span><strong>Organo:</strong> Scuola / Ufficio Tecnico / Ente</span>
+            <span><strong>Ruolo:</strong> Richiesta + verifica</span>
+          </div>
+
+          <details class="prop-details">
+            <summary class="prop-expand-btn">
+              <span>Azioni previste nella proposta</span>
+              <span class="exp-icon">5 punti ▾</span>
+            </summary>
+            <ul class="prop-list">
+              <li>Monitoraggio ordinato per piano e aula delle temperature e dei problemi di riscaldamento ricorrenti</li>
+              <li>Segnalazione puntuale delle criticità e delle condizioni dei servizi igienici</li>
+              <li>Verifica dello stato degli spazi comuni, delle attrezzature e dei materiali utilizzati dagli studenti</li>
+              <li>Per attività culturali, incontri e laboratori: verificare prima disponibilità di spazi, risorse e autorizzazioni</li>
+              <li>Comunicazione trasparente dell'avvenuta segnalazione e della risposta o intervento ricevuto</li>
+            </ul>
+          </details>
+        </article>
+
+        <!-- Card 5: Realizzabili direttamente -->
+        <article class="prop-card green" id="p5" data-cat="dirette">
+          <div class="prop-top">
+            <div class="prop-num-wrap">
+              <span class="prop-num">5</span>
+              <span class="prop-cat-pill">🟢 Realizzabili direttamente</span>
+            </div>
+            <span class="prop-area-tag">Comitato &amp; Trasparenza</span>
+          </div>
+
+          <h2>Comitato Studentesco attivo, registro proposte e resoconti</h2>
+
+          <div class="preview-grid">
+            <div class="preview-row">
+              <span class="preview-label">Problema</span>
+              <p>Proposte annunciate in campagna elettorale di cui poi non si conosce più stato, data di invio o risposta.</p>
+            </div>
+            <div class="preview-row highlight">
+              <span class="preview-label">Impegno</span>
+              <p>Dipende al <strong>100% da noi</strong>: incontri periodici con i rappresentanti di classe, registro pubblico delle proposte e resoconti.</p>
+            </div>
+          </div>
+
+          <div class="prop-meta">
+            <span><strong>Competenza:</strong> Rappresentanza Studentesca</span>
+            <span><strong>Ruolo:</strong> Azione diretta</span>
+          </div>
+
+          <details class="prop-details">
+            <summary class="prop-expand-btn">
+              <span>Azioni previste nella proposta</span>
+              <span class="exp-icon">4 punti ▾</span>
+            </summary>
+            <ul class="prop-list">
+              <li>Organizzare momenti periodici di confronto con i rappresentanti di classe e raccogliere segnalazioni ordinate</li>
+              <li>Tenere un registro aggiornato per ogni proposta (problema, organo competente, data di invio, risposta e stato)</li>
+              <li>Consultare gli studenti sui temi che incidono sulla vita scolastica, evitando consultazioni puramente formali</li>
+              <li>Pubblicare resoconti sintetici degli incontri, verifica di metà anno e relazione finale sull'attività svolta</li>
+            </ul>
+          </details>
+        </article>
+
+      </section>
     </div>
-
-    <div class="content">
-
-    <!-- 4. ELENCO CARD CON SISTEMA DI PREVIEW + ESPANSIONE -->
-    <section class="cards-stack" id="cards-list">
-
-      <!-- Card 1: Di competenza di altri organi -->
-      <article class="prop-card" id="p1" data-cat="organi">
-        <div class="prop-top">
-          <div class="prop-num-wrap">
-            <span class="prop-num">1</span>
-            <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-          </div>
-          <span class="prop-area-tag">Libri Digitali</span>
-        </div>
-
-        <h2>Regole chiare sull'utilizzo di libri digitali e tablet in classe</h2>
-
-        <!-- Preview flash in 2 righe -->
-        <div class="preview-grid">
-          <div class="preview-row">
-            <span class="preview-label">Problema</span>
-            <p>Incertezze e divieti diversi da classe a classe per chi usa regolarmente i libri di testo in digitale.</p>
-          </div>
-          <div class="preview-row highlight">
-            <span class="preview-label">Impegno</span>
-            <p>Depositare una proposta scritta formale entro <strong>15 giorni dalla nomina</strong> e pubblicare ogni passaggio.</p>
-          </div>
-        </div>
-
-        <div class="prop-meta">
-          <span><strong>Organo:</strong> Dirigenza / Collegio Docenti</span>
-          <span><strong>Tempi lista:</strong> Entro 15 giorni</span>
-        </div>
-
-        <details class="prop-details" open>
-          <summary class="prop-expand-btn">
-            <span>Azioni previste nella proposta</span>
-            <span class="exp-icon">4 punti ▾</span>
-          </summary>
-          <ul class="prop-list">
-            <li>Definire indicazioni chiare e condivise sull'uso di libri digitali e dispositivi durante le attività didattiche</li>
-            <li>Evitare divieti arbitrari o differenze di trattamento tra classi per chi utilizza i testi in formato digitale</li>
-            <li>Raccogliere prima le esigenze degli studenti e depositare la proposta scritta entro 15 giorni dalla nomina</li>
-            <li>Comunicare pubblicamente la data di presentazione e tutti gli aggiornamenti sull'esito</li>
-          </ul>
-        </details>
-      </article>
-
-      <!-- Card 2: Di competenza di altri organi -->
-      <article class="prop-card" id="p2" data-cat="organi">
-        <div class="prop-top">
-          <div class="prop-num-wrap">
-            <span class="prop-num">2</span>
-            <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-          </div>
-          <span class="prop-area-tag">Didattica</span>
-        </div>
-
-        <h2>Chiarezza sui criteri di valutazione e organizzazione verifiche</h2>
-
-        <div class="preview-grid">
-          <div class="preview-row">
-            <span class="preview-label">Problema</span>
-            <p>Concentrazioni eccessive di verifiche nella stessa settimana e criteri di valutazione non sempre esplicitati.</p>
-          </div>
-          <div class="preview-row highlight">
-            <span class="preview-label">Impegno</span>
-            <p>Raccogliere le segnalazioni delle classi e portarle nelle sedi corrette per favorire griglie chiare e coordinamento.</p>
-          </div>
-        </div>
-
-        <div class="prop-meta">
-          <span><strong>Organo:</strong> Presidenza / Docenti / Coordinatori</span>
-          <span><strong>Ruolo:</strong> Raccolta e confronto</span>
-        </div>
-
-        <details class="prop-details">
-          <summary class="prop-expand-btn">
-            <span>Azioni previste nella proposta</span>
-            <span class="exp-icon">3 punti ▾</span>
-          </summary>
-          <ul class="prop-list">
-            <li>Promuovere una comunicazione più chiara sui criteri di valutazione e sulle griglie utilizzate</li>
-            <li>Aprire un confronto sull'organizzazione delle verifiche e sul carico settimanale quando è possibile coordinarle</li>
-            <li>Raccogliere segnalazioni su comunicazioni poco chiare o differenze organizzative tra classi e sottoporle agli organi competenti</li>
-          </ul>
-        </details>
-      </article>
-
-      <!-- Card 3: Di competenza di altri organi -->
-      <article class="prop-card" id="p3" data-cat="organi">
-        <div class="prop-top">
-          <div class="prop-num-wrap">
-            <span class="prop-num">3</span>
-            <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-          </div>
-          <span class="prop-area-tag">Assemblee &amp; Regole</span>
-        </div>
-
-        <h2>Assemblee effettive, regole chiare e provvedimenti proporzionati</h2>
-
-        <div class="preview-grid">
-          <div class="preview-row">
-            <span class="preview-label">Problema</span>
-            <p>Assemblee a volte poco incisive o reazioni sproporzionate per episodi di lieve entità.</p>
-          </div>
-          <div class="preview-row highlight">
-            <span class="preview-label">Impegno</span>
-            <p>Chiedere provvedimenti sempre motivati e proporzionati e portare i problemi ricorrenti ai referenti competenti.</p>
-          </div>
-        </div>
-
-        <div class="prop-meta">
-          <span><strong>Organo:</strong> Dirigenza / Referenti d'Istituto</span>
-          <span><strong>Ruolo:</strong> Tutela e dialogo</span>
-        </div>
-
-        <details class="prop-details">
-          <summary class="prop-expand-btn">
-            <span>Azioni previste nella proposta</span>
-            <span class="exp-icon">4 punti ▾</span>
-          </summary>
-          <ul class="prop-list">
-            <li>Rendere le assemblee momenti effettivi di confronto su temi sentiti dagli studenti</li>
-            <li>Chiedere che eventuali provvedimenti siano sempre chiari, motivati e proporzionati alla situazione</li>
-            <li>Evitare che episodi di lieve entità diventino occasione per minacce o reazioni sproporzionate</li>
-            <li>Raccogliere i problemi ricorrenti nella gestione delle assemblee e sottoporli ai referenti competenti</li>
-          </ul>
-        </details>
-      </article>
-
-      <!-- Card 4: Con risorse o autorizzazioni -->
-      <article class="prop-card gold" id="p4" data-cat="risorse">
-        <div class="prop-top">
-          <div class="prop-num-wrap">
-            <span class="prop-num">4</span>
-            <span class="prop-cat-pill">🟡 Con risorse o autorizzazioni</span>
-          </div>
-          <span class="prop-area-tag">Aule, Spazi &amp; Attività</span>
-        </div>
-
-        <h2>Aule, riscaldamento, bagni, spazi comuni e iniziative</h2>
-
-        <div class="preview-grid">
-          <div class="preview-row">
-            <span class="preview-label">Problema</span>
-            <p>Criticità ricorrenti su riscaldamento, bagni e attrezzature, o proposte di attività che richiedono spazi e permessi.</p>
-          </div>
-          <div class="preview-row highlight">
-            <span class="preview-label">Impegno</span>
-            <p>Mappare le criticità per piano/aula, verificare prima spazi, costi e autorizzazioni e pubblicare data di invio ed esito.</p>
-          </div>
-        </div>
-
-        <div class="prop-meta">
-          <span><strong>Organo:</strong> Scuola / Ufficio Tecnico / Ente</span>
-          <span><strong>Ruolo:</strong> Richiesta + verifica</span>
-        </div>
-
-        <details class="prop-details">
-          <summary class="prop-expand-btn">
-            <span>Azioni previste nella proposta</span>
-            <span class="exp-icon">5 punti ▾</span>
-          </summary>
-          <ul class="prop-list">
-            <li>Monitoraggio ordinato per piano e aula delle temperature e dei problemi di riscaldamento ricorrenti</li>
-            <li>Segnalazione puntuale delle criticità e delle condizioni dei servizi igienici</li>
-            <li>Verifica dello stato degli spazi comuni, delle attrezzature e dei materiali utilizzati dagli studenti</li>
-            <li>Per attività culturali, incontri e laboratori: verificare prima disponibilità di spazi, risorse e autorizzazioni</li>
-            <li>Comunicazione trasparente dell'avvenuta segnalazione e della risposta o intervento ricevuto</li>
-          </ul>
-        </details>
-      </article>
-
-      <!-- Card 5: Realizzabili direttamente -->
-      <article class="prop-card green" id="p5" data-cat="dirette">
-        <div class="prop-top">
-          <div class="prop-num-wrap">
-            <span class="prop-num">5</span>
-            <span class="prop-cat-pill">🟢 Realizzabili direttamente</span>
-          </div>
-          <span class="prop-area-tag">Comitato &amp; Trasparenza</span>
-        </div>
-
-        <h2>Comitato Studentesco attivo, registro proposte e resoconti</h2>
-
-        <div class="preview-grid">
-          <div class="preview-row">
-            <span class="preview-label">Problema</span>
-            <p>Proposte annunciate in campagna elettorale di cui poi non si conosce più stato, data di invio o risposta.</p>
-          </div>
-          <div class="preview-row highlight">
-            <span class="preview-label">Impegno</span>
-            <p>Dipende al <strong>100% da noi</strong>: incontri periodici con i rappresentanti di classe, registro pubblico delle proposte e resoconti.</p>
-          </div>
-        </div>
-
-        <div class="prop-meta">
-          <span><strong>Competenza:</strong> Rappresentanza Studentesca</span>
-          <span><strong>Ruolo:</strong> Azione diretta</span>
-        </div>
-
-        <details class="prop-details">
-          <summary class="prop-expand-btn">
-            <span>Azioni previste nella proposta</span>
-            <span class="exp-icon">4 punti ▾</span>
-          </summary>
-          <ul class="prop-list">
-            <li>Organizzare momenti periodici di confronto con i rappresentanti di classe e raccogliere segnalazioni ordinate</li>
-            <li>Tenere un registro aggiornato per ogni proposta (problema, organo competente, data di invio, risposta e stato)</li>
-            <li>Consultare gli studenti sui temi che incidono sulla vita scolastica, evitando consultazioni puramente formali</li>
-            <li>Pubblicare resoconti sintetici degli incontri, verifica di metà anno e relazione finale sull'attività svolta</li>
-          </ul>
-        </details>
-      </article>
-
-    </section>
-
-    </div>
-
-    <!-- 5. SINTESI DEL METODO -->
-    <section class="method-card">
-      <h3>⚙️ Il Metodo in 5 Passaggi</h3>
-      <div class="steps-mini">
-        <div><b>1. Raccolta:</b> segnalazioni e proposte divise per argomento.</div>
-        <div><b>2. Verifica:</b> chiarire il problema e capire a chi compete intervenire.</div>
-        <div><b>3. Preparazione:</b> proposta precisa con obiettivo, passaggi e limiti.</div>
-        <div><b>4. Presentazione:</b> invio all'organo competente con data registrata.</div>
-        <div><b>5. Aggiornamento:</b> pubblicazione della risposta e dello stato reale.</div>
-      </div>
-    </section>
-
-    <!-- 6. CANDIDATO -->
-    <footer class="candidate">
-      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-      <div>
-        <strong>Dario Nitu</strong>
-        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-      </div>
-      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-    </footer>
 
   </main>
 
-  <!-- NAVIGAZIONE IN BASSO -->
+  <!-- NAVIGAZIONE IN BASSO (SOLO MOBILE) -->
   <nav class="dock" aria-label="Navigazione rapida">
     <a href="index.html">
       <svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home
@@ -1115,7 +1168,7 @@
     function toggleAllDetails() {
       allExpanded = !allExpanded;
       document.querySelectorAll("details.prop-details").forEach(d => d.open = allExpanded);
-      document.getElementById("btn-toggle-all").textContent = allExpanded ? "Comprimi dettagli" : "Espandi tutti i dettagli";
+      document.getElementById("btn-toggle-all").textContent = allExpanded ? "Comprimi dettagli" : "Espandi dettagli";
     }
   </script>
 </body>

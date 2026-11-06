@@ -18,7 +18,6 @@
       --navy-dark: #04244E;
       --blue: #0877D1;
       --gold: #FFAE0B;
-      --gold-deep: #8F5B00;
       --green: #16A455;
       --green-deep: #0F8A47;
       --alice: #EDF5FC;
@@ -86,17 +85,14 @@
       stroke-linejoin: round;
     }
 
+    /* ───────── LAYOUT BASE (MOBILE) ───────── */
     .shell {
       width: 100%;
       max-width: 440px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-    }
-
-    .reveal {
-      opacity: 1;
-      transform: none;
+      margin: 0 auto;
     }
 
     /* ───────── 1. HERO ───────── */
@@ -454,7 +450,7 @@
       opacity: .88;
     }
 
-    /* ───────── NAVIGAZIONE IN BASSO ───────── */
+    /* ───────── NAVIGAZIONE IN BASSO (DOCK MOBILE) ───────── */
     .dock {
       position: fixed;
       left: 50%;
@@ -496,6 +492,202 @@
     }
 
     .dock a.ext { color: var(--gold); }
+
+    /* Barra superiore Desktop (nascosta su mobile) */
+    .desktop-nav {
+      display: none;
+    }
+
+    /* ═══════════════════════════════════════════════
+       VISTA SPECIFICA PER PC & DESKTOP (>= 860px)
+       ═══════════════════════════════════════════════ */
+    @media (min-width: 860px) {
+      body {
+        padding: 40px 32px 60px;
+        align-items: flex-start;
+      }
+
+      .shell {
+        max-width: 1060px;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 32px;
+        row-gap: 24px;
+        align-items: start;
+      }
+
+      /* Navbar fissa in alto per PC */
+      .desktop-nav {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(4, 36, 78, .8);
+        border: 1px solid rgba(255, 255, 255, .16);
+        border-radius: 20px;
+        padding: 12px 24px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+      }
+
+      .desktop-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 900;
+        letter-spacing: .5px;
+        font-size: .92rem;
+      }
+
+      .desktop-brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+      }
+
+      .desktop-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .desktop-links a {
+        color: var(--alice);
+        text-decoration: none;
+        font-size: .84rem;
+        font-weight: 800;
+        padding: 8px 16px;
+        border-radius: 12px;
+        transition: all .15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .desktop-links a:hover,
+      .desktop-links a.active {
+        color: var(--navy-dark);
+        background: var(--gold);
+      }
+
+      .desktop-links a.ext-link {
+        background: rgba(255, 255, 255, .1);
+        color: var(--white);
+      }
+
+      .desktop-links a.ext-link:hover {
+        background: var(--gold);
+        color: var(--navy-dark);
+      }
+
+      /* Colonna Sinistra (Sidebar fissa Desktop): Hero, Instagram, Candidato */
+      .hero-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        position: sticky;
+        top: 24px;
+      }
+
+      .hero {
+        padding: 12px 0 6px;
+      }
+
+      .logo-wrap {
+        width: 190px;
+        height: 190px;
+        margin-bottom: 20px;
+      }
+
+      .pills {
+        gap: 9px;
+      }
+
+      .pill {
+        font-size: .8rem;
+        padding: 8px 14px;
+      }
+
+      /* Colonna Destra: Contenuto Principale con Priorità */
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card {
+        padding: 28px 26px 24px;
+        border-radius: 26px;
+      }
+
+      .card-title {
+        font-size: 1.15rem;
+      }
+
+      .live-pill {
+        font-size: .8rem;
+        padding: 6px 12px;
+      }
+
+      .item-list {
+        gap: 12px;
+      }
+
+      summary.topic-summary {
+        min-height: 64px;
+        padding: 14px 18px;
+        font-size: .98rem;
+      }
+
+      .topic-num {
+        width: 36px;
+        height: 36px;
+        font-size: .92rem;
+      }
+
+      .topic-body {
+        padding: 0 20px 20px 68px;
+        font-size: .94rem;
+        line-height: 1.6;
+      }
+
+      .btn-all-proposals {
+        padding: 16px 20px;
+        font-size: .95rem;
+        border-radius: 18px;
+      }
+
+      .btn-all-proposals .badge-count {
+        font-size: .8rem;
+        padding: 6px 14px;
+      }
+
+      .candidate {
+        padding: 16px 18px;
+      }
+
+      .candidate .c-avatar {
+        width: 66px;
+        height: 66px;
+      }
+
+      .candidate strong {
+        font-size: 1.05rem;
+      }
+
+      .candidate span {
+        font-size: .82rem;
+      }
+
+      /* Su PC la dock mobile in basso scompare perché c'è la desktop-nav */
+      .dock {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -510,121 +702,140 @@
 
   <main class="shell">
 
-    <!-- 1. HERO -->
-    <header class="hero reveal">
-      <h1 class="sr-only">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</h1>
-      <div class="logo-wrap">
-        <img src="assets/logo-440.webp" width="172" height="172" fetchpriority="high" alt="Logo Dalla Nostra Parte — Carducci-Dante" />
-      </div>
-      <div class="pills" aria-label="I nostri valori">
-        <span class="pill">Proposte realistiche</span>
-        <span class="pill">Trasparenza</span>
-        <span class="pill">Maggiore partecipazione</span>
-      </div>
+    <!-- BARRA DI NAVIGAZIONE DESKTOP (VISIBILE SOLO SU PC) -->
+    <header class="desktop-nav">
+      <a href="index.html" class="desktop-brand">
+        <img src="assets/logo-440.webp" alt="Logo Dalla Nostra Parte" />
+        <span>DALLA NOSTRA PARTE · CARDUCCI-DANTE</span>
+      </a>
+      <nav class="desktop-links" aria-label="Menu Principale">
+        <a href="index.html" class="active"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Home</a>
+        <a href="proposte.html"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg> Tutte le Proposte</a>
+        <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext-link js-ig-link"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg> Instagram</a>
+      </nav>
     </header>
 
-    <!-- 2. INSTAGRAM -->
-    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="btn-instagram js-ig-link reveal">
-      <span class="ig-tile"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
-      <span class="ig-text">
-        <strong>Seguici su Instagram</strong>
-        <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti &amp; Reel</span>
-      </span>
-      <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
-    </a>
+    <!-- COLONNA SINISTRA (SIDEBAR SU DESKTOP, IN TESTA SU MOBILE) -->
+    <aside class="hero-sidebar">
+      <!-- 1. HERO -->
+      <section class="hero reveal">
+        <h1 class="sr-only">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</h1>
+        <div class="logo-wrap">
+          <img src="assets/logo-440.webp" width="190" height="190" fetchpriority="high" alt="Logo Dalla Nostra Parte — Carducci-Dante" />
+        </div>
+        <div class="pills" aria-label="I nostri valori">
+          <span class="pill">Proposte realistiche</span>
+          <span class="pill">Trasparenza</span>
+          <span class="pill">Maggiore partecipazione</span>
+        </div>
+      </section>
 
-    <!-- 3. COMITATO & CANTIERE APERTO -->
-    <section class="card reveal" id="cantiere" aria-labelledby="t-cantiere">
-      <div class="card-header">
-        <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
-        <span class="live-pill">5 priorità</span>
-      </div>
-
-      <div class="item-list">
-        <details class="topic-item gold" name="priorita" open>
-          <summary class="topic-summary">
-            <span class="topic-num">1</span>
-            <span class="topic-title">Libri digitali e tablet</span>
-            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-          </summary>
-          <div class="topic-body">
-            Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
-            <div><span class="topic-tag">Impegno: Presentazione entro 15 giorni</span></div>
-          </div>
-        </details>
-
-        <details class="topic-item" name="priorita">
-          <summary class="topic-summary">
-            <span class="topic-num">2</span>
-            <span class="topic-title">Verifiche e valutazioni</span>
-            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-          </summary>
-          <div class="topic-body">
-            Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
-            <div><span class="topic-tag">Stato: Raccolta segnalazioni classi</span></div>
-          </div>
-        </details>
-
-        <details class="topic-item green" name="priorita">
-          <summary class="topic-summary">
-            <span class="topic-num">3</span>
-            <span class="topic-title">Assemblee e rispetto reciproco</span>
-            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-          </summary>
-          <div class="topic-body">
-            Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
-            <div><span class="topic-tag">Stato: Linea operativa pronta</span></div>
-          </div>
-        </details>
-
-        <details class="topic-item" name="priorita">
-          <summary class="topic-summary">
-            <span class="topic-num">4</span>
-            <span class="topic-title">Aule, riscaldamento e bagni</span>
-            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-          </summary>
-          <div class="topic-body">
-            Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
-            <div><span class="topic-tag">Stato: Monitoraggio aperto</span></div>
-          </div>
-        </details>
-
-        <details class="topic-item gold" name="priorita">
-          <summary class="topic-summary">
-            <span class="topic-num">5</span>
-            <span class="topic-title">Comitato Studentesco attivo</span>
-            <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-          </summary>
-          <div class="topic-body">
-            Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
-            <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
-          </div>
-        </details>
-      </div>
-
-      <!-- PULSANTE VERSO LA PAGINA DEDICATA PROPOSTE -->
-      <a href="proposte.html" class="btn-all-proposals">
-        <span>
-          <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>
-          Esplora tutte le proposte
+      <!-- 2. INSTAGRAM CTA -->
+      <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="btn-instagram js-ig-link reveal">
+        <span class="ig-tile"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
+        <span class="ig-text">
+          <strong>Seguici su Instagram</strong>
+          <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti</span>
         </span>
-        <span class="badge-count">Vai alla pagina →</span>
+        <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
       </a>
-    </section>
 
-    <!-- 4. CANDIDATO & MASCOTTE -->
-    <footer class="candidate reveal">
-      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-      <div>
-        <strong>Dario Nitu</strong>
-        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-      </div>
-      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-    </footer>
+      <!-- 4. SCHEDA CANDIDATO & MASCOTTE -->
+      <footer class="candidate reveal">
+        <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+        <div>
+          <strong>Dario Nitu</strong>
+          <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+        </div>
+        <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
+      </footer>
+    </aside>
+
+    <!-- COLONNA DESTRA (CONTENUTO PRINCIPALE) -->
+    <div class="main-content">
+      <!-- 3. COMITATO & CANTIERE APERTO -->
+      <section class="card reveal" id="cantiere" aria-labelledby="t-cantiere">
+        <div class="card-header">
+          <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
+          <span class="live-pill">5 priorità</span>
+        </div>
+
+        <div class="item-list">
+          <details class="topic-item gold" name="priorita" open>
+            <summary class="topic-summary">
+              <span class="topic-num">1</span>
+              <span class="topic-title">Libri digitali e tablet</span>
+              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+            </summary>
+            <div class="topic-body">
+              Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
+              <div><span class="topic-tag">Impegno: Presentazione entro 15 giorni</span></div>
+            </div>
+          </details>
+
+          <details class="topic-item" name="priorita">
+            <summary class="topic-summary">
+              <span class="topic-num">2</span>
+              <span class="topic-title">Verifiche e valutazioni</span>
+              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+            </summary>
+            <div class="topic-body">
+              Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
+              <div><span class="topic-tag">Stato: Raccolta segnalazioni classi</span></div>
+            </div>
+          </details>
+
+          <details class="topic-item green" name="priorita">
+            <summary class="topic-summary">
+              <span class="topic-num">3</span>
+              <span class="topic-title">Assemblee e rispetto reciproco</span>
+              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+            </summary>
+            <div class="topic-body">
+              Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
+              <div><span class="topic-tag">Stato: Linea operativa pronta</span></div>
+            </div>
+          </details>
+
+          <details class="topic-item" name="priorita">
+            <summary class="topic-summary">
+              <span class="topic-num">4</span>
+              <span class="topic-title">Aule, riscaldamento e bagni</span>
+              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+            </summary>
+            <div class="topic-body">
+              Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
+              <div><span class="topic-tag">Stato: Monitoraggio aperto</span></div>
+            </div>
+          </details>
+
+          <details class="topic-item gold" name="priorita">
+            <summary class="topic-summary">
+              <span class="topic-num">5</span>
+              <span class="topic-title">Comitato Studentesco attivo</span>
+              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
+            </summary>
+            <div class="topic-body">
+              Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
+              <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
+            </div>
+          </details>
+        </div>
+
+        <!-- PULSANTE VERSO LA PAGINA DEDICATA PROPOSTE -->
+        <a href="proposte.html" class="btn-all-proposals">
+          <span>
+            <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>
+            Esplora tutte le proposte dettagliate
+          </span>
+          <span class="badge-count">Vai alla pagina →</span>
+        </a>
+      </section>
+    </div>
 
   </main>
 
-  <!-- NAVIGAZIONE IN BASSO -->
+  <!-- NAVIGAZIONE IN BASSO (SOLO MOBILE) -->
   <nav class="dock" id="dock" aria-label="Navigazione rapida">
     <a href="index.html" class="active">
       <svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home
@@ -644,7 +855,7 @@
     };
 
     document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
-    document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti & Reel";
+    document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti";
 
     // Reindirizzamento automatico da QR code (?to=ig | ?to=proposte | ?to=cantiere)
     const params = new URLSearchParams(window.location.search);
