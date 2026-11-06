@@ -626,6 +626,121 @@
     }
 
     .dock a.ext { color: var(--gold); }
+
+    /* ── LAYOUT: su telefono i wrapper sono trasparenti ── */
+    .side { display: contents; }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 900px) {
+      body {
+        align-items: flex-start;
+        padding: 108px 40px 64px;
+      }
+
+      .shell {
+        max-width: 1180px;
+        display: grid;
+        grid-template-columns: 340px minmax(0, 1fr);
+        gap: 28px 40px;
+        align-items: start;
+      }
+
+      /* la navigazione è nella barra in alto */
+      .top-nav { display: none; }
+
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: sticky;
+        top: 108px;
+      }
+
+      .content { min-width: 0; }
+      .candidate { grid-column: 1 / -1; justify-self: start; width: min(100%, 560px); }
+
+      .page-eyebrow { font-size: .76rem; margin-bottom: 8px; }
+      .page-hero h1 { font-size: 2.15rem; line-height: 1.08; }
+      .page-hero p { font-size: .92rem; margin-top: 12px; line-height: 1.55; }
+
+      .cat-panel { padding: 16px; gap: 14px; }
+      .cat-grid { grid-template-columns: 1fr; gap: 8px; }
+      .cat-btn { padding: 12px 14px; gap: 12px; }
+      .cat-btn-text strong { font-size: .84rem; }
+      .cat-btn-text span { font-size: .74rem; }
+      .cat-explain { font-size: .82rem; padding: 12px 14px; }
+
+      .cards-stack { gap: 20px; }
+      .prop-card { padding: 22px 22px 20px; gap: 14px; }
+      .prop-card h2 { font-size: 1.1rem; }
+
+      .method-card { grid-column: 1 / -1; padding: 26px 30px 28px; }
+      .method-card h3 { font-size: .95rem; margin-bottom: 16px; }
+      .steps-mini {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 14px;
+        font-size: .86rem;
+        line-height: 1.5;
+      }
+      .steps-mini div {
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, .07);
+        border: 1px solid rgba(255, 255, 255, .12);
+      }
+      .steps-mini b { font-size: .95rem; }
+
+      /* barra di navigazione: in alto, al centro */
+      .dock {
+        top: 22px;
+        bottom: auto;
+        width: auto;
+        grid-template-columns: repeat(3, auto);
+        gap: 4px;
+        padding: 5px;
+        border-radius: 999px;
+      }
+
+      .dock a {
+        flex-direction: row;
+        gap: 9px;
+        min-height: 46px;
+        padding: 0 24px;
+        border-radius: 999px;
+        font-size: .86rem;
+      }
+
+      .dock a svg { width: 20px; height: 20px; }
+    }
+
+    @media (min-width: 900px) and (max-height: 840px) {
+      .side { position: static; }
+    }
+
+    /* schermi larghi: schede su due colonne */
+    @media (min-width: 1360px) {
+      .shell { max-width: 1320px; grid-template-columns: 360px minmax(0, 1fr); gap: 28px 48px; }
+      .cards-stack { display: block; column-count: 2; column-gap: 22px; }
+      .cards-stack .prop-card { break-inside: avoid; margin-bottom: 22px; }
+    }
+
+    /* interazioni solo con mouse */
+    @media (hover: hover) and (pointer: fine) {
+      .dock a:hover { color: var(--white); background: rgba(255, 255, 255, .09); }
+      .dock a.active:hover, .dock a.ext:hover { color: var(--gold); }
+      .candidate { transition: background .2s, border-color .2s; }
+      .candidate:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .28); }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .cat-btn:not(.active):hover { background: rgba(4, 36, 78, .8); border-color: rgba(255, 255, 255, .35); }
+      .btn-toggle-all:hover { background: rgba(255, 255, 255, .2); }
+      .prop-card { transition: transform .2s, box-shadow .2s; }
+      .prop-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0, 0, 0, .3); }
+    }
   </style>
 </head>
 <body>
@@ -650,6 +765,8 @@
         <img src="assets/logo-440.webp" alt="Logo" />
       </a>
     </div>
+
+    <div class="side">
 
     <!-- 2. TITOLO PAGINA -->
     <header class="page-hero">
@@ -703,6 +820,10 @@
         <strong>Principio di trasparenza:</strong> ogni proposta indica subito se dipende direttamente dalla rappresentanza, se richiede risorse/autorizzazioni o se spetta ad altri organi scolastici.
       </div>
     </section>
+
+    </div>
+
+    <div class="content">
 
     <!-- 4. ELENCO CARD CON SISTEMA DI PREVIEW + ESPANSIONE -->
     <section class="cards-stack" id="cards-list">
@@ -919,6 +1040,8 @@
       </article>
 
     </section>
+
+    </div>
 
     <!-- 5. SINTESI DEL METODO -->
     <section class="method-card">

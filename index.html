@@ -592,6 +592,93 @@
     }
 
     .dock a.ext { color: var(--gold); }
+
+    /* ── LAYOUT: su telefono i wrapper sono trasparenti ── */
+    .side { display: contents; }
+    .candidate { order: 10; }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 900px) {
+      body {
+        align-items: flex-start;
+        padding: 108px 40px 64px;
+      }
+
+      .shell {
+        max-width: 1180px;
+        display: grid;
+        grid-template-columns: 340px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+      }
+
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: sticky;
+        top: 108px;
+      }
+
+      .candidate { order: 0; }
+      .logo-wrap { width: 214px; height: 214px; margin-bottom: 22px; }
+
+      .card { padding: 30px 30px 28px; }
+      .card-title { font-size: 1.15rem; }
+      .card-header { margin-bottom: 16px; }
+      .live-pill { font-size: .76rem; }
+
+      .cat-tabs { gap: 6px; padding: 6px; margin-bottom: 12px; }
+      .cat-tab { flex-direction: row; justify-content: center; gap: 8px; font-size: .8rem; padding: 11px 8px; }
+      .cat-helper { font-size: .84rem; padding: 10px 14px; margin-bottom: 18px; }
+
+      .item-list { gap: 12px; }
+      summary.topic-summary { min-height: 72px; padding: 12px 18px 12px 16px; gap: 16px; }
+      .topic-num { width: 38px; height: 38px; font-size: .95rem; }
+      .topic-title { font-size: 1.02rem; }
+      .topic-cat-badge { font-size: .68rem; }
+      .topic-body { font-size: .94rem; padding: 0 22px 20px 70px; max-width: 760px; }
+
+      /* barra di navigazione: in alto, al centro */
+      .dock {
+        top: 22px;
+        bottom: auto;
+        width: auto;
+        grid-template-columns: repeat(3, auto);
+        gap: 4px;
+        padding: 5px;
+        border-radius: 999px;
+      }
+
+      .dock a {
+        flex-direction: row;
+        gap: 9px;
+        min-height: 46px;
+        padding: 0 24px;
+        border-radius: 999px;
+        font-size: .86rem;
+      }
+
+      .dock a svg { width: 20px; height: 20px; }
+    }
+
+    /* portatili con poca altezza: colonna sinistra non fissa, logo più piccolo */
+    @media (min-width: 900px) and (max-height: 760px) {
+      .side { position: static; }
+      .logo-wrap { width: 170px; height: 170px; margin-bottom: 16px; }
+    }
+
+    @media (min-width: 1500px) {
+      .shell { max-width: 1320px; grid-template-columns: 380px minmax(0, 1fr); gap: 48px; }
+    }
+
+    /* interazioni solo con mouse */
+    @media (hover: hover) and (pointer: fine) {
+      .dock a:hover { color: var(--white); background: rgba(255, 255, 255, .09); }
+      .dock a.active:hover, .dock a.ext:hover { color: var(--gold); }
+      .candidate { transition: background .2s, border-color .2s; }
+      .candidate:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .28); }
+    }
   </style>
 </head>
 <body>
@@ -605,6 +692,8 @@
   </svg>
 
   <main class="shell">
+
+    <div class="side">
 
     <!-- 1. HERO -->
     <header class="hero reveal">
@@ -628,6 +717,20 @@
       </span>
       <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
     </a>
+
+    <!-- 4. CANDIDATO & MASCOTTE -->
+    <footer class="candidate reveal">
+      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
+      <div>
+        <strong>Dario Nitu</strong>
+        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
+      </div>
+      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
+    </footer>
+
+    </div>
+
+    <div class="content">
 
     <!-- 3. PREVIEW PROPOSTE DIVISE NELLE 3 CATEGORIE -->
     <section class="card reveal" id="cantiere" aria-labelledby="t-cantiere">
@@ -767,15 +870,7 @@
       </a>
     </section>
 
-    <!-- 4. CANDIDATO & MASCOTTE -->
-    <footer class="candidate reveal">
-      <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-      <div>
-        <strong>Dario Nitu</strong>
-        <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-      </div>
-      <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-    </footer>
+    </div>
 
   </main>
 
