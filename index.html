@@ -606,6 +606,97 @@
       }
       .reveal { opacity: 1; transform: none; }
     }
+  
+    /* ───────── SEZIONE PROPOSTE ───────── */
+    #proposte {
+      scroll-margin-top: 24px;
+    }
+
+    .proposte-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .prop-card {
+      background: var(--alice);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: transform .15s, border-color .15s;
+    }
+
+    .prop-card:hover {
+      border-color: var(--blue);
+      background: #FFFFFF;
+    }
+
+    .prop-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .prop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.3px;
+    }
+
+    .prop-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: rgba(8, 119, 209, 0.12);
+      color: var(--blue);
+    }
+
+    .prop-tag.gold {
+      background: rgba(255, 174, 11, 0.2);
+      color: #9E6500;
+    }
+
+    .prop-tag.green {
+      background: rgba(22, 164, 85, 0.15);
+      color: var(--green);
+    }
+
+    .prop-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .prop-list li {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .prop-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 900;
+      font-size: 0.85rem;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -719,6 +810,83 @@
     
 
     <!-- 5. CANDIDATO -->
+    
+    <!-- 4. SEZIONE PROPOSTE -->
+    <section class="card reveal" id="proposte" style="--i:3" aria-labelledby="t-proposte">
+      <div class="card-header">
+        <h2 class="card-title" id="t-proposte">Tutte le Proposte</h2>
+        <span class="live-pill">5 Aree</span>
+      </div>
+
+      <div class="proposte-grid">
+        <!-- Card 1 -->
+        <article class="prop-card">
+          <div class="prop-card-head">
+            <span class="prop-badge">📱 1. Libri Digitali & Dispositivi</span>
+            <span class="prop-tag gold">Priorità</span>
+          </div>
+          <ul class="prop-list">
+            <li>Linee guida certe e condivise sull'uso di tablet ed ebook in classe durante le lezioni</li>
+            <li>Stop ai divieti arbitrari o disparità di trattamento per chi studia su supporto digitale</li>
+            <li>Presentazione formale della proposta scritta entro 15 giorni dalla nomina</li>
+          </ul>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="prop-card">
+          <div class="prop-card-head">
+            <span class="prop-badge">📚 2. Didattica & Verifiche</span>
+            <span class="prop-tag">Didattica</span>
+          </div>
+          <ul class="prop-list">
+            <li>Massima trasparenza sui criteri e sulle griglie di valutazione utilizzate dai docenti</li>
+            <li>Coordinamento del calendario per evitare concentrazioni eccessive nella stessa settimana</li>
+            <li>Canale di confronto continuo per chiarire differenze organizzative tra sezioni</li>
+          </ul>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="prop-card">
+          <div class="prop-card-head">
+            <span class="prop-badge">🤝 3. Assemblee & Rispetto Reciproco</span>
+            <span class="prop-tag green">Diritti</span>
+          </div>
+          <ul class="prop-list">
+            <li>Assemblee d'istituto vive e partecipate, con ospiti, dibattiti e temi votati dagli studenti</li>
+            <li>Provvedimenti disciplinari sempre motivati, chiari e proporzionati alla situazione</li>
+            <li>Clima di rispetto reciproco evitando sanzioni punitive sproporzionate per lievi distrazioni</li>
+          </ul>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="prop-card">
+          <div class="prop-card-head">
+            <span class="prop-badge">🏫 4. Aule, Strutture & Spazi</span>
+            <span class="prop-tag">Edificio</span>
+          </div>
+          <ul class="prop-list">
+            <li>Monitoraggio costante delle temperature e del riscaldamento (segnalazione tempestiva aule fredde)</li>
+            <li>Segnalazione immediata dei guasti e cura delle condizioni dei servizi igienici</li>
+            <li>Manutenzione e valorizzazione degli spazi comuni, laboratori e attrezzature scolastiche</li>
+            <li>Registro pubblico con lo stato di avanzamento delle richieste inoltrate all'ente competente</li>
+          </ul>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="prop-card">
+          <div class="prop-card-head">
+            <span class="prop-badge">🏛️ 5. Comitato Studentesco & Iniziative</span>
+            <span class="prop-tag gold">Partecipazione</span>
+          </div>
+          <ul class="prop-list">
+            <li>Tavolo periodico di confronto continuo con tutti i rappresentanti di classe</li>
+            <li>Organizzazione di tornei sportivi scolastici, laboratori pomeridiani e conferenze tematiche</li>
+            <li>Resoconti sintetici e trasparenti dopo ogni riunione e Consiglio d'Istituto</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <footer class="candidate reveal" style="--i:3">
       <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
       <div>
