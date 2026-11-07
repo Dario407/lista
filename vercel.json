@@ -1,12 +1,93 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/ig",
+      "destination": "https://www.instagram.com/dallanostraparte.cd/",
+      "permanent": false
+    },
+    {
+      "source": "/instagram",
+      "destination": "https://www.instagram.com/dallanostraparte.cd/",
+      "permanent": false
+    },
+    {
+      "source": "/programma",
+      "destination": "/proposte",
+      "permanent": false
+    },
+    {
+      "source": "/segnalazioni",
+      "destination": "/segnala",
+      "permanent": false
+    },
+    {
+      "source": "/cantiere",
+      "destination": "/#priorita",
+      "permanent": false
+    },
+    {
+      "source": "/comitato",
+      "destination": "/#priorita",
+      "permanent": false
+    },
+    {
+      "source": "/stato",
+      "destination": "/registro",
+      "permanent": false
+    },
+    {
+      "source": "/trasparenza",
+      "destination": "/registro",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/ig", "destination": "/index.html?to=ig" },
-    { "source": "/instagram", "destination": "/index.html?to=ig" },
-    { "source": "/qr", "destination": "/index.html" },
-    { "source": "/proposte", "destination": "/proposte.html" },
-    { "source": "/programma", "destination": "/proposte.html" },
-    { "source": "/cantiere", "destination": "/index.html?to=cantiere" },
-    { "source": "/comitato", "destination": "/index.html?to=cantiere" }
+    {
+      "source": "/qr",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)\\.(webp|png|jpg|svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/registro.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ]
 }

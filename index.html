@@ -3,872 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#073B7A" />
-  <title>DALLA NOSTRA PARTE · Carducci-Dante</title>
-  <meta name="description" content="Dalla Nostra Parte · Dario Nitu — ISIS Carducci-Dante Trieste" />
-  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="assets/logo-440.webp" type="image/webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #073B7A;
-      --navy-dark: #04244E;
-      --blue: #0877D1;
-      --gold: #FFAE0B;
-      --green: #16A455;
-      --green-deep: #0F8A47;
-      --alice: #EDF5FC;
-      --white: #FFFFFF;
-      --text: #0F172A;
-      --muted: #475569;
-      --border: #DCE8F5;
-      --radius: 22px;
-      --ease: cubic-bezier(.2, .8, .2, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-      -webkit-text-size-adjust: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: var(--navy-dark);
-      background-image:
-        radial-gradient(520px 320px at 85% -40px, rgba(255, 174, 11, .16), transparent 70%),
-        radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 42%, var(--navy-dark) 100%);
-      background-attachment: fixed;
-      color: var(--text);
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      justify-content: center;
-      padding:
-        calc(22px + env(safe-area-inset-top))
-        calc(16px + env(safe-area-inset-right))
-        calc(104px + env(safe-area-inset-bottom))
-        calc(16px + env(safe-area-inset-left));
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    svg.i {
-      width: 1.25em;
-      height: 1.25em;
-      flex-shrink: 0;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ───────── LAYOUT BASE (MOBILE) ───────── */
-    .shell {
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin: 0 auto;
-    }
-
-    /* ───────── 1. HERO ───────── */
-    .hero {
-      text-align: center;
-      color: var(--white);
-      padding: 12px 0 8px;
-    }
-
-    .logo-wrap {
-      position: relative;
-      width: 172px;
-      height: 172px;
-      margin: 0 auto 22px;
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 3px var(--gold),
-        0 0 0 9px rgba(255, 174, 11, .16),
-        0 22px 44px rgba(0, 0, 0, .42);
-    }
-
-    .logo-wrap img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      border-radius: 50%;
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .pill {
-      font-size: .78rem;
-      font-weight: 700;
-      color: var(--alice);
-      padding: 7px 13px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, .09);
-      border: 1px solid rgba(255, 255, 255, .18);
-    }
-
-    /* ───────── 2. CTA INSTAGRAM ───────── */
-    .btn-instagram {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-height: 68px;
-      padding: 10px 16px 10px 12px;
-      background: var(--gold);
-      color: var(--navy-dark);
-      text-decoration: none;
-      border-radius: 20px;
-      box-shadow: 0 12px 28px rgba(255, 174, 11, .28), 0 2px 0 rgba(255, 255, 255, .35) inset;
-      transition: transform .15s var(--ease), box-shadow .15s;
-    }
-
-    .btn-instagram:active {
-      transform: scale(.975);
-      box-shadow: 0 6px 16px rgba(255, 174, 11, .25);
-    }
-
-    .ig-tile {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: var(--white);
-      background: linear-gradient(135deg, #833AB4 0%, #E1306C 55%, #FCAF45 100%);
-      box-shadow: 0 4px 10px rgba(131, 58, 180, .35);
-      flex-shrink: 0;
-    }
-
-    .ig-tile svg { width: 24px; height: 24px; }
-
-    .ig-text { flex: 1; min-width: 0; }
-
-    .ig-text strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 900;
-      line-height: 1.15;
-    }
-
-    .ig-text span {
-      display: block;
-      margin-top: 2px;
-      font-size: .78rem;
-      font-weight: 700;
-      line-height: 1.3;
-      opacity: .82;
-    }
-
-    .ig-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--navy-dark);
-      color: var(--gold);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    /* ───────── 3. CARD PRIORITÀ ───────── */
-    .card {
-      position: relative;
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 20px 16px 16px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, .24);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      padding: 0 2px;
-    }
-
-    .card-title {
-      font-size: .95rem;
-      font-weight: 900;
-      color: var(--navy);
-      text-transform: uppercase;
-      letter-spacing: .4px;
-      line-height: 1.2;
-    }
-
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .72rem;
-      font-weight: 800;
-      white-space: nowrap;
-      background: rgba(22, 164, 85, .12);
-      color: var(--green-deep);
-      padding: 5px 10px;
-      border-radius: 99px;
-    }
-
-    .live-pill::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 0 rgba(22, 164, 85, .5);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      70%  { box-shadow: 0 0 0 7px rgba(22, 164, 85, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(22, 164, 85, 0); }
-    }
-
-    /* ───────── ACCORDION PRIORITÀ ───────── */
-    .item-list {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    details.topic-item {
-      --accent: var(--blue);
-      --on: var(--white);
-      background: var(--alice);
-      border: 1.5px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: background .2s, border-color .2s, box-shadow .2s;
-    }
-
-    details.topic-item.gold  { --accent: var(--gold);       --on: var(--navy-dark); }
-    details.topic-item.green { --accent: var(--green-deep); --on: var(--white); }
-
-    details.topic-item[open] {
-      background: var(--white);
-      border-color: var(--accent);
-      box-shadow: 0 6px 18px rgba(7, 59, 122, .1);
-    }
-
-    summary.topic-summary {
-      list-style: none;
-      min-height: 58px;
-      padding: 10px 14px 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: .9rem;
-      line-height: 1.25;
-      color: var(--navy);
-      user-select: none;
-    }
-
-    summary.topic-summary::-webkit-details-marker { display: none; }
-
-    .topic-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      font-size: .85rem;
-      font-weight: 900;
-      background: var(--accent);
-      color: var(--on);
-    }
-
-    .topic-title { flex: 1; }
-
-    .topic-chevron {
-      width: 20px;
-      height: 20px;
-      color: var(--muted);
-      transition: transform .25s var(--ease), color .2s;
-    }
-
-    details.topic-item[open] .topic-chevron {
-      transform: rotate(180deg);
-      color: var(--navy);
-    }
-
-    .topic-body {
-      padding: 0 16px 16px 56px;
-      font-size: .88rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.55;
-      animation: fade .3s var(--ease);
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(-4px); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    .topic-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 10px;
-      font-size: .74rem;
-      font-weight: 800;
-      line-height: 1.3;
-      color: var(--navy);
-      background: var(--alice);
-      border: 1px solid var(--border);
-      padding: 5px 10px;
-      border-radius: 99px;
-    }
-
-    .topic-tag::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* PULSANTE VERSO PAGINA PROPOSTE */
-    .btn-all-proposals {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 14px;
-      padding: 14px 16px;
-      background: var(--navy);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 15px;
-      font-size: .86rem;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(7, 59, 122, .22);
-      transition: transform .15s var(--ease), background .15s;
-    }
-
-    .btn-all-proposals:active {
-      transform: scale(.98);
-      background: var(--blue);
-    }
-
-    .btn-all-proposals span {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .btn-all-proposals .badge-count {
-      background: var(--gold);
-      color: var(--navy-dark);
-      font-size: .72rem;
-      font-weight: 900;
-      padding: 3px 9px;
-      border-radius: 99px;
-    }
-
-    /* ───────── 4. SCHEDA CANDIDATO ───────── */
-    .candidate {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px;
-      color: var(--white);
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .16);
-      border-radius: 20px;
-    }
-
-    .candidate .c-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2.5px solid var(--gold);
-      background: var(--alice);
-      flex-shrink: 0;
-    }
-
-    .candidate .c-mascot {
-      width: 58px;
-      height: auto;
-      border: none;
-      background: transparent;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35));
-      flex-shrink: 0;
-      margin-left: auto;
-    }
-
-    .candidate strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 900;
-    }
-
-    .candidate span {
-      display: block;
-      margin-top: 2px;
-      font-size: .78rem;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--alice);
-      opacity: .88;
-    }
-
-    /* ───────── NAVIGAZIONE IN BASSO (DOCK MOBILE) ───────── */
-    .dock {
-      position: fixed;
-      left: 50%;
-      bottom: calc(10px + env(safe-area-inset-bottom));
-      transform: translateX(-50%);
-      z-index: 10;
-      width: min(calc(100% - 24px), 440px);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 6px;
-      background: rgba(4, 36, 78, .86);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      backdrop-filter: blur(16px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, .16);
-      border-radius: 24px;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
-    }
-
-    .dock a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      min-height: 54px;
-      border-radius: 18px;
-      text-decoration: none;
-      font-size: .7rem;
-      font-weight: 800;
-      color: rgba(237, 245, 252, .75);
-      transition: color .2s, background .2s;
-    }
-
-    .dock a svg { width: 21px; height: 21px; }
-
-    .dock a.active {
-      color: var(--gold);
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .dock a.ext { color: var(--gold); }
-
-    /* Barra superiore Desktop (nascosta su mobile) */
-    .desktop-nav {
-      display: none;
-    }
-
-    /* ═══════════════════════════════════════════════
-       VISTA SPECIFICA PER PC & DESKTOP (>= 860px)
-       ═══════════════════════════════════════════════ */
-    @media (min-width: 768px) {
-      body {
-        padding: 40px 32px 60px;
-        align-items: flex-start;
-      }
-
-      .shell {
-        max-width: 1240px;
-        display: grid;
-        grid-template-columns: 410px 1fr;
-        grid-template-rows: auto auto;
-        column-gap: 36px;
-        row-gap: 24px;
-        align-items: start;
-      }
-
-      /* Navbar fissa in alto per PC */
-      .desktop-nav {
-        grid-column: 1 / -1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: rgba(4, 36, 78, .8);
-        border: 1px solid rgba(255, 255, 255, .16);
-        border-radius: 20px;
-        padding: 12px 24px;
-        backdrop-filter: blur(14px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
-      }
-
-      .desktop-brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 900;
-        letter-spacing: .5px;
-        font-size: .92rem;
-      }
-
-      .desktop-brand img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-      }
-
-      .desktop-links {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .desktop-links a {
-        color: var(--alice);
-        text-decoration: none;
-        font-size: .84rem;
-        font-weight: 800;
-        padding: 8px 16px;
-        border-radius: 12px;
-        transition: all .15s;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-      }
-
-      .desktop-links a:hover,
-      .desktop-links a.active {
-        color: var(--navy-dark);
-        background: var(--gold);
-      }
-
-      .desktop-links a.ext-link {
-        background: rgba(255, 255, 255, .1);
-        color: var(--white);
-      }
-
-      .desktop-links a.ext-link:hover {
-        background: var(--gold);
-        color: var(--navy-dark);
-      }
-
-      /* Colonna Sinistra (Sidebar fissa Desktop): Hero, Instagram, Candidato */
-      .hero-sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
-        position: sticky;
-        top: 24px;
-      }
-
-      .hero {
-        padding: 12px 0 6px;
-      }
-
-      .logo-wrap {
-        width: 190px;
-        height: 190px;
-        margin-bottom: 20px;
-      }
-
-      .pills {
-        gap: 9px;
-      }
-
-      .pill {
-        font-size: .8rem;
-        padding: 8px 14px;
-      }
-
-      /* Colonna Destra: Contenuto Principale con Priorità */
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .card {
-        padding: 28px 26px 24px;
-        border-radius: 26px;
-      }
-
-      .card-title {
-        font-size: 1.15rem;
-      }
-
-      .live-pill {
-        font-size: .8rem;
-        padding: 6px 12px;
-      }
-
-      .item-list {
-        gap: 12px;
-      }
-
-      summary.topic-summary {
-        min-height: 64px;
-        padding: 14px 18px;
-        font-size: .98rem;
-      }
-
-      .topic-num {
-        width: 36px;
-        height: 36px;
-        font-size: .92rem;
-      }
-
-      .topic-body {
-        padding: 0 20px 20px 68px;
-        font-size: .94rem;
-        line-height: 1.6;
-      }
-
-      .btn-all-proposals {
-        padding: 16px 20px;
-        font-size: .95rem;
-        border-radius: 18px;
-      }
-
-      .btn-all-proposals .badge-count {
-        font-size: .8rem;
-        padding: 6px 14px;
-      }
-
-      .candidate {
-        padding: 16px 18px;
-      }
-
-      .candidate .c-avatar {
-        width: 66px;
-        height: 66px;
-      }
-
-      .candidate strong {
-        font-size: 1.05rem;
-      }
-
-      .candidate span {
-        font-size: .82rem;
-      }
-
-      /* Su PC la dock mobile in basso scompare perché c'è la desktop-nav */
-      .dock {
-        display: none;
-      }
-    }
-  </style>
+  <meta name="theme-color" content="#04244E" />
+  <title>Dalla Nostra Parte · Dario Nitu · Carducci-Dante Trieste</title>
+  <meta name="description" content="Un modo più concreto di rappresentare gli studenti. Proposte realistiche, priorità chiare, dialogo e risultati. Dario Nitu, candidato rappresentante d'istituto all'ISIS Carducci-Dante di Trieste." />
+  <link rel="canonical" href="https://lista-navy.vercel.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:site_name" content="Dalla Nostra Parte" />
+  <meta property="og:title" content="Dalla Nostra Parte · Dario Nitu" />
+  <meta property="og:description" content="Un modo più concreto di rappresentare gli studenti. Proposte realistiche, priorità chiare, dialogo e risultati. Dario Nitu, candidato rappresentante d'istituto all'ISIS Carducci-Dante di Trieste." />
+  <meta property="og:url" content="https://lista-navy.vercel.app/" />
+  <meta property="og:image" content="https://lista-navy.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="/assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preload" href="/assets/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
-    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" stroke-width="3"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-reg" viewBox="0 0 24 24"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><rect x="5" y="6" width="14" height="15" rx="2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>
+    <symbol id="i-therm" viewBox="0 0 24 24"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M6.5 17a2.5 2.5 0 0 0 0 4H20v-4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.8.8 3 2.6 3 5.6"/></symbol>
+    <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></symbol>
   </svg>
 
-  <main class="shell">
-
-    <!-- BARRA DI NAVIGAZIONE DESKTOP (VISIBILE SOLO SU PC) -->
-    <header class="desktop-nav">
-      <a href="index.html" class="desktop-brand">
-        <img src="assets/logo-440.webp" alt="Logo Dalla Nostra Parte" />
-        <span>DALLA NOSTRA PARTE · CARDUCCI-DANTE</span>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Dalla Nostra Parte, home">
+        <img src="/assets/logo-440.webp" width="38" height="38" alt="" />
+        <span><b>DALLA NOSTRA PARTE</b><small>Carducci-Dante · Trieste</small></span>
       </a>
-      <nav class="desktop-links" aria-label="Menu Principale">
-        <a href="index.html" class="active"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Home</a>
-        <a href="proposte.html"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg> Tutte le Proposte</a>
-        <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext-link js-ig-link"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg> Instagram</a>
-      </nav>
-    </header>
-
-    <!-- COLONNA SINISTRA (SIDEBAR SU DESKTOP, IN TESTA SU MOBILE) -->
-    <aside class="hero-sidebar">
-      <!-- 1. HERO -->
-      <section class="hero reveal">
-        <h1 class="sr-only">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</h1>
-        <div class="logo-wrap">
-          <img src="assets/logo-440.webp" width="190" height="190" fetchpriority="high" alt="Logo Dalla Nostra Parte — Carducci-Dante" />
-        </div>
-        <div class="pills" aria-label="I nostri valori">
-          <span class="pill">Proposte realistiche</span>
-          <span class="pill">Trasparenza</span>
-          <span class="pill">Maggiore partecipazione</span>
-        </div>
-      </section>
-
-      <!-- 2. INSTAGRAM CTA -->
-      <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="btn-instagram js-ig-link reveal">
-        <span class="ig-tile"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
-        <span class="ig-text">
-          <strong>Seguici su Instagram</strong>
-          <span id="ig-handle-label">@dallanostraparte.cd · Aggiornamenti</span>
-        </span>
-        <span class="ig-arrow"><svg class="i" aria-hidden="true" style="width:18px;height:18px"><use href="#i-arrow"/></svg></span>
-      </a>
-
-      <!-- 4. SCHEDA CANDIDATO & MASCOTTE -->
-      <footer class="candidate reveal">
-        <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-        <div>
-          <strong>Dario Nitu</strong>
-          <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-        </div>
-        <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-      </footer>
-    </aside>
-
-    <!-- COLONNA DESTRA (CONTENUTO PRINCIPALE) -->
-    <div class="main-content">
-      <!-- 3. COMITATO & CANTIERE APERTO -->
-      <section class="card reveal" id="cantiere" aria-labelledby="t-cantiere">
-        <div class="card-header">
-          <h2 class="card-title" id="t-cantiere">Comitato &amp; Cantiere Aperto</h2>
-          <span class="live-pill">5 priorità</span>
-        </div>
-
-        <div class="item-list">
-          <details class="topic-item gold" name="priorita" open>
-            <summary class="topic-summary">
-              <span class="topic-num">1</span>
-              <span class="topic-title">Libri digitali e tablet</span>
-              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="topic-body">
-              Regole chiare e condivise sull'uso dei libri digitali in classe per evitare divieti arbitrari.
-              <div><span class="topic-tag">Impegno: Presentazione entro 15 giorni</span></div>
-            </div>
-          </details>
-
-          <details class="topic-item" name="priorita">
-            <summary class="topic-summary">
-              <span class="topic-num">2</span>
-              <span class="topic-title">Verifiche e valutazioni</span>
-              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="topic-body">
-              Chiarezza sulle griglie di valutazione e confronto per evitare concentrazioni eccessive di verifiche.
-              <div><span class="topic-tag">Stato: Raccolta segnalazioni classi</span></div>
-            </div>
-          </details>
-
-          <details class="topic-item green" name="priorita">
-            <summary class="topic-summary">
-              <span class="topic-num">3</span>
-              <span class="topic-title">Assemblee e rispetto reciproco</span>
-              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="topic-body">
-              Assemblee effettive e provvedimenti sempre motivati e proporzionati, senza reazioni eccessive.
-              <div><span class="topic-tag">Stato: Linea operativa pronta</span></div>
-            </div>
-          </details>
-
-          <details class="topic-item" name="priorita">
-            <summary class="topic-summary">
-              <span class="topic-num">4</span>
-              <span class="topic-title">Aule, riscaldamento e bagni</span>
-              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="topic-body">
-              Tracciamento pubblico per piano e aula dei problemi strutturali con data di invio e risposta ricevuta.
-              <div><span class="topic-tag">Stato: Monitoraggio aperto</span></div>
-            </div>
-          </details>
-
-          <details class="topic-item gold" name="priorita">
-            <summary class="topic-summary">
-              <span class="topic-num">5</span>
-              <span class="topic-title">Comitato Studentesco attivo</span>
-              <svg class="i topic-chevron" aria-hidden="true"><use href="#i-chev"/></svg>
-            </summary>
-            <div class="topic-body">
-              Confronto periodico con i rappresentanti di classe, resoconti sintetici dopo ogni riunione e proposte fattibili.
-              <div><span class="topic-tag">Metodo: Raccolta → Verifica → Risultato</span></div>
-            </div>
-          </details>
-        </div>
-
-        <!-- PULSANTE VERSO LA PAGINA DEDICATA PROPOSTE -->
-        <a href="proposte.html" class="btn-all-proposals">
-          <span>
-            <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>
-            Esplora tutte le proposte dettagliate
-          </span>
-          <span class="badge-count">Vai alla pagina →</span>
-        </a>
-      </section>
+      <nav class="top-links" aria-label="Menu principale"><a href="/" aria-current="page"><svg class="i"><use href="#i-home"/></svg>Home</a><a href="/proposte"><svg class="i"><use href="#i-list"/></svg>Proposte</a><a href="/registro"><svg class="i"><use href="#i-reg"/></svg>Registro</a><a href="/segnala"><svg class="i"><use href="#i-flag"/></svg>Segnala</a><a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener"><svg class="i"><use href="#i-ig"/></svg>Instagram</a></nav>
+      <a class="header-ig" href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" aria-label="Instagram @dallanostraparte.cd"><svg class="i"><use href="#i-ig"/></svg></a>
     </div>
+    <div class="progress" aria-hidden="true"></div>
+  </header>
 
+  <main id="main">
+
+    <!-- ═════ HERO ═════ -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-logo"><img src="/assets/logo-440.webp" width="440" height="440" fetchpriority="high" alt="Logo Dalla Nostra Parte · Carducci-Dante" /></div>
+        <div>
+          <div class="center"><span class="list-chip">Lista 4 · Rappresentanti d'istituto</span></div>
+          <h1><span class="sr-only">Dalla Nostra Parte. </span>Un modo più <em>concreto</em> di rappresentare gli studenti.</h1>
+          <ul class="hero-points" aria-label="I tre punti della lista">
+            <li><svg class="i"><use href="#i-check"/></svg>Proposte realistiche</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Priorità chiare</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Dialogo e risultati</li>
+          </ul>
+          <div class="btn-stack">
+            <a class="btn btn-gold" href="/proposte"><svg class="i"><use href="#i-list"/></svg><span class="grow">Leggi le 5 proposte</span><svg class="i"><use href="#i-arrow"/></svg></a>
+            <div class="btn-row">
+              <a class="btn btn-white sm" href="/segnala"><svg class="i"><use href="#i-flag"/></svg>Segnala</a>
+              <a class="btn btn-ghost sm" href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener"><svg class="i"><use href="#i-ig"/></svg>Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+
+      <!-- ═════ PRIORITÀ ═════ -->
+      <section class="section" id="priorita" aria-labelledby="h-prio">
+        <div class="eyebrow">Il programma</div>
+        <h2 id="h-prio">5 priorità, una per una</h2>
+        <p class="lead">Tocca una proposta per vedere il problema, l'impegno e chi decide.</p>
+        <ol class="prio-list">
+          <li class="reveal"><a class="card prio organi" href="/proposte#p1">
+            <span class="prio-num">1</span>
+            <span class="prio-body"><strong>Libri digitali e tablet</strong><span class="d">Regole chiare e uguali per tutte le classi.</span><span class="tag organi">Decidono altri organi</span></span>
+            <svg class="i"><use href="#i-chev"/></svg></a></li>
+          <li class="reveal"><a class="card prio organi" href="/proposte#p2">
+            <span class="prio-num">2</span>
+            <span class="prio-body"><strong>Verifiche e valutazioni</strong><span class="d">Criteri comprensibili e carico di verifiche coordinato.</span><span class="tag organi">Decidono altri organi</span></span>
+            <svg class="i"><use href="#i-chev"/></svg></a></li>
+          <li class="reveal"><a class="card prio organi" href="/proposte#p3">
+            <span class="prio-num">3</span>
+            <span class="prio-body"><strong>Assemblee e rispetto reciproco</strong><span class="d">Provvedimenti chiari, motivati e proporzionati.</span><span class="tag organi">Decidono altri organi</span></span>
+            <svg class="i"><use href="#i-chev"/></svg></a></li>
+          <li class="reveal"><a class="card prio risorse" href="/proposte#p4">
+            <span class="prio-num">4</span>
+            <span class="prio-body"><strong>Aule, riscaldamento e bagni</strong><span class="d">Segnalazioni ordinate, con data di invio e risposta.</span><span class="tag risorse">Servono risorse o permessi</span></span>
+            <svg class="i"><use href="#i-chev"/></svg></a></li>
+          <li class="reveal"><a class="card prio dirette" href="/proposte#p5">
+            <span class="prio-num">5</span>
+            <span class="prio-body"><strong>Comitato studentesco attivo</strong><span class="d">Incontri con i rappresentanti di classe e resoconti.</span><span class="tag dirette">Dipende da noi</span></span>
+            <svg class="i"><use href="#i-chev"/></svg></a></li>
+        </ol>
+      </section>
+
+      <!-- ═════ CANTIERE APERTO ═════ -->
+      <section class="section" aria-labelledby="h-cant">
+        <div class="eyebrow">In lavorazione adesso</div>
+        <h2 id="h-cant">Cantiere aperto</h2>
+        <article class="card cantiere reveal">
+          <div class="cantiere-bar"><span>Cantiere aperto</span><span>Stato: in preparazione</span></div>
+          <div class="cantiere-body">
+            <h3>Libri digitali e tablet</h3>
+            <p class="quote">Non ci sono ancora regole chiare sull'uso dei libri digitali. È ora di definirle.</p>
+            <ol class="track">
+              <li><b>Nomina</b><span>si parte</span></li>
+              <li><b>Proposta presentata</b><span>entro 15 giorni</span></li>
+              <li><b>Aggiornamento</b><span>pubblico, anche se è un no</span></li>
+            </ol>
+            <p class="fine">I 15 giorni sono un impegno a presentare la proposta, non una promessa di approvazione.</p>
+            <a class="btn btn-outline sm" href="/registro#p1"><span class="grow">Segui nel registro</span><svg class="i"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </section>
+
+      <!-- ═════ METODO ═════ -->
+      <section class="section" aria-labelledby="h-metodo">
+        <div class="eyebrow">Il metodo</div>
+        <h2 id="h-metodo">Dalla segnalazione al risultato</h2>
+        <p class="lead">Ogni questione segue lo stesso percorso, così si può controllare a che punto è.</p>
+        <ol class="card steps reveal">
+          <li><b>Raccolta</b><span>Segnalazioni e proposte degli studenti, divise per argomento.</span></li>
+          <li><b>Verifica</b><span>Chiarire il problema e capire a chi compete intervenire.</span></li>
+          <li><b>Preparazione</b><span>Una proposta precisa: obiettivo, passaggi, possibili limiti.</span></li>
+          <li><b>Presentazione</b><span>Invio all'organo competente, con la data registrata.</span></li>
+          <li><b>Aggiornamento</b><span>Risposta ricevuta e prossimi passi, anche se è un no.</span></li>
+        </ol>
+      </section>
+
+      <!-- ═════ CHI DECIDE COSA ═════ -->
+      <section class="section" aria-labelledby="h-chi">
+        <div class="eyebrow">Chi decide cosa</div>
+        <h2 id="h-chi">Cosa possiamo fare, e cosa no</h2>
+        <p class="lead">Tre tipi di proposta. Ti diciamo subito in quale rientra ciascuna.</p>
+        <div class="cats">
+          <article class="card cat dirette reveal"><span class="tag dirette">Dipende da noi</span>
+            <h3>Realizzabili direttamente</h3>
+            <p>Confronto con i rappresentanti di classe, raccolta segnalazioni, resoconti, registro delle proposte.</p></article>
+          <article class="card cat risorse reveal"><span class="tag risorse">Risorse o permessi</span>
+            <h3>Con autorizzazioni</h3>
+            <p>Iniziative, spazi, materiali, servizi. Prepariamo la richiesta, verifichiamo costi e permessi, seguiamo l'esito.</p></article>
+          <article class="card cat organi reveal"><span class="tag organi">Altri organi</span>
+            <h3>Decidono altri</h3>
+            <p>Regole didattiche, docenti, Consiglio d'Istituto, dirigenza. Presentiamo le esigenze e <b>riferiamo la risposta</b>.</p></article>
+        </div>
+      </section>
+
+      <!-- ═════ PROMESSA ONESTA ═════ -->
+      <section class="section" aria-labelledby="h-onesta">
+        <div class="note reveal">
+          <strong id="h-onesta">Una promessa onesta</strong>
+          Possiamo raccogliere, formulare, presentare e seguire le proposte. Non possiamo garantire da soli l'approvazione di regolamenti, spese o interventi che spettano ad altri organi.
+        </div>
+      </section>
+
+      <!-- ═════ FAQ ═════ -->
+      <section class="section" aria-labelledby="h-faq">
+        <div class="eyebrow">Domande</div>
+        <h2 id="h-faq">Le risposte brevi</h2>
+        <div class="faq"><details class="reveal"><summary><span>Cosa può fare un rappresentante d'istituto?</span><svg class="i"><use href="#i-down"/></svg></summary><div class="ans"><b>Raccogliere, formulare, presentare e seguire</b> le proposte degli studenti, e riferire le risposte. Il lavoro si misura dai passaggi compiuti, non dal numero di comunicati.</div></details><details class="reveal"><summary><span>E cosa non può fare da solo?</span><svg class="i"><use href="#i-down"/></svg></summary><div class="ans">Non può approvare da solo regolamenti, spese o interventi strutturali: decidono i <b>docenti, la dirigenza o il Consiglio d'Istituto</b>. Per questo non promettiamo risultati che non dipendono da noi.</div></details><details class="reveal"><summary><span>Come faccio una segnalazione?</span><svg class="i"><use href="#i-down"/></svg></summary><div class="ans">Vai su <a href="/segnala">Segnala</a>, scegli l'argomento e scrivi due righe. Il messaggio è pronto da incollare nella chat Instagram. Descrivi la situazione, non le persone.</div></details><details class="reveal"><summary><span>Come controllo a che punto è una proposta?</span><svg class="i"><use href="#i-down"/></svg></summary><div class="ans">Nel <a href="/registro">registro pubblico</a>: per ogni proposta trovi stato, organo competente, data di presentazione e risposta ricevuta.</div></details><details class="reveal"><summary><span>Cosa succede se una proposta viene respinta?</span><svg class="i"><use href="#i-down"/></svg></summary><div class="ans">Lo scriviamo nel registro con la motivazione, quando c'è. Un “no” motivato è un risultato che gli studenti hanno diritto di conoscere.</div></details></div>
+      </section>
+
+      <!-- ═════ CTA SEGNALA ═════ -->
+      <section class="section" aria-label="Segnala un problema">
+        <div class="cta-band reveal">
+          <h2>C'è un problema che ti dà fastidio?</h2>
+          <p>Aula fredda, bagni, verifiche, regole poco chiare. Scrivilo: se diventa una proposta, nel registro compare senza nomi.</p>
+          <a class="btn btn-navy" href="/segnala"><svg class="i"><use href="#i-flag"/></svg><span class="grow">Fai una segnalazione</span><svg class="i"><use href="#i-arrow"/></svg></a>
+        </div>
+      </section>
+
+      <!-- ═════ PASSAPAROLA ═════ -->
+      <section class="section" aria-label="Condividi">
+        <div class="share-card reveal">
+          <h2>Mandalo alla tua classe</h2>
+          <p>Un link nel gruppo vale più di mille storie. Condividi il sito con chi non ci segue ancora.</p>
+          <button class="btn btn-outline" type="button" data-share><svg class="i"><use href="#i-share"/></svg><span class="grow">Condividi il sito</span></button>
+        </div>
+      </section>
+
+      <!-- ═════ CANDIDATO ═════ -->
+      <section class="section" aria-label="Il candidato">
+        <div class="candidate reveal">
+          <img class="avatar" src="/assets/dario-480.webp" width="88" height="88" alt="Dario Nitu" loading="lazy" />
+          <div class="who"><strong>Dario Nitu</strong><span>Candidato rappresentante d'istituto<br />ISIS Carducci-Dante · Trieste</span></div>
+          <img class="mascot" src="/assets/civetta-360.webp" width="48" height="65" alt="" loading="lazy" />
+        </div>
+      </section>
+
+      <footer class="site-footer">Dalla Nostra Parte · ISIS Carducci-Dante, Trieste</footer>
+    </div>
   </main>
 
-  <!-- NAVIGAZIONE IN BASSO (SOLO MOBILE) -->
-  <nav class="dock" id="dock" aria-label="Navigazione rapida">
-    <a href="index.html" class="active">
-      <svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home
-    </a>
-    <a href="proposte.html">
-      <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Proposte
-    </a>
-    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
-      <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
-    </a>
-  </nav>
+  <nav class="dock" aria-label="Navigazione rapida"><a href="/" aria-current="page"><svg class="i"><use href="#i-home"/></svg>Home</a><a href="/proposte"><svg class="i"><use href="#i-list"/></svg>Proposte</a><a href="/registro"><svg class="i"><use href="#i-reg"/></svg>Registro</a><a href="/segnala"><svg class="i"><use href="#i-flag"/></svg>Segnala</a><a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener"><svg class="i"><use href="#i-ig"/></svg>Instagram</a></nav>
 
-  <script>
-    const CONFIG = {
-      instagramHandle: "@dallanostraparte.cd",
-      instagramUrl: "https://www.instagram.com/dallanostraparte.cd/"
-    };
-
-    document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
-    document.getElementById("ig-handle-label").textContent = CONFIG.instagramHandle + " · Aggiornamenti";
-
-    // Reindirizzamento automatico da QR code (?to=ig | ?to=proposte | ?to=cantiere)
-    const params = new URLSearchParams(window.location.search);
-    const to = (params.get("to") || params.get("qr") || "").toLowerCase();
-    if (to === "ig" || to === "instagram") {
-      window.location.replace(CONFIG.instagramUrl);
-    } else if (to === "proposte" || to === "programma") {
-      window.location.replace("proposte.html");
-    } else if (to === "cantiere") {
-      window.addEventListener("load", () => {
-        document.getElementById("cantiere")?.scrollIntoView({ behavior: "smooth" });
-      });
-    }
-  </script>
+  <script src="/assets/app.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,66 @@
+{
+  "aggiornato": "2026-11-07",
+  "nota": "Registro pubblico delle proposte. Si aggiorna a ogni passaggio: presentazione, risposta, esito. Nessun nome di persone: solo problemi e proposte.",
+  "proposte": [
+    {
+      "id": "p1",
+      "titolo": "Regole chiare su libri digitali e tablet in classe",
+      "categoria": "organi",
+      "stato": "in-preparazione",
+      "problema": "Indicazioni diverse da classe a classe per chi usa i libri di testo in digitale.",
+      "intervento": "Proposta scritta su quando e come usare materiali digitali e dispositivi, uguale per tutte le classi.",
+      "competenza": "Dirigenza / organi scolastici",
+      "presentata": null,
+      "risposta": null,
+      "prossimo": "Raccogliere le esigenze degli studenti e presentare la proposta entro 15 giorni dalla nomina."
+    },
+    {
+      "id": "p2",
+      "titolo": "Criteri di valutazione chiari e verifiche coordinate",
+      "categoria": "organi",
+      "stato": "da-esaminare",
+      "problema": "Verifiche concentrate nella stessa settimana e criteri di valutazione non sempre espliciti.",
+      "intervento": "Portare le segnalazioni delle classi nelle sedi giuste per favorire griglie chiare e coordinamento.",
+      "competenza": "Docenti / dirigenza",
+      "presentata": null,
+      "risposta": null,
+      "prossimo": "Raccogliere segnalazioni dalle classi."
+    },
+    {
+      "id": "p3",
+      "titolo": "Assemblee che funzionano, provvedimenti proporzionati",
+      "categoria": "organi",
+      "stato": "da-esaminare",
+      "problema": "Assemblee poco incisive e reazioni sproporzionate per episodi di lieve entità.",
+      "intervento": "Chiedere provvedimenti chiari, motivati e proporzionati; portare i problemi ricorrenti ai referenti.",
+      "competenza": "Dirigenza / referenti d'istituto",
+      "presentata": null,
+      "risposta": null,
+      "prossimo": "Raccogliere i problemi ricorrenti nella gestione delle assemblee."
+    },
+    {
+      "id": "p4",
+      "titolo": "Aule, riscaldamento, bagni e spazi comuni",
+      "categoria": "risorse",
+      "stato": "da-esaminare",
+      "problema": "Criticità ricorrenti su temperature, servizi e attrezzature.",
+      "intervento": "Segnalazioni ordinate, con data di invio e risposta ricevuta. Nessuna promessa sui tempi di intervento.",
+      "competenza": "Scuola / manutenzione / ente competente",
+      "presentata": null,
+      "risposta": null,
+      "prossimo": "Raccogliere segnalazioni documentate, con foto e date."
+    },
+    {
+      "id": "p5",
+      "titolo": "Comitato studentesco attivo e registro delle proposte",
+      "categoria": "dirette",
+      "stato": "in-preparazione",
+      "problema": "Proposte annunciate in campagna di cui poi non si sa più nulla.",
+      "intervento": "Incontri periodici con i rappresentanti di classe, questo registro aggiornato e resoconti pubblici.",
+      "competenza": "La rappresentanza studentesca",
+      "presentata": null,
+      "risposta": null,
+      "prossimo": "Registro online (questa pagina) già attivo; il primo incontro si organizza dopo la nomina."
+    }
+  ]
+}

@@ -3,1173 +3,284 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#073B7A" />
-  <title>Proposte · DALLA NOSTRA PARTE · Carducci-Dante</title>
-  <meta name="description" content="Tutte le proposte del programma elettorale Dalla Nostra Parte divise nelle 3 categorie di competenza · Dario Nitu — ISIS Carducci-Dante Trieste" />
-  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #073B7A;
-      --navy-dark: #04244E;
-      --blue: #0877D1;
-      --gold: #FFAE0B;
-      --gold-deep: #8F5B00;
-      --green: #16A455;
-      --green-deep: #0F8A47;
-      --alice: #EDF5FC;
-      --white: #FFFFFF;
-      --text: #0F172A;
-      --muted: #475569;
-      --border: #DCE8F5;
-      --radius: 22px;
-      --ease: cubic-bezier(.2, .8, .2, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-      -webkit-text-size-adjust: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: var(--navy-dark);
-      background-image:
-        radial-gradient(520px 320px at 85% -40px, rgba(255, 174, 11, .16), transparent 70%),
-        radial-gradient(circle at 50% 0%, #0B4F9F 0%, var(--navy) 42%, var(--navy-dark) 100%);
-      background-attachment: fixed;
-      color: var(--text);
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      justify-content: center;
-      padding:
-        calc(18px + env(safe-area-inset-top))
-        calc(16px + env(safe-area-inset-right))
-        calc(108px + env(safe-area-inset-bottom))
-        calc(16px + env(safe-area-inset-left));
-    }
-
-    svg.i {
-      width: 1.25em;
-      height: 1.25em;
-      flex-shrink: 0;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin: 0 auto;
-    }
-
-    /* ───────── 1. TOP BAR & HEADER PAGINA ───────── */
-    .top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 14px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, .1);
-      border: 1px solid rgba(255, 255, 255, .2);
-      color: var(--white);
-      text-decoration: none;
-      font-size: .78rem;
-      font-weight: 800;
-      transition: background .15s;
-    }
-
-    .btn-back:active {
-      background: rgba(255, 255, 255, .22);
-    }
-
-    .mini-brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      color: var(--white);
-    }
-
-    .mini-brand img {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-    }
-
-    .mini-brand span {
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .4px;
-    }
-
-    .page-hero {
-      color: var(--white);
-      padding: 2px 2px 0;
-    }
-
-    .page-eyebrow {
-      font-size: .72rem;
-      font-weight: 800;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 4px;
-    }
-
-    .page-hero h1 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      line-height: 1.12;
-      letter-spacing: -.3px;
-    }
-
-    .page-hero p {
-      margin-top: 6px;
-      font-size: .82rem;
-      font-weight: 500;
-      color: var(--alice);
-      opacity: .92;
-      line-height: 1.45;
-    }
-
-    /* ───────── 2. PANNELLO 3 CATEGORIE DEL GOOGLE DOCS ───────── */
-    .cat-panel {
-      background: rgba(255, 255, 255, .1);
-      border: 1px solid rgba(255, 255, 255, .2);
-      border-radius: 20px;
-      padding: 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cat-panel-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .cat-panel-title {
-      font-size: .74rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      color: var(--gold);
-    }
-
-    .btn-toggle-all {
-      appearance: none;
-      border: 1px solid rgba(255, 255, 255, .25);
-      background: rgba(255, 255, 255, .1);
-      color: var(--white);
-      font-family: inherit;
-      font-size: .69rem;
-      font-weight: 800;
-      padding: 5px 10px;
-      border-radius: 99px;
-      cursor: pointer;
-    }
-
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 7px;
-    }
-
-    .cat-btn {
-      appearance: none;
-      border: 1.5px solid rgba(255, 255, 255, .18);
-      background: rgba(4, 36, 78, .55);
-      color: var(--white);
-      font-family: inherit;
-      padding: 9px 10px;
-      border-radius: 14px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all .15s;
-    }
-
-    .cat-btn .c-indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .cat-btn.all .c-indicator { background: var(--white); }
-    .cat-btn.dir .c-indicator { background: var(--green); box-shadow: 0 0 8px rgba(22, 164, 85, .6); }
-    .cat-btn.ris .c-indicator { background: var(--gold);  box-shadow: 0 0 8px rgba(255, 174, 11, .6); }
-    .cat-btn.org .c-indicator { background: #38BDF8;      box-shadow: 0 0 8px rgba(56, 189, 248, .6); }
-
-    .cat-btn-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .cat-btn-text strong {
-      font-size: .75rem;
-      font-weight: 800;
-      line-height: 1.15;
-    }
-
-    .cat-btn-text span {
-      font-size: .66rem;
-      font-weight: 600;
-      color: var(--alice);
-      opacity: .8;
-      margin-top: 2px;
-    }
-
-    .cat-btn.active {
-      background: var(--white);
-      color: var(--navy-dark);
-      border-color: var(--gold);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
-    }
-
-    .cat-btn.active .cat-btn-text span {
-      color: var(--muted);
-      opacity: 1;
-    }
-
-    .cat-btn.all.active .c-indicator {
-      background: var(--navy);
-    }
-
-    /* BOX SPIEGAZIONE CATEGORIA */
-    .cat-explain {
-      background: rgba(4, 36, 78, .65);
-      border-left: 3.5px solid var(--gold);
-      border-radius: 0 12px 12px 0;
-      padding: 9px 11px;
-      font-size: .76rem;
-      line-height: 1.4;
-      color: var(--alice);
-    }
-
-    .cat-explain strong {
-      color: var(--gold);
-      font-weight: 800;
-    }
-
-    /* ───────── 3. CARD PROPOSTE CON SISTEMA DI PREVIEW ───────── */
-    .cards-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-    }
-
-    .prop-card {
-      --accent: var(--blue);
-      --badge-bg: rgba(8, 119, 209, .12);
-      --badge-fg: var(--blue);
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 16px 15px;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, .24);
-      border-top: 4.5px solid var(--accent);
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .prop-card.gold {
-      --accent: var(--gold);
-      --badge-bg: rgba(255, 174, 11, .2);
-      --badge-fg: var(--gold-deep);
-    }
-
-    .prop-card.green {
-      --accent: var(--green);
-      --badge-bg: rgba(22, 164, 85, .14);
-      --badge-fg: var(--green-deep);
-    }
-
-    .prop-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .prop-num-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .prop-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: .8rem;
-      font-weight: 900;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .prop-card.gold .prop-num {
-      color: var(--navy-dark);
-    }
-
-    .prop-cat-pill {
-      font-size: .68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-      padding: 4px 9px;
-      border-radius: 99px;
-      background: var(--badge-bg);
-      color: var(--badge-fg);
-    }
-
-    .prop-area-tag {
-      font-size: .68rem;
-      font-weight: 800;
-      color: var(--muted);
-    }
-
-    .prop-card h2 {
-      font-size: 1.02rem;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1.24;
-    }
-
-    /* PREVIEW STRUTTURATA: PROBLEMA -> IMPEGNO & RUOLO */
-    .preview-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      background: var(--alice);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 11px 12px;
-    }
-
-    .preview-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      font-size: .8rem;
-      line-height: 1.38;
-      color: var(--text);
-    }
-
-    .preview-label {
-      font-size: .67rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .4px;
-      color: var(--navy);
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 2px 7px;
-      border-radius: 6px;
-      flex-shrink: 0;
-    }
-
-    .preview-row.highlight .preview-label {
-      background: var(--accent);
-      color: var(--white);
-      border-color: var(--accent);
-    }
-
-    .prop-card.gold .preview-row.highlight .preview-label {
-      color: var(--navy-dark);
-    }
-
-    .preview-row p {
-      font-weight: 600;
-    }
-
-    /* TENDINA PUNTI DETTAGLIATI */
-    details.prop-details {
-      border-top: 1px dashed var(--border);
-      padding-top: 9px;
-    }
-
-    summary.prop-expand-btn {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      font-size: .77rem;
-      font-weight: 800;
-      color: var(--blue);
-      padding: 4px 2px;
-      user-select: none;
-    }
-
-    summary.prop-expand-btn::-webkit-details-marker { display: none; }
-
-    summary.prop-expand-btn .exp-icon {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--alice);
-      color: var(--navy);
-      padding: 4px 10px;
-      border-radius: 99px;
-      font-size: .71rem;
-      transition: background .15s;
-    }
-
-    details.prop-details[open] summary.prop-expand-btn .exp-icon {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .prop-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 10px;
-      background: #F8FAFC;
-      padding: 12px 13px;
-      border-radius: 13px;
-      border: 1px solid var(--border);
-    }
-
-    .prop-list li {
-      font-size: .81rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .prop-list li::before {
-      content: "✓";
-      color: var(--green-deep);
-      font-weight: 900;
-      font-size: .86rem;
-      line-height: 1.3;
-      flex-shrink: 0;
-    }
-
-    .prop-meta {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 6px;
-      font-size: .72rem;
-      font-weight: 700;
-      color: var(--muted);
-    }
-
-    .prop-meta strong {
-      color: var(--navy);
-      font-weight: 800;
-    }
-
-    /* ───────── 4. CARD METODO 5 PASSAGGI ───────── */
-    .method-card {
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: var(--radius);
-      padding: 16px;
-      color: var(--white);
-    }
-
-    .method-card h3 {
-      font-size: .88rem;
-      font-weight: 900;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: 9px;
-    }
-
-    .steps-mini {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--alice);
-    }
-
-    .steps-mini div {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-
-    .steps-mini b {
-      color: var(--gold);
-      font-weight: 900;
-    }
-
-    /* ───────── 5. CANDIDATO & DOCK ───────── */
-    .candidate {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px;
-      color: var(--white);
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .16);
-      border-radius: 20px;
-    }
-
-    .candidate .c-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2.5px solid var(--gold);
-      background: var(--alice);
-      flex-shrink: 0;
-    }
-
-    .candidate .c-mascot {
-      width: 58px;
-      height: auto;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35));
-      flex-shrink: 0;
-      margin-left: auto;
-    }
-
-    .candidate strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 900;
-    }
-
-    .candidate span {
-      display: block;
-      margin-top: 2px;
-      font-size: .78rem;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--alice);
-      opacity: .88;
-    }
-
-    .dock {
-      position: fixed;
-      left: 50%;
-      bottom: calc(10px + env(safe-area-inset-bottom));
-      transform: translateX(-50%);
-      z-index: 10;
-      width: min(calc(100% - 24px), 440px);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 6px;
-      background: rgba(4, 36, 78, .86);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      backdrop-filter: blur(16px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, .16);
-      border-radius: 24px;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
-    }
-
-    .dock a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      min-height: 54px;
-      border-radius: 18px;
-      text-decoration: none;
-      font-size: .7rem;
-      font-weight: 800;
-      color: rgba(237, 245, 252, .75);
-      transition: color .2s, background .2s;
-    }
-
-    .dock a svg { width: 21px; height: 21px; }
-
-    .dock a.active {
-      color: var(--gold);
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .dock a.ext { color: var(--gold); }
-
-    .desktop-nav {
-      display: none;
-    }
-
-    /* ═══════════════════════════════════════════════
-       VISTA SPECIFICA PER PC & DESKTOP (>= 860px)
-       ═══════════════════════════════════════════════ */
-    @media (min-width: 768px) {
-      body {
-        padding: 40px 32px 60px;
-        align-items: flex-start;
-      }
-
-      .shell {
-        max-width: 1240px;
-        display: grid;
-        grid-template-columns: 410px 1fr;
-        column-gap: 32px;
-        row-gap: 24px;
-        align-items: start;
-      }
-
-      /* Navbar fissa in alto per PC */
-      .desktop-nav {
-        grid-column: 1 / -1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: rgba(4, 36, 78, .8);
-        border: 1px solid rgba(255, 255, 255, .16);
-        border-radius: 20px;
-        padding: 12px 24px;
-        backdrop-filter: blur(14px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
-      }
-
-      .desktop-brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 900;
-        letter-spacing: .5px;
-        font-size: .92rem;
-      }
-
-      .desktop-brand img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-      }
-
-      .desktop-links {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .desktop-links a {
-        color: var(--alice);
-        text-decoration: none;
-        font-size: .84rem;
-        font-weight: 800;
-        padding: 8px 16px;
-        border-radius: 12px;
-        transition: all .15s;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-      }
-
-      .desktop-links a:hover,
-      .desktop-links a.active {
-        color: var(--navy-dark);
-        background: var(--gold);
-      }
-
-      .top-nav {
-        display: none;
-      }
-
-      /* Sidebar Desktop: Titolo, Filtri e Metodo sticky */
-      .proposte-sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        position: sticky;
-        top: 24px;
-      }
-
-      .page-hero h1 {
-        font-size: 1.8rem;
-      }
-
-      .page-hero p {
-        font-size: .88rem;
-      }
-
-      .cat-panel {
-        padding: 18px;
-        border-radius: 22px;
-      }
-
-      .cat-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .cat-btn {
-        padding: 10px 12px;
-      }
-
-      .cat-btn-text strong {
-        font-size: .82rem;
-      }
-
-      /* Area Principale: Schede Proposte */
-      .proposte-content {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .prop-card {
-        padding: 22px 20px;
-        border-radius: 24px;
-      }
-
-      .prop-card h2 {
-        font-size: 1.15rem;
-      }
-
-      .preview-grid {
-        padding: 14px 16px;
-        gap: 9px;
-      }
-
-      .preview-row {
-        font-size: .88rem;
-      }
-
-      .preview-label {
-        font-size: .72rem;
-        padding: 3px 9px;
-      }
-
-      .prop-list li {
-        font-size: .86rem;
-      }
-
-      .dock {
-        display: none;
-      }
-    }
-  </style>
+  <meta name="theme-color" content="#04244E" />
+  <title>Le proposte · Dalla Nostra Parte</title>
+  <meta name="description" content="Le 5 proposte della lista Dalla Nostra Parte: cosa facciamo direttamente, cosa richiede permessi e cosa decidono altri organi. ISIS Carducci-Dante, Trieste." />
+  <link rel="canonical" href="https://lista-navy.vercel.app/proposte" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:site_name" content="Dalla Nostra Parte" />
+  <meta property="og:title" content="Le proposte · Dalla Nostra Parte" />
+  <meta property="og:description" content="Le 5 proposte della lista Dalla Nostra Parte: cosa facciamo direttamente, cosa richiede permessi e cosa decidono altri organi. ISIS Carducci-Dante, Trieste." />
+  <meta property="og:url" content="https://lista-navy.vercel.app/proposte" />
+  <meta property="og:image" content="https://lista-navy.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="/assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preload" href="/assets/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
-    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
-    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" stroke-width="3"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-reg" viewBox="0 0 24 24"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1z"/><rect x="5" y="6" width="14" height="15" rx="2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>
+    <symbol id="i-therm" viewBox="0 0 24 24"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M6.5 17a2.5 2.5 0 0 0 0 4H20v-4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.8.8 3 2.6 3 5.6"/></symbol>
+    <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></symbol>
   </svg>
 
-  <main class="shell">
-
-    <!-- BARRA DI NAVIGAZIONE DESKTOP (VISIBILE SOLO SU PC) -->
-    <header class="desktop-nav">
-      <a href="index.html" class="desktop-brand">
-        <img src="assets/logo-440.webp" alt="Logo Dalla Nostra Parte" />
-        <span>DALLA NOSTRA PARTE · CARDUCCI-DANTE</span>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Dalla Nostra Parte, home">
+        <img src="/assets/logo-440.webp" width="38" height="38" alt="" />
+        <span><b>DALLA NOSTRA PARTE</b><small>Carducci-Dante · Trieste</small></span>
       </a>
-      <nav class="desktop-links" aria-label="Menu Principale">
-        <a href="index.html"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Home</a>
-        <a href="proposte.html" class="active"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg> Tutte le Proposte</a>
-        <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext-link js-ig-link"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg> Instagram</a>
-      </nav>
-    </header>
+      <nav class="top-links" aria-label="Menu principale"><a href="/"><svg class="i"><use href="#i-home"/></svg>Home</a><a href="/proposte" aria-current="page"><svg class="i"><use href="#i-list"/></svg>Proposte</a><a href="/registro"><svg class="i"><use href="#i-reg"/></svg>Registro</a><a href="/segnala"><svg class="i"><use href="#i-flag"/></svg>Segnala</a><a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener"><svg class="i"><use href="#i-ig"/></svg>Instagram</a></nav>
+      <a class="header-ig" href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" aria-label="Instagram @dallanostraparte.cd"><svg class="i"><use href="#i-ig"/></svg></a>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
+  </header>
 
-    <!-- COLONNA SINISTRA (SIDEBAR SU DESKTOP, HEADER + FILTRI SU MOBILE) -->
-    <aside class="proposte-sidebar">
-      <!-- 1. TOP BAR (SOLO MOBILE) -->
-      <div class="top-nav">
-        <a href="index.html" class="btn-back">
-          <svg class="i" aria-hidden="true"><use href="#i-back"/></svg>
-          Home
-        </a>
-        <a href="index.html" class="mini-brand">
-          <span>DALLA NOSTRA PARTE.</span>
-          <img src="assets/logo-440.webp" alt="Logo" />
-        </a>
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap">
+        <div class="eyebrow">Programma · Carducci-Dante</div>
+        <h1>Le proposte</h1>
+        <p>Nessuna promessa irrealistica: ti diciamo cosa facciamo direttamente e cosa portiamo negli organi della scuola.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="filter-bar">
+        <div class="chips" role="group" aria-label="Filtra per competenza">
+          <button class="chip" type="button" data-cat="all" aria-pressed="true">Tutte <span class="n">5</span></button>
+          <button class="chip" type="button" data-cat="dirette" aria-pressed="false">Dipende da noi <span class="n"></span></button>
+          <button class="chip" type="button" data-cat="risorse" aria-pressed="false">Con permessi <span class="n"></span></button>
+          <button class="chip" type="button" data-cat="organi" aria-pressed="false">Altri organi <span class="n"></span></button>
+        </div>
+        <p class="filter-explain" id="filter-explain" aria-live="polite"><b>Tutte le proposte.</b> Ognuna dice subito se dipende da noi, se servono risorse o permessi, o se decide un altro organo.</p>
       </div>
 
-      <!-- 2. TITOLO PAGINA -->
-      <header class="page-hero">
-        <div class="page-eyebrow">Programma Elettorale · Carducci-Dante</div>
-        <h1>Proposte per Categoria</h1>
-        <p>Divise nelle 3 categorie di competenza: nessuna promessa irrealistica, ma chiarezza su cosa facciamo direttamente e cosa portiamo negli organi scolastici.</p>
-      </header>
+      <section class="stack" id="cards-list" aria-label="Elenco proposte">
 
-      <!-- 3. SISTEMA DELLE 3 CATEGORIE -->
-      <section class="cat-panel" aria-label="Le 3 categorie di proposte">
-        <div class="cat-panel-top">
-          <span class="cat-panel-title">Filtra per le 3 Categorie</span>
-          <button class="btn-toggle-all" id="btn-toggle-all" onclick="toggleAllDetails()">Espandi dettagli</button>
-        </div>
-
-        <div class="cat-grid" role="tablist">
-          <button class="cat-btn all active" onclick="filterByCat('all', this)">
-            <span class="c-indicator"></span>
-            <span class="cat-btn-text">
-              <strong>Tutte le proposte</strong>
-              <span>5 schede complete</span>
-            </span>
-          </button>
-
-          <button class="cat-btn dir" onclick="filterByCat('dirette', this)">
-            <span class="c-indicator"></span>
-            <span class="cat-btn-text">
-              <strong>Realizzabili direttamente</strong>
-              <span>Dipendono da noi</span>
-            </span>
-          </button>
-
-          <button class="cat-btn ris" onclick="filterByCat('risorse', this)">
-            <span class="c-indicator"></span>
-            <span class="cat-btn-text">
-              <strong>Con risorse o permessi</strong>
-              <span>Spazi, aule, attività</span>
-            </span>
-          </button>
-
-          <button class="cat-btn org" onclick="filterByCat('organi', this)">
-            <span class="c-indicator"></span>
-            <span class="cat-btn-text">
-              <strong>Di altri organi</strong>
-              <span>Dirigenza / Docenti / CdI</span>
-            </span>
-          </button>
-        </div>
-
-        <div class="cat-explain" id="cat-explain">
-          <strong>Principio di trasparenza:</strong> ogni proposta indica subito se dipende direttamente dalla rappresentanza, se richiede risorse/autorizzazioni o se spetta ad altri organi scolastici.
-        </div>
-      </section>
-
-      <!-- 5. SINTESI DEL METODO -->
-      <section class="method-card">
-        <h3>⚙️ Il Metodo in 5 Passaggi</h3>
-        <div class="steps-mini">
-          <div><b>1. Raccolta:</b> segnalazioni e proposte divise per argomento.</div>
-          <div><b>2. Verifica:</b> chiarire il problema e capire a chi compete intervenire.</div>
-          <div><b>3. Preparazione:</b> proposta precisa con obiettivo, passaggi e limiti.</div>
-          <div><b>4. Presentazione:</b> invio all'organo competente con data registrata.</div>
-          <div><b>5. Aggiornamento:</b> pubblicazione della risposta e dello stato reale.</div>
-        </div>
-      </section>
-
-      <!-- 6. CANDIDATO -->
-      <footer class="candidate">
-        <img class="c-avatar" src="assets/dario-avatar.webp" width="60" height="60" alt="Dario Nitu" loading="lazy" />
-        <div>
-          <strong>Dario Nitu</strong>
-          <span>Candidato Rappresentante d'Istituto<br>ISIS Carducci-Dante · Trieste</span>
-        </div>
-        <img class="c-mascot" src="assets/civetta-360.webp" width="54" height="72" alt="Mascotte Civetta Carducci-Dante" />
-      </footer>
-    </aside>
-
-    <!-- COLONNA DESTRA (ELENCO SCHEDE PROPOSTE) -->
-    <div class="proposte-content">
-      <!-- 4. ELENCO CARD CON SISTEMA DI PREVIEW + ESPANSIONE -->
-      <section class="cards-stack" id="cards-list">
-
-        <!-- Card 1: Di competenza di altri organi -->
-        <article class="prop-card" id="p1" data-cat="organi">
+        <!-- 1 -->
+        <article class="card prop organi" id="p1" data-cat="organi">
           <div class="prop-top">
-            <div class="prop-num-wrap">
-              <span class="prop-num">1</span>
-              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-            </div>
-            <span class="prop-area-tag">Libri Digitali</span>
+            <div class="left"><span class="prop-num">1</span><span class="tag organi">Altri organi</span></div>
+            <span class="area">Libri digitali</span>
           </div>
-
-          <h2>Regole chiare sull'utilizzo di libri digitali e tablet in classe</h2>
-
-          <div class="preview-grid">
-            <div class="preview-row">
-              <span class="preview-label">Problema</span>
-              <p>Incertezze e divieti diversi da classe a classe per chi usa regolarmente i libri di testo in digitale.</p>
-            </div>
-            <div class="preview-row highlight">
-              <span class="preview-label">Impegno</span>
-              <p>Depositare una proposta scritta formale entro <strong>15 giorni dalla nomina</strong> e pubblicare ogni passaggio.</p>
-            </div>
+          <h2>Regole chiare su libri digitali e tablet in classe</h2>
+          <dl class="pi">
+            <div><dt>Problema</dt><dd>Indicazioni diverse da classe a classe per chi usa i libri di testo in digitale.</dd></div>
+            <div class="go"><dt>Il nostro impegno</dt><dd>Preparare una proposta scritta e presentarla entro <strong>15 giorni dalla nomina</strong>, poi pubblicare ogni passaggio.</dd></div>
+          </dl>
+          <div class="meta">
+            <span><b>Decide:</b> dirigenza / organi scolastici</span>
+            <span><b>Il nostro ruolo:</b> raccogliere, presentare, riferire</span>
           </div>
-
-          <div class="prop-meta">
-            <span><strong>Organo:</strong> Dirigenza / Collegio Docenti</span>
-            <span><strong>Tempi lista:</strong> Entro 15 giorni</span>
-          </div>
-
-          <details class="prop-details" open>
-            <summary class="prop-expand-btn">
-              <span>Azioni previste nella proposta</span>
-              <span class="exp-icon">4 punti ▾</span>
-            </summary>
-            <ul class="prop-list">
-              <li>Definire indicazioni chiare e condivise sull'uso di libri digitali e dispositivi durante le attività didattiche</li>
-              <li>Evitare divieti arbitrari o differenze di trattamento tra classi per chi utilizza i testi in formato digitale</li>
-              <li>Raccogliere prima le esigenze degli studenti e depositare la proposta scritta entro 15 giorni dalla nomina</li>
-              <li>Comunicare pubblicamente la data di presentazione e tutti gli aggiornamenti sull'esito</li>
+          <details class="more">
+            <summary><span>Cosa faremo, nel dettaglio</span><span class="k">4 punti <svg class="i"><use href="#i-down"/></svg></span></summary>
+            <ul class="acts">
+              <li>Raccogliere prima le esigenze degli studenti</li>
+              <li>Definire indicazioni chiare su quando e come usare materiali digitali e dispositivi</li>
+              <li>Evitare differenze di trattamento tra classi</li>
+              <li>Comunicare la data di presentazione e l'esito</li>
             </ul>
+            <p class="commit">I 15 giorni riguardano la presentazione della proposta, non la sua approvazione.</p>
           </details>
+        
+          <div class="prop-foot">
+            <a class="lnk" href="/registro#p1"><svg class="i"><use href="#i-reg"/></svg>Stato nel registro</a>
+            <button class="lnk" type="button" data-share data-hash="p1"><svg class="i"><use href="#i-share"/></svg>Condividi</button>
+          </div>
         </article>
 
-        <!-- Card 2: Di competenza di altri organi -->
-        <article class="prop-card" id="p2" data-cat="organi">
+        <!-- 2 -->
+        <article class="card prop organi" id="p2" data-cat="organi">
           <div class="prop-top">
-            <div class="prop-num-wrap">
-              <span class="prop-num">2</span>
-              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-            </div>
-            <span class="prop-area-tag">Didattica</span>
+            <div class="left"><span class="prop-num">2</span><span class="tag organi">Altri organi</span></div>
+            <span class="area">Didattica</span>
           </div>
-
-          <h2>Chiarezza sui criteri di valutazione e organizzazione verifiche</h2>
-
-          <div class="preview-grid">
-            <div class="preview-row">
-              <span class="preview-label">Problema</span>
-              <p>Concentrazioni eccessive di verifiche nella stessa settimana e criteri di valutazione non sempre esplicitati.</p>
-            </div>
-            <div class="preview-row highlight">
-              <span class="preview-label">Impegno</span>
-              <p>Raccogliere le segnalazioni delle classi e portarle nelle sedi corrette per favorire griglie chiare e coordinamento.</p>
-            </div>
+          <h2>Criteri di valutazione chiari e verifiche coordinate</h2>
+          <dl class="pi">
+            <div><dt>Problema</dt><dd>Verifiche concentrate nella stessa settimana e criteri di valutazione non sempre espliciti.</dd></div>
+            <div class="go"><dt>Il nostro impegno</dt><dd>Raccogliere le segnalazioni delle classi e portarle nelle sedi giuste per favorire griglie chiare e coordinamento.</dd></div>
+          </dl>
+          <div class="meta">
+            <span><b>Decide:</b> docenti / dirigenza</span>
+            <span><b>Il nostro ruolo:</b> raccolta e confronto</span>
           </div>
-
-          <div class="prop-meta">
-            <span><strong>Organo:</strong> Presidenza / Docenti / Coordinatori</span>
-            <span><strong>Ruolo:</strong> Raccolta e confronto</span>
-          </div>
-
-          <details class="prop-details">
-            <summary class="prop-expand-btn">
-              <span>Azioni previste nella proposta</span>
-              <span class="exp-icon">3 punti ▾</span>
-            </summary>
-            <ul class="prop-list">
-              <li>Promuovere una comunicazione più chiara sui criteri di valutazione e sulle griglie utilizzate</li>
-              <li>Aprire un confronto sull'organizzazione delle verifiche e sul carico settimanale quando è possibile coordinarle</li>
-              <li>Raccogliere segnalazioni su comunicazioni poco chiare o differenze organizzative tra classi e sottoporle agli organi competenti</li>
+          <details class="more">
+            <summary><span>Cosa faremo, nel dettaglio</span><span class="k">3 punti <svg class="i"><use href="#i-down"/></svg></span></summary>
+            <ul class="acts">
+              <li>Favorire una comunicazione più chiara su criteri e griglie</li>
+              <li>Aprire un confronto sul carico di verifiche, dove è possibile coordinarle</li>
+              <li>Segnalare differenze organizzative tra classi agli organi competenti</li>
             </ul>
+            <p class="commit">Non mettiamo in discussione l'autonomia didattica dei docenti: puntiamo a chiarezza e coordinamento.</p>
           </details>
+        
+          <div class="prop-foot">
+            <a class="lnk" href="/registro#p2"><svg class="i"><use href="#i-reg"/></svg>Stato nel registro</a>
+            <button class="lnk" type="button" data-share data-hash="p2"><svg class="i"><use href="#i-share"/></svg>Condividi</button>
+          </div>
         </article>
 
-        <!-- Card 3: Di competenza di altri organi -->
-        <article class="prop-card" id="p3" data-cat="organi">
+        <!-- 3 -->
+        <article class="card prop organi" id="p3" data-cat="organi">
           <div class="prop-top">
-            <div class="prop-num-wrap">
-              <span class="prop-num">3</span>
-              <span class="prop-cat-pill">🔵 Di competenza di altri organi</span>
-            </div>
-            <span class="prop-area-tag">Assemblee &amp; Regole</span>
+            <div class="left"><span class="prop-num">3</span><span class="tag organi">Altri organi</span></div>
+            <span class="area">Assemblee e regole</span>
           </div>
-
-          <h2>Assemblee effettive, regole chiare e provvedimenti proporzionati</h2>
-
-          <div class="preview-grid">
-            <div class="preview-row">
-              <span class="preview-label">Problema</span>
-              <p>Assemblee a volte poco incisive o reazioni sproporzionate per episodi di lieve entità.</p>
-            </div>
-            <div class="preview-row highlight">
-              <span class="preview-label">Impegno</span>
-              <p>Chiedere provvedimenti sempre motivati e proporzionati e portare i problemi ricorrenti ai referenti competenti.</p>
-            </div>
+          <h2>Assemblee che funzionano, provvedimenti proporzionati</h2>
+          <dl class="pi">
+            <div><dt>Problema</dt><dd>Assemblee poco incisive e reazioni sproporzionate per episodi di lieve entità.</dd></div>
+            <div class="go"><dt>Il nostro impegno</dt><dd>Chiedere provvedimenti chiari, motivati e proporzionati e portare i problemi ricorrenti ai referenti.</dd></div>
+          </dl>
+          <div class="meta">
+            <span><b>Decide:</b> dirigenza / referenti d'istituto</span>
+            <span><b>Il nostro ruolo:</b> tutela e dialogo</span>
           </div>
-
-          <div class="prop-meta">
-            <span><strong>Organo:</strong> Dirigenza / Referenti d'Istituto</span>
-            <span><strong>Ruolo:</strong> Tutela e dialogo</span>
-          </div>
-
-          <details class="prop-details">
-            <summary class="prop-expand-btn">
-              <span>Azioni previste nella proposta</span>
-              <span class="exp-icon">4 punti ▾</span>
-            </summary>
-            <ul class="prop-list">
-              <li>Rendere le assemblee momenti effettivi di confronto su temi sentiti dagli studenti</li>
-              <li>Chiedere che eventuali provvedimenti siano sempre chiari, motivati e proporzionati alla situazione</li>
-              <li>Evitare che episodi di lieve entità diventino occasione per minacce o reazioni sproporzionate</li>
-              <li>Raccogliere i problemi ricorrenti nella gestione delle assemblee e sottoporli ai referenti competenti</li>
+          <details class="more">
+            <summary><span>Cosa faremo, nel dettaglio</span><span class="k">4 punti <svg class="i"><use href="#i-down"/></svg></span></summary>
+            <ul class="acts">
+              <li>Rendere le assemblee momenti reali di confronto</li>
+              <li>Chiedere che i provvedimenti siano chiari e motivati</li>
+              <li>Evitare che una risata o una distrazione diventi occasione di minacce</li>
+              <li>Promuovere dialogo e responsabilità reciproca, senza scontri personali</li>
             </ul>
           </details>
+        
+          <div class="prop-foot">
+            <a class="lnk" href="/registro#p3"><svg class="i"><use href="#i-reg"/></svg>Stato nel registro</a>
+            <button class="lnk" type="button" data-share data-hash="p3"><svg class="i"><use href="#i-share"/></svg>Condividi</button>
+          </div>
         </article>
 
-        <!-- Card 4: Con risorse o autorizzazioni -->
-        <article class="prop-card gold" id="p4" data-cat="risorse">
+        <!-- 4 -->
+        <article class="card prop risorse" id="p4" data-cat="risorse">
           <div class="prop-top">
-            <div class="prop-num-wrap">
-              <span class="prop-num">4</span>
-              <span class="prop-cat-pill">🟡 Con risorse o autorizzazioni</span>
-            </div>
-            <span class="prop-area-tag">Aule, Spazi &amp; Attività</span>
+            <div class="left"><span class="prop-num">4</span><span class="tag risorse">Con permessi</span></div>
+            <span class="area">Aule, spazi, attività</span>
           </div>
-
           <h2>Aule, riscaldamento, bagni, spazi comuni e iniziative</h2>
-
-          <div class="preview-grid">
-            <div class="preview-row">
-              <span class="preview-label">Problema</span>
-              <p>Criticità ricorrenti su riscaldamento, bagni e attrezzature, o proposte di attività che richiedono spazi e permessi.</p>
-            </div>
-            <div class="preview-row highlight">
-              <span class="preview-label">Impegno</span>
-              <p>Mappare le criticità per piano/aula, verificare prima spazi, costi e autorizzazioni e pubblicare data di invio ed esito.</p>
-            </div>
+          <dl class="pi">
+            <div><dt>Problema</dt><dd>Criticità ricorrenti su temperature, servizi e attrezzature; attività che richiedono spazi e autorizzazioni.</dd></div>
+            <div class="go"><dt>Il nostro impegno</dt><dd>Segnalare in modo ordinato, verificare costi e permessi e comunicare data di invio e risposta.</dd></div>
+          </dl>
+          <div class="meta">
+            <span><b>Decide:</b> scuola / manutenzione / ente competente</span>
+            <span><b>Il nostro ruolo:</b> richiesta e verifica</span>
           </div>
-
-          <div class="prop-meta">
-            <span><strong>Organo:</strong> Scuola / Ufficio Tecnico / Ente</span>
-            <span><strong>Ruolo:</strong> Richiesta + verifica</span>
-          </div>
-
-          <details class="prop-details">
-            <summary class="prop-expand-btn">
-              <span>Azioni previste nella proposta</span>
-              <span class="exp-icon">5 punti ▾</span>
-            </summary>
-            <ul class="prop-list">
-              <li>Monitoraggio ordinato per piano e aula delle temperature e dei problemi di riscaldamento ricorrenti</li>
-              <li>Segnalazione puntuale delle criticità e delle condizioni dei servizi igienici</li>
-              <li>Verifica dello stato degli spazi comuni, delle attrezzature e dei materiali utilizzati dagli studenti</li>
-              <li>Per attività culturali, incontri e laboratori: verificare prima disponibilità di spazi, risorse e autorizzazioni</li>
-              <li>Comunicazione trasparente dell'avvenuta segnalazione e della risposta o intervento ricevuto</li>
+          <details class="more">
+            <summary><span>Cosa faremo, nel dettaglio</span><span class="k">4 punti <svg class="i"><use href="#i-down"/></svg></span></summary>
+            <ul class="acts">
+              <li>Raccogliere le segnalazioni su temperature e condizioni delle aule</li>
+              <li>Segnalare criticità nei servizi igienici e negli spazi comuni</li>
+              <li>Per attività culturali, incontri e laboratori: verificare prima spazi, personale e autorizzazioni</li>
+              <li>Comunicare che la segnalazione è partita e quale risposta è arrivata</li>
             </ul>
+            <p class="commit">Non promettiamo tempi di intervento: dipendono da manutenzione, risorse e autorizzazioni.</p>
           </details>
+        
+          <div class="prop-foot">
+            <a class="lnk" href="/registro#p4"><svg class="i"><use href="#i-reg"/></svg>Stato nel registro</a>
+            <button class="lnk" type="button" data-share data-hash="p4"><svg class="i"><use href="#i-share"/></svg>Condividi</button>
+          </div>
         </article>
 
-        <!-- Card 5: Realizzabili direttamente -->
-        <article class="prop-card green" id="p5" data-cat="dirette">
+        <!-- 5 -->
+        <article class="card prop dirette" id="p5" data-cat="dirette">
           <div class="prop-top">
-            <div class="prop-num-wrap">
-              <span class="prop-num">5</span>
-              <span class="prop-cat-pill">🟢 Realizzabili direttamente</span>
-            </div>
-            <span class="prop-area-tag">Comitato &amp; Trasparenza</span>
+            <div class="left"><span class="prop-num">5</span><span class="tag dirette">Dipende da noi</span></div>
+            <span class="area">Comitato e trasparenza</span>
           </div>
-
-          <h2>Comitato Studentesco attivo, registro proposte e resoconti</h2>
-
-          <div class="preview-grid">
-            <div class="preview-row">
-              <span class="preview-label">Problema</span>
-              <p>Proposte annunciate in campagna elettorale di cui poi non si conosce più stato, data di invio o risposta.</p>
-            </div>
-            <div class="preview-row highlight">
-              <span class="preview-label">Impegno</span>
-              <p>Dipende al <strong>100% da noi</strong>: incontri periodici con i rappresentanti di classe, registro pubblico delle proposte e resoconti.</p>
-            </div>
+          <h2>Comitato studentesco attivo, registro delle proposte, resoconti</h2>
+          <dl class="pi">
+            <div><dt>Problema</dt><dd>Proposte annunciate in campagna di cui poi non si sa più nulla: a che punto sono, a chi sono arrivate, che risposta hanno avuto.</dd></div>
+            <div class="go"><dt>Il nostro impegno</dt><dd>Incontri periodici con i rappresentanti di classe, un registro aggiornato di ogni proposta e resoconti pubblici.</dd></div>
+          </dl>
+          <div class="meta">
+            <span><b>Decide:</b> la rappresentanza studentesca</span>
+            <span><b>Il nostro ruolo:</b> agire direttamente</span>
           </div>
-
-          <div class="prop-meta">
-            <span><strong>Competenza:</strong> Rappresentanza Studentesca</span>
-            <span><strong>Ruolo:</strong> Azione diretta</span>
-          </div>
-
-          <details class="prop-details">
-            <summary class="prop-expand-btn">
-              <span>Azioni previste nella proposta</span>
-              <span class="exp-icon">4 punti ▾</span>
-            </summary>
-            <ul class="prop-list">
-              <li>Organizzare momenti periodici di confronto con i rappresentanti di classe e raccogliere segnalazioni ordinate</li>
-              <li>Tenere un registro aggiornato per ogni proposta (problema, organo competente, data di invio, risposta e stato)</li>
-              <li>Consultare gli studenti sui temi che incidono sulla vita scolastica, evitando consultazioni puramente formali</li>
-              <li>Pubblicare resoconti sintetici degli incontri, verifica di metà anno e relazione finale sull'attività svolta</li>
+          <details class="more">
+            <summary><span>Cosa faremo, nel dettaglio</span><span class="k">4 punti <svg class="i"><use href="#i-down"/></svg></span></summary>
+            <ul class="acts">
+              <li>Momenti periodici di confronto con i rappresentanti di classe</li>
+              <li>Registro di ogni proposta: problema, organo, data, risposta, stato</li>
+              <li>Consultare gli studenti davvero, non solo per forma</li>
+              <li>Resoconti sintetici, verifica di metà anno e relazione finale</li>
             </ul>
           </details>
+        
+          <div class="prop-foot">
+            <a class="lnk" href="/registro#p5"><svg class="i"><use href="#i-reg"/></svg>Stato nel registro</a>
+            <button class="lnk" type="button" data-share data-hash="p5"><svg class="i"><use href="#i-share"/></svg>Condividi</button>
+          </div>
         </article>
-
       </section>
-    </div>
+      <p class="empty" id="empty">Nessuna proposta in questa categoria.</p>
 
+      <section class="section no-print" aria-labelledby="h-reg">
+        <div class="eyebrow">Trasparenza</div>
+        <h2 id="h-reg">Come segui ogni proposta</h2>
+        <p class="lead">Un registro aggiornato mostra lo stato reale di ciascuna. Scorri per vedere i 7 stati.</p>
+        <div class="status-scroll" tabindex="0" aria-label="Stati del registro">
+          <div class="card status"><i>1</i><b>Da esaminare</b><span>Segnalazione ricevuta, da verificare.</span></div>
+          <div class="card status"><i>2</i><b>In preparazione</b><span>Raccogliamo elementi e scriviamo la proposta.</span></div>
+          <div class="card status"><i>3</i><b>Presentata</b><span>Trasmessa all'organo competente, con la data.</span></div>
+          <div class="card status"><i>4</i><b>In valutazione</b><span>In attesa di esame o di una risposta.</span></div>
+          <div class="card status ok"><i>5</i><b>Approvata</b><span>Il soggetto competente l'ha accolta.</span></div>
+          <div class="card status ok"><i>6</i><b>Realizzata</b><span>L'intervento è stato davvero attuato.</span></div>
+          <div class="card status"><i>—</i><b>Non accolta</b><span>Non accolta: riportiamo la motivazione, se c'è.</span></div>
+        </div>
+        <div class="btn-stack" style="margin-top:12px">
+          <a class="btn btn-navy" href="/registro"><svg class="i"><use href="#i-reg"/></svg><span class="grow">Apri il registro</span><svg class="i"><use href="#i-arrow"/></svg></a>
+        </div>
+      </section>
+
+      <section class="section no-print" aria-label="Scheda stampabile">
+        <div class="share-card">
+          <h2>La scheda in una pagina</h2>
+          <p>Priorità, metodo e impegni, pronti da stampare o salvare in PDF e portare in classe.</p>
+          <button class="btn btn-outline" type="button" data-print><svg class="i"><use href="#i-print"/></svg><span class="grow">Stampa o salva in PDF</span></button>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Segnala un problema">
+        <div class="cta-band">
+          <h2>Manca qualcosa?</h2>
+          <p>Dimmi cosa non funziona nella tua classe o nella scuola. Le segnalazioni sono il punto di partenza di ogni proposta.</p>
+          <a class="btn btn-navy" href="/segnala"><svg class="i"><use href="#i-flag"/></svg><span class="grow">Fai una segnalazione</span><svg class="i"><use href="#i-arrow"/></svg></a>
+        </div>
+      </section>
+
+      <footer class="site-footer">Dalla Nostra Parte · Dario Nitu · ISIS Carducci-Dante, Trieste</footer>
+    </div>
   </main>
 
-  <!-- NAVIGAZIONE IN BASSO (SOLO MOBILE) -->
-  <nav class="dock" aria-label="Navigazione rapida">
-    <a href="index.html">
-      <svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home
-    </a>
-    <a href="proposte.html" class="active">
-      <svg class="i" aria-hidden="true"><use href="#i-cards"/></svg>Proposte
-    </a>
-    <a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener" class="ext js-ig-link">
-      <svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram
-    </a>
-  </nav>
+  <nav class="dock" aria-label="Navigazione rapida"><a href="/"><svg class="i"><use href="#i-home"/></svg>Home</a><a href="/proposte" aria-current="page"><svg class="i"><use href="#i-list"/></svg>Proposte</a><a href="/registro"><svg class="i"><use href="#i-reg"/></svg>Registro</a><a href="/segnala"><svg class="i"><use href="#i-flag"/></svg>Segnala</a><a href="https://www.instagram.com/dallanostraparte.cd/" target="_blank" rel="noopener"><svg class="i"><use href="#i-ig"/></svg>Instagram</a></nav>
 
-  <script>
-    const CONFIG = {
-      instagramHandle: "@dallanostraparte.cd",
-      instagramUrl: "https://www.instagram.com/dallanostraparte.cd/"
-    };
-
-    document.querySelectorAll(".js-ig-link").forEach(a => a.href = CONFIG.instagramUrl);
-
-    const EXPLAIN_TEXT = {
-      all: "<strong>Principio di trasparenza:</strong> ogni proposta indica subito se dipende direttamente dalla rappresentanza, se richiede risorse/autorizzazioni o se spetta ad altri organi scolastici.",
-      dirette: "🟢 <strong>Realizzabili direttamente:</strong> dipendono interamente dalla rappresentanza (confronto con i rappresentanti di classe, raccolta segnalazioni, registro proposte e resoconti). <em>Ruolo: agire direttamente e rendere conto del lavoro svolto.</em>",
-      risorse: "🟡 <strong>Con risorse o autorizzazioni:</strong> riguardano aule, servizi, spazi comuni, materiali e attività studentesche. <em>Ruolo: preparare una richiesta concreta, verificare costi e permessi, seguire l'esito.</em>",
-      organi: "🔵 <strong>Di competenza di altri organi:</strong> riguardano regole didattiche, decisioni dei docenti, Dirigenza o Consiglio d'Istituto. <em>Ruolo: raccogliere le esigenze, presentarle formalmente nelle sedi corrette e riferire le risposte.</em>"
-    };
-
-    function filterByCat(cat, btn) {
-      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-      if (btn) btn.classList.add("active");
-
-      document.getElementById("cat-explain").innerHTML = EXPLAIN_TEXT[cat] || EXPLAIN_TEXT.all;
-
-      document.querySelectorAll(".prop-card").forEach(card => {
-        const match = (cat === "all" || card.dataset.cat === cat);
-        card.style.display = match ? "flex" : "none";
-        if (cat !== "all" && match) {
-          const det = card.querySelector("details.prop-details");
-          if (det) det.open = true;
-        }
-      });
-    }
-
-    let allExpanded = false;
-    function toggleAllDetails() {
-      allExpanded = !allExpanded;
-      document.querySelectorAll("details.prop-details").forEach(d => d.open = allExpanded);
-      document.getElementById("btn-toggle-all").textContent = allExpanded ? "Comprimi dettagli" : "Espandi dettagli";
-    }
-  </script>
+  <script src="/assets/app.js" defer></script>
 </body>
 </html>
