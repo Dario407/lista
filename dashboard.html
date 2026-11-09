@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>War Room · DALLA NOSTRA PARTE | Dashboard Elettorale Antigravity</title>
-  <link rel="icon" type="image/svg+xml" href="../01_Brand_e_Logo/Ufficiale/Logo_Ufficiale_Chiaro.svg">
+  <title>War Room & Statistiche · DALLA NOSTRA PARTE | Antigravity AI Engine</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
   <style>
     :root {
       --bg: #07090e;
@@ -72,11 +72,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
     .brand-title {
       font-size: 1.15rem;
@@ -384,7 +379,7 @@
     }
     table.comp-table td {
       padding: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 254, 0.04);
       color: var(--text-muted);
     }
     table.comp-table tr.highlight-row {
@@ -614,7 +609,7 @@
           DALLA NOSTRA PARTE
           <span class="badge-sub">Elezioni 2026</span>
         </div>
-        <div class="brand-subtitle">Candidato Dario Nitu (3BES) · ISIS Carducci-Dante Trieste</div>
+        <div class="brand-subtitle">Candidato Dario Nitu (3BES) · ISIS Carducci-Dante Trieste (1.500 Studenti)</div>
       </div>
     </div>
 
@@ -627,8 +622,8 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         Aggiorna Metriche
       </button>
-      <a href="https://github.com/Dario407/sito-sonnet" target="_blank" class="btn">
-        Sito Web Ufficiale
+      <a href="index.html" class="btn">
+        Torna al Sito
       </a>
     </div>
   </header>
@@ -655,9 +650,9 @@
       <div class="countdown-card">
         <div class="countdown-info">
           <h4>Quoziente Elettorale Seggio</h4>
-          <p>Soglia Sicura Elezione</p>
+          <p>Soglia Sicura Elezione (su 1.500)</p>
         </div>
-        <div class="countdown-timer" style="color: var(--emerald);" id="kpi-target-votes">185 Voti</div>
+        <div class="countdown-timer" style="color: var(--emerald);" id="kpi-target-votes">230 Voti</div>
       </div>
     </div>
 
@@ -666,7 +661,7 @@
       <div class="kpi-card" style="--card-accent: var(--cyan);">
         <div class="kpi-header">
           <span class="kpi-label">Visualizzazioni Totali</span>
-          <span class="kpi-badge highlight" id="badge-saturation">+51.4% Scuola</span>
+          <span class="kpi-badge highlight" id="badge-saturation">+41.1% Scuola</span>
         </div>
         <div class="kpi-value" id="val-views">617</div>
         <div class="kpi-sub">
@@ -692,7 +687,7 @@
         </div>
         <div class="kpi-value" id="val-multiplier">36.3x</div>
         <div class="kpi-sub">
-          Rapporto tra visualizzazioni e follower (17)
+          Rapporto tra visualizzazioni (617) e follower (17)
         </div>
       </div>
 
@@ -860,38 +855,38 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               Simulatore Elezione Consiglio
             </div>
-            <div class="panel-subtitle">Modello matematico Carducci (~650) + Dante (~550)</div>
+            <div class="panel-subtitle">Modello reale Carducci-Dante (1.500 Studenti)</div>
           </div>
         </div>
 
         <div class="slider-wrap">
           <div class="slider-label">
-            <span>Affluenza Studenti Stimata</span>
-            <strong id="sim-affluenza-val" style="color:var(--cyan); font-family:var(--font-mono);">65% (780 votanti)</strong>
+            <span>Affluenza Studenti Stimata (Totale 1.500)</span>
+            <strong id="sim-affluenza-val" style="color:var(--cyan); font-family:var(--font-mono);">65% (975 votanti)</strong>
           </div>
           <input type="range" id="sim-affluenza" min="40" max="90" value="65" oninput="updateSimulator()">
         </div>
 
         <div class="slider-wrap">
           <div class="slider-label">
-            <span>Conversione Visualizzazioni in Voti</span>
-            <strong id="sim-conv-val" style="color:var(--emerald); font-family:var(--font-mono);">32% (197 voti)</strong>
+            <span>Conversione Visualizzazioni in Voti (su 617)</span>
+            <strong id="sim-conv-val" style="color:var(--emerald); font-family:var(--font-mono);">38% (234 voti)</strong>
           </div>
-          <input type="range" id="sim-conv" min="10" max="70" value="32" oninput="updateSimulator()">
+          <input type="range" id="sim-conv" min="10" max="70" value="38" oninput="updateSimulator()">
         </div>
 
         <div style="background: rgba(0, 0, 0, 0.4); border-radius: 10px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
           <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
             <span style="font-size:0.8rem; color:var(--text-muted);">Soglia Quoziente 1° Seggio:</span>
-            <span style="font-family:var(--font-mono); font-weight:700; color:#fff;" id="sim-threshold">185 voti</span>
+            <span style="font-family:var(--font-mono); font-weight:700; color:#fff;" id="sim-threshold">230 voti</span>
           </div>
           <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
             <span style="font-size:0.8rem; color:var(--text-muted);">Voti Stimati Dario:</span>
-            <span style="font-family:var(--font-mono); font-weight:800; font-size:1.15rem; color:var(--emerald);" id="sim-voti-dario">197 voti</span>
+            <span style="font-family:var(--font-mono); font-weight:800; font-size:1.15rem; color:var(--emerald);" id="sim-voti-dario">234 voti</span>
           </div>
           
           <div class="bar-track" style="height: 12px; margin-bottom: 8px;">
-            <div id="sim-progress-bar" class="bar-fill" style="width: 106%; background: linear-gradient(90deg, #10b981, #00e5ff);"></div>
+            <div id="sim-progress-bar" class="bar-fill" style="width: 102%; background: linear-gradient(90deg, #10b981, #00e5ff);"></div>
           </div>
           <div id="sim-result-badge" style="text-align:center; font-size:0.8rem; font-weight:700; color:var(--emerald);">
             ✓ SEGGIO IN CONSIGLIO MATEMATICAMENTE CONQUISTATO
@@ -899,16 +894,16 @@
         </div>
 
         <div style="margin-top: 10px;">
-          <h4 style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Presidio per Sede</h4>
+          <h4 style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Presidio Demografico per Sede</h4>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <div style="background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">
-              <div style="font-size:0.75rem; color:var(--text-muted);">Sede Carducci</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:1.05rem;">~650 Studenti</div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Sede Carducci (Centrale)</div>
+              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:1.05rem;">~850 Studenti (57%)</div>
               <div style="font-size:0.7rem; color:var(--cyan);">Classico + Linguistico</div>
             </div>
             <div style="background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">
-              <div style="font-size:0.75rem; color:var(--text-muted);">Sede Dante</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:1.05rem;">~550 Studenti</div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Sede Dante (Succursale)</div>
+              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:1.05rem;">~650 Studenti (43%)</div>
               <div style="font-size:0.7rem; color:var(--purple);">Scientifico + Applicate</div>
             </div>
           </div>
@@ -926,7 +921,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M12 16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z"></path><path d="M4.93 4.93a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1-2.83 2.83L4.93 7.76a2 2 0 0 1 0-2.83z"></path><path d="M16.24 16.24a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1-2.83 2.83l-1.41-1.41a2 2 0 0 1 0-2.83z"></path><path d="M2 12a2 2 0 0 1 2-2h2a2 2 0 0 1 0 4H4a2 2 0 0 1-2-2z"></path><path d="M18 12a2 2 0 0 1 2-2h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-2-2z"></path></svg>
             Antigravity Tactical Intelligence · Briefing Strategico
           </div>
-          <div class="panel-subtitle">Analisi algoritmica automatica basata sui dati social e la demografia scolastica</div>
+          <div class="panel-subtitle">Analisi algoritmica automatica basata sui dati social e la demografia scolastica (1.500 studenti)</div>
         </div>
         <span class="pill pill-cyan">Live Strategy Model v2.4</span>
       </div>
@@ -948,10 +943,10 @@
           <div class="ai-card-item" style="border-left: 3px solid var(--cyan);">
             <div class="ai-card-title">
               <span class="pill pill-cyan">Vantaggio Tattico</span>
-              La civetta è già riconosciuta da oltre metà scuola (51.4%)
+              Penetrazione del 41.1% su 1.500 studenti con 1 solo post
             </div>
             <div class="ai-card-desc">
-              All'Assemblea d'Istituto Dario non parlerà come un estraneo: 617 studenti hanno già visto i colori e il nome della lista. Basterà aprire il discorso con: <em>"Avrete sicuramente visto il post sulle verifiche a sorpresa che sta girando in questi giorni..."</em> per agganciare istantaneamente l'aula.
+              Su 1.500 studenti reali del polo Carducci-Dante, 617 visualizzazioni significano che oltre <strong>4 studenti su 10</strong> hanno già visto il logo della Civetta e il brand della lista. All'Assemblea d'Istituto Dario parte con un riconoscimento di massa già acquisito.
             </div>
           </div>
 
@@ -974,7 +969,7 @@
           </div>
           <div class="copilot-messages" id="chat-messages">
             <div class="msg msg-ai">
-              Ciao Dario! Ho analizzato il tuo screenshot: <strong>617 visualizzazioni</strong> con l'<strong>84.9% di non-follower</strong> è un exploit virale clamoroso. Vuoi che prepariamo il copy per una storia di follow-up o la scaletta per l'Assemblea?
+              Ciao Dario! Ho ricalcolato tutto sui dati reali dei <strong>1.500 studenti</strong> del Carducci-Dante: <strong>617 visualizzazioni</strong> significa che hai già raggiunto il <strong>41.1%</strong> dell'intero istituto! Vuoi che prepariamo una storia mirata per la sede Dante o la scaletta per l'Assemblea?
             </div>
           </div>
           <div class="copilot-input-wrap">
@@ -1026,11 +1021,11 @@
 
   <!-- Footer -->
   <footer>
-    DALLA NOSTRA PARTE · Dashboard Elettorale Intelligente connessa ad Antigravity · ISIS Carducci-Dante Trieste · Dati riservati al Comitato Elettorale
+    DALLA NOSTRA PARTE · Dashboard Elettorale Intelligente connessa ad Antigravity · ISIS Carducci-Dante Trieste (1.500 Studenti) · Dati riservati al Comitato Elettorale
   </footer>
 
   <script>
-    // State Store
+    // State Store (Aggiornato a 1.500 studenti reali)
     let state = {
       views: 617,
       home: 520,
@@ -1039,13 +1034,12 @@
       nonFollowerPct: 84.9,
       interactions: 29,
       followers: 17,
-      totalStudents: 1200
+      totalStudents: 1500
     };
 
     // Countdowns
     function updateTimers() {
       const now = new Date();
-      // Assembly Target: 18 Nov 2026 09:00 (or 11 Nov)
       const assemblyDate = new Date('2026-11-18T09:00:00');
       const electionDate = new Date('2026-11-30T08:00:00');
 
@@ -1070,7 +1064,7 @@
       const conv = parseInt(document.getElementById('sim-conv').value, 10);
 
       const totalVoters = Math.round(state.totalStudents * (affluenza / 100));
-      // With 4 seats and Hare/d'Hondt quota, quota is approx totalVoters / (seats + 0.2)
+      // Con 4 seggi al Carducci-Dante, quoziente è approx totalVoters / 4.2
       const quota = Math.round(totalVoters / 4.2);
       const darioVotes = Math.round(state.views * (conv / 100));
 
@@ -1078,6 +1072,7 @@
       document.getElementById('sim-conv-val').innerText = `${conv}% (${darioVotes} voti)`;
       document.getElementById('sim-threshold').innerText = `${quota} voti`;
       document.getElementById('sim-voti-dario').innerText = `${darioVotes} voti`;
+      document.getElementById('kpi-target-votes').innerText = `${quota} Voti`;
 
       const progressPct = Math.min(Math.round((darioVotes / quota) * 100), 200);
       const bar = document.getElementById('sim-progress-bar');
@@ -1138,9 +1133,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(state)
-      }).catch(() => {
-        // standalone mode fallback
-      });
+      }).catch(() => {});
     }
 
     // Co-Pilot Chat
@@ -1178,7 +1171,6 @@
         container.scrollTop = container.scrollHeight;
       })
       .catch(() => {
-        // Smart offline fallback responses
         setTimeout(() => {
           let reply = "";
           const lower = text.toLowerCase();
@@ -1187,15 +1179,18 @@
               1. <em>Sfondo nero minimal</em> con sticker sondaggio: <code>"Verifiche a sorpresa o comunicate 24h prima: ti è mai successo?"</code> [SÌ, UN INCUBO / NO]<br>
               2. Seconda storia: <em>"Il punto 4.1 del nostro programma propone il divieto formale in Consiglio d'Istituto. Leggi il piano completo su dallanostraparte.it"</em> con sticker link.<br>
               3. Questo converte le 81 persone che già guardano il profilo in interazioni dirette!`;
+          } else if (lower.includes('dante')) {
+            reply = `<strong>Strategia Sede Dante (via Diaz - ~650 studenti):</strong><br>
+              Il Dante rappresenta il 43% dell'intero elettorato. La maggior parte delle liste storiche è focalizzata solo sul Carducci. Facciamo un post dedicato alla sede Dante: laboratori scientifici, spazi studio e orari. Chi vince al Dante vince le elezioni.`;
           } else if (lower.includes('assemblea') || lower.includes('discorso')) {
             reply = `<strong>Gancio per l'Assemblea:</strong><br>
               Non iniziare con <em>"Ciao a tutti mi chiamo Dario"</em> come fanno le altre liste. Inizia così:<br>
               <em>"Alzi la mano chi nelle ultime due settimane si è trovato con tre verifiche nello stesso giorno o una verifica a sorpresa fissata dalla sera alla mattina. [Pausa]. Oltre 600 di voi hanno già visto il nostro post. Non siamo qui per promettere tornei di calcetto irrealizzabili: siamo qui per far votare al Consiglio una delibera che vi tuteli da subito."</em>`;
           } else if (lower.includes('alleanza') || lower.includes('competitor') || lower.includes('next')) {
             reply = `<strong>Analisi Competitor:</strong><br>
-              Alleanza ha 255 follower ma il loro reach è fermo a circa 180 visualizzazioni (zero espansione sui nuovi primini o sulla sede Dante). Tu hai raggiunto 524 non-follower con 1 solo post! Non attaccarli sul piano personale: attaccali sui contenuti. Loro fanno politica da corridoio, noi portiamo delibere concrete basate sullo Statuto degli Studenti.`;
+              Alleanza ha 255 follower ma il loro reach è fermo a circa 180 visualizzazioni (zero espansione sui nuovi primini o sulla sede Dante). Tu hai raggiunto 524 non-follower con 1 solo post! Non attaccarli sul piano personale: attaccali sui contenuti.`;
           } else {
-            reply = `Ricevuto! Con <strong>${state.views} visualizzazioni</strong> attuali e il <strong>${state.nonFollowerPct}%</strong> di reach organico, abbiamo un'onda favorevole. Per qualsiasi modifica al sito web, grafiche o testi, chiedimi pure qui o nella console di Antigravity!`;
+            reply = `Ricevuto! Con <strong>${state.views} visualizzazioni</strong> attuali (pari al <strong>41.1%</strong> dei 1.500 studenti del polo scolastico), abbiamo l'onda giusta. Chiedimi pure qualsiasi copy o simulazione!`;
           }
           aiDiv.innerHTML = reply;
           container.scrollTop = container.scrollHeight;
