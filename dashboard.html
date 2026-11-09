@@ -631,7 +631,7 @@
           DALLA NOSTRA PARTE
           <span class="badge-sub">Elezioni 2026</span>
         </div>
-        <div class="brand-subtitle">Candidato Dario Nitu (3BES) · ISIS Carducci-Dante Trieste (1.500 Studenti)</div>
+        <div class="brand-subtitle">Candidato Dario Nitu (3BES) · ISIS Carducci-Dante Trieste · Cod. Meccanografico TSIS00400D (1.500 Studenti)</div>
       </div>
     </div>
 
@@ -655,24 +655,31 @@
 
     <!-- Countdown Strip -->
     <div class="countdown-strip">
+      <div class="countdown-card" style="border-left: 3px solid var(--amber);">
+        <div class="countdown-info">
+          <h4>Scadenza Liste (Circolare 179)</h4>
+          <p>Consegna Segreteria (ore 12:00)</p>
+        </div>
+        <div class="countdown-timer" style="color: var(--amber);" id="timer-liste">--:--:--</div>
+      </div>
       <div class="countdown-card">
         <div class="countdown-info">
-          <h4>Assemblea d'Istituto</h4>
-          <p>Discorso Ufficiale Dario</p>
+          <h4>Richiesta Assemblea</h4>
+          <p>Istanza alla DS entro 19 Nov</p>
         </div>
         <div class="countdown-timer" id="timer-assembly">--:--:--</div>
       </div>
-      <div class="countdown-card">
+      <div class="countdown-card" style="border-left: 3px solid var(--cyan);">
         <div class="countdown-info">
-          <h4>Election Day</h4>
-          <p>30 Novembre 2026 · Voto</p>
+          <h4>Election Day (Seggi)</h4>
+          <p>30 Novembre 2026 · Ore 08:00</p>
         </div>
         <div class="countdown-timer" id="timer-election">--:--:--</div>
       </div>
-      <div class="countdown-card">
+      <div class="countdown-card" style="border-left: 3px solid var(--emerald);">
         <div class="countdown-info">
           <h4>Quoziente Elettorale Seggio</h4>
-          <p>Soglia Sicura Elezione (su 1.500)</p>
+          <p>Soglia Sicura su 1.500 Studenti</p>
         </div>
         <div class="countdown-timer" style="color: var(--emerald);" id="kpi-target-votes">230 Voti</div>
       </div>
@@ -1081,11 +1088,12 @@
     // Countdowns
     function updateTimers() {
       const now = new Date();
-      const assemblyDate = new Date('2026-11-18T09:00:00');
+      const listeDeadline = new Date('2026-11-14T12:00:00');
+      const assemblyReqDate = new Date('2026-11-19T13:00:00');
       const electionDate = new Date('2026-11-30T08:00:00');
 
       function formatDiff(diff) {
-        if (diff <= 0) return "IN CORSO";
+        if (diff <= 0) return "SCADUTO";
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const mins = Math.floor((diff / 1000 / 60) % 60);
@@ -1093,7 +1101,8 @@
         return `${days}g ${hours}h ${mins}m ${secs}s`;
       }
 
-      document.getElementById('timer-assembly').innerText = formatDiff(assemblyDate - now);
+      document.getElementById('timer-liste').innerText = formatDiff(listeDeadline - now);
+      document.getElementById('timer-assembly').innerText = formatDiff(assemblyReqDate - now);
       document.getElementById('timer-election').innerText = formatDiff(electionDate - now);
     }
     setInterval(updateTimers, 1000);
