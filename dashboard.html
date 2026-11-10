@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>War Room & Statistiche · DALLA NOSTRA PARTE | Antigravity AI Engine</title>
+  <title>War Room Command Center v3.0 · DALLA NOSTRA PARTE | Antigravity AI</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
   <style>
     :root {
-      --bg: #07090e;
-      --card-bg: rgba(15, 20, 32, 0.85);
+      --bg: #05070b;
+      --bg-elevated: #0b0f19;
+      --card-bg: rgba(14, 19, 31, 0.88);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover: rgba(255, 255, 255, 0.14);
-      --text-main: #f1f5f9;
+      --card-hover: rgba(0, 229, 255, 0.28);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --cyan: #00e5ff;
-      --cyan-glow: rgba(0, 229, 255, 0.25);
+      --cyan-glow: rgba(0, 229, 255, 0.18);
       --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --emerald-glow: rgba(16, 185, 129, 0.18);
       --purple: #a855f7;
-      --purple-glow: rgba(168, 85, 247, 0.25);
+      --purple-glow: rgba(168, 85, 247, 0.18);
       --amber: #f59e0b;
-      --amber-glow: rgba(245, 158, 11, 0.25);
+      --amber-glow: rgba(245, 158, 11, 0.18);
       --rose: #f43f5e;
-      --font-main: 'Montserrat', system-ui, -apple-system, sans-serif;
+      --rose-glow: rgba(244, 63, 94, 0.18);
+      --blue: #3b82f6;
+      --font-main: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       background-color: var(--bg);
       color: var(--text-main);
@@ -36,25 +40,29 @@
       display: flex;
       flex-direction: column;
       background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 229, 255, 0.12), transparent),
-        radial-gradient(ellipse 60% 40% at 90% 80%, rgba(168, 85, 247, 0.08), transparent);
+        radial-gradient(ellipse 80% 45% at 50% -15%, rgba(0, 229, 255, 0.12), transparent),
+        radial-gradient(ellipse 55% 40% at 95% 85%, rgba(168, 85, 247, 0.08), transparent),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
       background-attachment: fixed;
+      line-height: 1.5;
     }
 
-    /* Header */
+    /* Top Command Header */
     header {
-      padding: 18px 32px;
+      padding: 14px 28px;
       border-bottom: 1px solid var(--card-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
-      backdrop-filter: blur(16px);
+      gap: 14px;
+      backdrop-filter: blur(20px);
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(7, 9, 14, 0.85);
+      z-index: 200;
+      background: rgba(5, 7, 11, 0.9);
     }
 
     .brand-wrap {
@@ -63,38 +71,49 @@
       gap: 14px;
     }
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: #111827;
-      border: 1px solid var(--cyan-glow);
-      padding: 4px;
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .brand-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: 0.02em;
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
     .badge-sub {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-family: var(--font-mono);
       background: rgba(0, 229, 255, 0.12);
       color: var(--cyan);
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 2px 8px;
+      border-radius: 5px;
       border: 1px solid rgba(0, 229, 255, 0.3);
       text-transform: uppercase;
       font-weight: 700;
     }
+    .badge-role {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--emerald);
+      padding: 2px 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-weight: 700;
+    }
     .brand-subtitle {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
@@ -102,7 +121,7 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -110,13 +129,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-family: var(--font-mono);
       background: rgba(16, 185, 129, 0.1);
       color: var(--emerald);
       border: 1px solid rgba(16, 185, 129, 0.3);
       padding: 6px 12px;
       border-radius: 20px;
+      font-weight: 600;
     }
     .ai-pulse {
       width: 8px;
@@ -134,12 +154,12 @@
 
     .btn {
       font-family: var(--font-main);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
       border: 1px solid var(--card-border);
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--text-main);
       cursor: pointer;
       transition: all 0.2s ease;
@@ -149,81 +169,165 @@
       text-decoration: none;
     }
     .btn:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.1);
       border-color: var(--text-muted);
     }
     .btn-primary {
       background: linear-gradient(135deg, #00b4db, #0083b0);
       color: white;
       border: none;
-      box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
+      box-shadow: 0 4px 14px rgba(0, 180, 219, 0.3);
     }
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(0, 180, 219, 0.5);
     }
+    .btn-purple {
+      background: linear-gradient(135deg, #9333ea, #6366f1);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 14px rgba(147, 51, 234, 0.3);
+    }
 
-    /* Container */
+    /* Navigation Tabs Bar */
+    .command-nav {
+      background: rgba(11, 15, 25, 0.92);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0 28px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      position: sticky;
+      top: 71px;
+      z-index: 190;
+      backdrop-filter: blur(12px);
+    }
+    .tab-btn {
+      padding: 13px 16px;
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .tab-btn.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+      background: rgba(0, 229, 255, 0.05);
+    }
+    .tab-count {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    /* Main Container */
     .container {
-      max-width: 1400px;
+      max-width: 1440px;
       width: 100%;
       margin: 0 auto;
-      padding: 24px 28px 60px;
+      padding: 24px 28px 64px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
+    }
+
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .section-block.hidden {
+      display: none;
+    }
+
+    .section-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .section-banner h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-banner p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
 
     /* Countdown Strip */
     .countdown-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
     }
     .countdown-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 16px 20px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       backdrop-filter: blur(8px);
     }
     .countdown-info h4 {
-      font-size: 0.85rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .countdown-info p {
-      font-size: 1.15rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #fff;
     }
     .countdown-timer {
       font-family: var(--font-mono);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--cyan);
       text-shadow: 0 0 12px var(--cyan-glow);
     }
 
-    /* KPI Highlights Grid */
+    /* KPI Grid */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
     }
     .kpi-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 20px;
+      padding: 18px 20px;
       position: relative;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
     }
     .kpi-card:hover {
       border-color: var(--card-hover);
@@ -232,9 +336,7 @@
     .kpi-card::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--card-accent, var(--cyan)), transparent);
     }
@@ -242,19 +344,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .kpi-label {
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.75rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
     .kpi-badge {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-family: var(--font-mono);
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 20px;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.06);
@@ -266,7 +368,7 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
     .kpi-value {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 800;
       font-family: var(--font-mono);
       color: #fff;
@@ -274,175 +376,269 @@
       margin-bottom: 6px;
     }
     .kpi-sub {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-dim);
     }
-    .kpi-sub strong {
-      color: var(--text-muted);
-    }
+    .kpi-sub strong { color: var(--text-muted); }
 
-    /* Main Analytics Section */
-    .analytics-grid {
+    /* Grids & Panels */
+    .grid-2 {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1.4fr 1fr;
       gap: 20px;
     }
+    .grid-equal {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
     @media (max-width: 1024px) {
-      .analytics-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-equal { grid-template-columns: 1fr; }
     }
 
     .panel {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
     }
     .panel-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 14px;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 12px;
+      gap: 12px;
     }
     .panel-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #fff;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .panel-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      margin-top: 2px;
     }
 
-    /* Breakdown Visuals */
-    .breakdown-bars {
+    /* Pills & Tags */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pill-cyan { background: rgba(0, 229, 255, 0.14); color: var(--cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.14); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-purple { background: rgba(168, 85, 247, 0.14); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.14); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pill-rose { background: rgba(244, 63, 94, 0.14); color: var(--rose); border: 1px solid rgba(244, 63, 94, 0.3); }
+
+    /* Progress Bars */
+    .breakdown-bars { display: flex; flex-direction: column; gap: 12px; }
+    .bar-item { display: flex; flex-direction: column; gap: 5px; }
+    .bar-label-wrap { display: flex; justify-content: space-between; font-size: 0.8rem; }
+    .bar-name { color: var(--text-muted); font-weight: 600; }
+    .bar-value { font-family: var(--font-mono); font-weight: 700; color: #fff; }
+    .bar-track {
+      height: 9px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .bar-fill { height: 100%; border-radius: 10px; transition: width 0.8s ease; }
+
+    /* Proposal Deep-Dive Cards */
+    .proposal-card {
+      background: rgba(15, 22, 36, 0.92);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+    .proposal-card.flagship {
+      border-color: rgba(0, 229, 255, 0.4);
+      background: linear-gradient(160deg, rgba(0, 229, 255, 0.06), rgba(15, 22, 36, 0.95) 45%);
+    }
+    .prop-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .prop-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .prop-box {
+      background: rgba(0, 0, 0, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 9px;
+      padding: 12px 14px;
+      font-size: 0.81rem;
+      color: var(--text-muted);
+    }
+    .prop-box strong { color: #fff; }
+    .pitch-box {
+      background: rgba(16, 185, 129, 0.07);
+      border-left: 3px solid var(--emerald);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.81rem;
+      color: #e2e8f0;
+    }
+
+    /* Competitor Dossier Cards */
+    .dossier-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
-    .bar-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .bar-label-wrap {
+    .dossier-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 12px;
     }
-    .bar-name {
-      color: var(--text-muted);
-      font-weight: 600;
+    .dossier-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 9px;
+      text-align: center;
     }
-    .bar-value {
+    .dossier-stat-val {
       font-family: var(--font-mono);
-      font-weight: 700;
+      font-size: 1.05rem;
+      font-weight: 800;
       color: #fff;
     }
-    .bar-track {
-      height: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
+    .dossier-stat-lbl {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
     }
-    .bar-fill {
-      height: 100%;
-      border-radius: 10px;
-      transition: width 1s ease-in-out;
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.79rem;
+    }
+    .post-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: var(--text-muted);
+    }
+    .post-item strong { color: #fff; }
+    .counter-box {
+      background: rgba(244, 63, 94, 0.08);
+      border-left: 3px solid var(--rose);
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.8rem;
+      color: #fecdd3;
     }
 
-    /* Competitor Comparison Table */
-    .table-wrap {
-      overflow-x: auto;
-    }
+    /* Tables */
+    .table-wrap { overflow-x: auto; }
     table.comp-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
     }
     table.comp-table th {
       text-align: left;
       padding: 10px 12px;
       color: var(--text-dim);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.04em;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     table.comp-table td {
-      padding: 12px;
-      border-bottom: 1px solid rgba(255, 255, 254, 0.04);
+      padding: 11px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       color: var(--text-muted);
+      vertical-align: middle;
     }
     table.comp-table tr.highlight-row {
-      background: rgba(0, 229, 255, 0.06);
+      background: rgba(0, 229, 255, 0.07);
     }
     table.comp-table tr.highlight-row td {
       color: #fff;
       font-weight: 600;
     }
-    .pill {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-    }
-    .pill-cyan { background: rgba(0, 229, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
-    .pill-green { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
-    .pill-purple { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
 
-    /* Antigravity AI Command Hub */
-    .ai-hub-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 1024px) {
-      .ai-hub-grid { grid-template-columns: 1fr; }
-    }
-
-    .ai-card-item {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+    /* Copy Script Cards */
+    .copy-card {
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 12px;
-    }
-    .ai-card-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
+      padding: 14px;
       display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .copy-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
     }
-    .ai-card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .copy-text {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 12px;
+      border-radius: 7px;
+      white-space: pre-wrap;
+      line-height: 1.45;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Terminal Chat Co-Pilot */
+    /* Co-Pilot Terminal */
     .copilot-box {
       display: flex;
       flex-direction: column;
-      height: 480px;
-      background: rgba(10, 14, 22, 0.95);
-      border: 1px solid rgba(0, 229, 255, 0.2);
+      height: 500px;
+      background: rgba(8, 12, 20, 0.96);
+      border: 1px solid rgba(0, 229, 255, 0.25);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     }
     .copilot-header {
       padding: 12px 16px;
@@ -451,9 +647,32 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-family: var(--font-mono);
       color: var(--cyan);
+    }
+    .quick-prompts {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .chip-btn {
+      font-size: 0.7rem;
+      font-family: var(--font-main);
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: rgba(0, 229, 255, 0.09);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 229, 255, 0.22);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover {
+      background: rgba(0, 229, 255, 0.2);
     }
     .copilot-messages {
       flex: 1;
@@ -462,13 +681,13 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      font-size: 0.84rem;
+      font-size: 0.83rem;
     }
     .msg {
-      max-width: 88%;
+      max-width: 90%;
       padding: 10px 14px;
       border-radius: 10px;
-      line-height: 1.45;
+      line-height: 1.5;
     }
     .msg-ai {
       align-self: flex-start;
@@ -491,28 +710,24 @@
     .copilot-input {
       flex: 1;
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
       padding: 10px 14px;
       color: #fff;
       font-family: var(--font-main);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       outline: none;
     }
-    .copilot-input:focus {
-      border-color: var(--cyan);
-    }
+    .copilot-input:focus { border-color: var(--cyan); }
 
-    /* Simulator Controls */
-    .slider-wrap {
-      margin: 12px 0 18px;
-    }
+    /* Sliders */
+    .slider-wrap { margin: 8px 0 14px; }
     .slider-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     input[type=range] {
       width: 100%;
@@ -527,8 +742,8 @@
     .modal-overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
       backdrop-filter: blur(8px);
       z-index: 1000;
       align-items: center;
@@ -537,52 +752,39 @@
     }
     .modal {
       background: #0f1623;
-      border: 1px solid rgba(0, 229, 255, 0.3);
+      border: 1px solid rgba(0, 229, 255, 0.35);
       border-radius: 16px;
       width: 100%;
-      max-width: 520px;
+      max-width: 500px;
       padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     }
-    .modal-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
     .form-group label {
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
     }
     .form-input {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 8px;
-      padding: 10px 14px;
+      padding: 9px 12px;
       color: #fff;
       font-family: var(--font-mono);
-      font-size: 0.95rem;
-    }
-    .form-input:focus {
-      outline: none;
-      border-color: var(--cyan);
+      font-size: 0.92rem;
     }
 
     footer {
       margin-top: auto;
       border-top: 1px solid var(--card-border);
-      padding: 20px 32px;
+      padding: 20px 28px;
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-dim);
     }
   </style>
@@ -590,24 +792,24 @@
 <body>
 
   <!-- PIN GATE OVERLAY -->
-  <div id="pin-gate" style="position: fixed; inset: 0; background: #07090e; z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 24px;">
-    <div style="background: rgba(15, 20, 32, 0.95); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; padding: 36px 32px; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);">
+  <div id="pin-gate" style="position: fixed; inset: 0; background: #05070b; z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 24px;">
+    <div style="background: rgba(14, 19, 31, 0.96); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 20px; padding: 36px 32px; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);">
       <div style="width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 14px; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); display: flex; align-items: center; justify-content: center;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
-      <h2 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px;">WAR ROOM RISERVATA</h2>
-      <p style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 24px;">Dati strategici riservati al comitato elettorale di Dario Nitu · ISIS Carducci-Dante</p>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 6px;">WAR ROOM RISERVATA</h2>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 22px;">Cabina di regia strategica di Dario Nitu · ISIS Carducci-Dante (TSIS00400D)</p>
       
-      <div style="margin-bottom: 20px;">
-        <input type="password" id="pin-input" maxlength="6" placeholder="Inserisci PIN (es: 2026)" style="width: 100%; padding: 14px; font-size: 1.2rem; text-align: center; font-family: var(--font-mono); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; color: #fff; outline: none; letter-spacing: 4px;" onkeydown="if(event.key==='Enter') checkPin()">
-        <div id="pin-error" style="color: #f43f5e; font-size: 0.78rem; font-weight: 600; margin-top: 8px; display: none;">PIN non corretto. Accesso negato.</div>
+      <div style="margin-bottom: 18px;">
+        <input type="password" id="pin-input" maxlength="6" placeholder="PIN (es: 2026)" style="width: 100%; padding: 13px; font-size: 1.15rem; text-align: center; font-family: var(--font-mono); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; color: #fff; outline: none; letter-spacing: 4px;" onkeydown="if(event.key==='Enter') checkPin()">
+        <div id="pin-error" style="color: #f43f5e; font-size: 0.76rem; font-weight: 600; margin-top: 8px; display: none;">PIN non corretto. Accesso negato.</div>
       </div>
 
-      <button onclick="checkPin()" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.95rem; justify-content: center;">
-        Sblocca War Room
+      <button onclick="checkPin()" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.92rem; justify-content: center;">
+        Sblocca Plancia di Comando
       </button>
 
-      <a href="/" style="display: block; margin-top: 18px; font-size: 0.8rem; color: #64748b; text-decoration: none;">← Torna al sito pubblico</a>
+      <a href="/" style="display: block; margin-top: 16px; font-size: 0.78rem; color: #64748b; text-decoration: none;">← Torna al sito pubblico</a>
     </div>
   </div>
 
@@ -615,9 +817,8 @@
   <header>
     <div class="brand-wrap">
       <div class="brand-logo">
-        <svg viewBox="0 0 100 100" width="32" height="32" fill="none">
+        <svg viewBox="0 0 100 100" width="30" height="30" fill="none">
           <circle cx="50" cy="50" r="44" stroke="#00E5FF" stroke-width="4"/>
-          <!-- Owl silhouette -->
           <circle cx="38" cy="42" r="12" fill="#00E5FF"/>
           <circle cx="62" cy="42" r="12" fill="#00E5FF"/>
           <circle cx="38" cy="42" r="5" fill="#07090E"/>
@@ -628,407 +829,872 @@
       </div>
       <div>
         <div class="brand-title">
-          DALLA NOSTRA PARTE
-          <span class="badge-sub">Elezioni 2026</span>
+          DALLA NOSTRA PARTE · WAR ROOM v3.0
+          <span class="badge-sub">TSIS00400D</span>
+          <span class="badge-role">1° Eletto 3BES (Prot. 14128)</span>
         </div>
-        <div class="brand-subtitle">Candidato Dario Nitu (3BES) · ISIS Carducci-Dante Trieste · Cod. Meccanografico TSIS00400D (1.500 Studenti)</div>
+        <div class="brand-subtitle">Candidato Dario Sebastian Nitu · 71 Classi · 4 Plessi · 1.505 Studenti · 142 Rappresentanti</div>
       </div>
     </div>
 
     <div class="header-actions">
       <div class="ai-indicator">
         <span class="ai-pulse"></span>
-        ANTIGRAVITY AI ENGINE COLLEGATO
+        ANTIGRAVITY ENGINE v3.0
       </div>
       <button class="btn btn-primary" onclick="openModal()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        Aggiorna Metriche
+        📊 Aggiorna Insight IG
+      </button>
+      <button class="btn btn-purple" onclick="triggerApify()">
+        🔄 Avvia Scraper Apify
       </button>
       <a href="/" class="btn">
-        Torna al Sito
+        🌐 Sito Pubblico
       </a>
+      <button class="btn" onclick="lockWarRoom()" title="Blocca War Room con PIN">
+        🔒
+      </button>
     </div>
   </header>
 
-  <!-- Container -->
+  <!-- Navigation Tabs -->
+  <nav class="command-nav" aria-label="Sezioni War Room">
+    <button class="tab-btn active" onclick="switchTab('all', this)">
+      ⚡ Plancia Globale <span class="tab-count">TUTTO</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-kpi', this)">
+      📊 Metriche & Simulatore <span class="tab-count">617 Views</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-proposte', this)">
+      ⚖️ Analisi Proposte & Leggi <span class="tab-count">5 Punti</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-competitor', this)">
+      🕵️ Dossier Altre Liste <span class="tab-count">5 Liste</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-instagram', this)">
+      📸 Hub Instagram & Copy <span class="tab-count">4 Script</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-sito', this)">
+      🌐 Sito Web & Atti Nuvola <span class="tab-count">4 Pagine</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('sec-ai', this)">
+      🤖 Antigravity Co-Pilot
+    </button>
+  </nav>
+
+  <!-- Main Content -->
   <div class="container">
 
-    <!-- Countdown Strip -->
-    <div class="countdown-strip">
-      <div class="countdown-card" style="border-left: 3px solid var(--amber);">
-        <div class="countdown-info">
-          <h4>Scadenza Liste (Circolare 179)</h4>
-          <p>Consegna Segreteria (ore 12:00)</p>
-        </div>
-        <div class="countdown-timer" style="color: var(--amber);" id="timer-liste">--:--:--</div>
-      </div>
-      <div class="countdown-card">
-        <div class="countdown-info">
-          <h4>Richiesta Assemblea</h4>
-          <p>Istanza alla DS entro 19 Nov</p>
-        </div>
-        <div class="countdown-timer" id="timer-assembly">--:--:--</div>
-      </div>
-      <div class="countdown-card" style="border-left: 3px solid var(--cyan);">
-        <div class="countdown-info">
-          <h4>Election Day (Seggi)</h4>
-          <p>30 Novembre 2026 · Ore 08:00</p>
-        </div>
-        <div class="countdown-timer" id="timer-election">--:--:--</div>
-      </div>
-      <div class="countdown-card" style="border-left: 3px solid var(--emerald);">
-        <div class="countdown-info">
-          <h4>Quoziente Elettorale Seggio</h4>
-          <p>Soglia Sicura su 1.500 Studenti</p>
-        </div>
-        <div class="countdown-timer" style="color: var(--emerald);" id="kpi-target-votes">230 Voti</div>
-      </div>
-    </div>
-
-    <!-- KPI Grid -->
-    <div class="kpi-grid">
-      <div class="kpi-card" style="--card-accent: var(--cyan);">
-        <div class="kpi-header">
-          <span class="kpi-label">Visualizzazioni Totali</span>
-          <span class="kpi-badge highlight" id="badge-saturation">+41.1% Scuola</span>
-        </div>
-        <div class="kpi-value" id="val-views">617</div>
-        <div class="kpi-sub">
-          <strong>520</strong> da Home · <strong>81</strong> click profilo · <strong>16</strong> altro
-        </div>
-      </div>
-
-      <div class="kpi-card" style="--card-accent: var(--purple);">
-        <div class="kpi-header">
-          <span class="kpi-label">Tasso Viralità Non-Follower</span>
-          <span class="kpi-badge highlight" style="color: var(--purple); background: var(--purple-glow);">Organico</span>
-        </div>
-        <div class="kpi-value" id="val-nonfollower">84.9%</div>
-        <div class="kpi-sub">
-          <strong>524</strong> studenti raggiunti fuori dai follower diretti
-        </div>
-      </div>
-
-      <div class="kpi-card" style="--card-accent: var(--emerald);">
-        <div class="kpi-header">
-          <span class="kpi-label">Viral Multiplier</span>
-          <span class="kpi-badge highlight" style="color: var(--emerald); background: var(--emerald-glow);">Top Performance</span>
-        </div>
-        <div class="kpi-value" id="val-multiplier">36.3x</div>
-        <div class="kpi-sub">
-          Rapporto tra visualizzazioni (617) e follower (17)
-        </div>
-      </div>
-
-      <div class="kpi-card" style="--card-accent: var(--amber);">
-        <div class="kpi-header">
-          <span class="kpi-label">Interazioni & Conversioni</span>
-          <span class="kpi-badge">63.3% Non-Follower</span>
-        </div>
-        <div class="kpi-value" id="val-interactions">29</div>
-        <div class="kpi-sub">
-          <strong>81</strong> visite al profilo da convertire in follower/voti
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Analytics Section -->
-    <div class="analytics-grid">
+    <!-- ==================== SEZIONE 1: KPI, SIMULATORE & PLESSI ==================== -->
+    <div id="sec-kpi" class="section-block">
       
-      <!-- Left: Audience Breakdown & Competitors -->
+      <!-- Countdown Strip -->
+      <div class="countdown-strip">
+        <div class="countdown-card" style="border-left: 3px solid var(--amber);">
+          <div class="countdown-info">
+            <h4>Scadenza Liste (Circolare 179)</h4>
+            <p>Sabato 14 Nov · Ore 12:00</p>
+          </div>
+          <div class="countdown-timer" style="color: var(--amber);" id="timer-liste">--:--:--</div>
+        </div>
+        <div class="countdown-card" style="border-left: 3px solid var(--purple);">
+          <div class="countdown-info">
+            <h4>Richiesta Assemblea</h4>
+            <p>Istanza alla DS entro 19 Nov</p>
+          </div>
+          <div class="countdown-timer" style="color: var(--purple);" id="timer-assembly">--:--:--</div>
+        </div>
+        <div class="countdown-card" style="border-left: 3px solid var(--cyan);">
+          <div class="countdown-info">
+            <h4>Election Day (Seggi)</h4>
+            <p>29-30 Novembre 2026</p>
+          </div>
+          <div class="countdown-timer" id="timer-election">--:--:--</div>
+        </div>
+        <div class="countdown-card" style="border-left: 3px solid var(--emerald);">
+          <div class="countdown-info">
+            <h4>Quoziente 1° Seggio</h4>
+            <p>Soglia Sicura su 1.505 Studenti</p>
+          </div>
+          <div class="countdown-timer" style="color: var(--emerald);" id="kpi-target-votes">230 Voti</div>
+        </div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card" style="--card-accent: var(--cyan);">
+          <div class="kpi-header">
+            <span class="kpi-label">Visualizzazioni Post</span>
+            <span class="kpi-badge highlight" id="badge-saturation">41.1% dell'Istituto</span>
+          </div>
+          <div class="kpi-value" id="val-views">617</div>
+          <div class="kpi-sub">
+            <strong>520</strong> da Home · <strong>81</strong> click profilo · <strong>16</strong> altro
+          </div>
+        </div>
+
+        <div class="kpi-card" style="--card-accent: var(--purple);">
+          <div class="kpi-header">
+            <span class="kpi-label">Scoperta Non-Follower</span>
+            <span class="kpi-badge highlight" style="color: var(--purple); background: var(--purple-glow);">Fuori Bolla</span>
+          </div>
+          <div class="kpi-value" id="val-nonfollower">84.9%</div>
+          <div class="kpi-sub">
+            <strong>524</strong> studenti raggiunti fuori dai follower
+          </div>
+        </div>
+
+        <div class="kpi-card" style="--card-accent: var(--emerald);">
+          <div class="kpi-header">
+            <span class="kpi-label">Viral Multiplier</span>
+            <span class="kpi-badge highlight">1° tra le Liste</span>
+          </div>
+          <div class="kpi-value" id="val-multiplier">36.3x</div>
+          <div class="kpi-sub">
+            Views (617) su Follower (<span id="lbl-followers">17</span>) · Alleanza è a 0.7x
+          </div>
+        </div>
+
+        <div class="kpi-card" style="--card-accent: var(--amber);">
+          <div class="kpi-header">
+            <span class="kpi-label">Visite Profilo & Interazioni</span>
+            <span class="kpi-badge" style="color:var(--amber);">13.1% Click Rate</span>
+          </div>
+          <div class="kpi-value"><span id="val-profile-visits">81</span> <small style="font-size:1rem; color:var(--text-muted);">/ <span id="val-interactions">29</span> int.</small></div>
+          <div class="kpi-sub">
+            <strong>63.3%</strong> delle interazioni viene da non-follower
+          </div>
+        </div>
+      </div>
+
+      <!-- Breakdown + Simulator -->
+      <div class="grid-2">
+        <!-- Left: Funnel & Plessi -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">📈 Funnel Instagram & Mappa Logistica dei 4 Plessi (Circolare 23)</div>
+              <div class="panel-subtitle">Incrocio tra copertura algoritmica e distribuzione reale delle 71 classi</div>
+            </div>
+            <span class="pill pill-cyan">Dato Ufficiale Nuvola</span>
+          </div>
+
+          <div class="breakdown-bars">
+            <div class="bar-item">
+              <div class="bar-label-wrap">
+                <span class="bar-name">Feed Home (Spinta Algoritmica Organica)</span>
+                <span class="bar-value">520 views (84.3%)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 84.3%; background: linear-gradient(90deg, #00e5ff, #3b82f6);"></div>
+              </div>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar-label-wrap">
+                <span class="bar-name">Visite al Profilo @listanostraparte_cd (Studenti che vogliono saperne di più)</span>
+                <span class="bar-value">81 visite (13.1%)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 28%; background: linear-gradient(90deg, #a855f7, #6366f1);"></div>
+              </div>
+            </div>
+
+            <div class="bar-item">
+              <div class="bar-label-wrap">
+                <span class="bar-name">Non-Follower Raggiunti vs Follower Attuali</span>
+                <span class="bar-value" style="color: var(--emerald);">524 Non-Follower (84.9%) · 93 Follower (15.1%)</span>
+              </div>
+              <div class="bar-track" style="height: 12px; display: flex;">
+                <div style="width: 84.9%; background: var(--purple); height: 100%;" title="Non-Follower 84.9%"></div>
+                <div style="width: 15.1%; background: var(--cyan); height: 100%;" title="Follower 15.1%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 6px;">
+            <h4 style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px;">
+              Ripartizione Territoriale delle 71 Classi (Circolare N. 23 · 1.505 Studenti)
+            </h4>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div style="background:rgba(0,229,255,0.05); padding:12px; border-radius:10px; border:1px solid rgba(0,229,255,0.3);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:0.78rem; color:var(--cyan); font-weight:800;">1. VIA RISMONDO, 8</span>
+                  <span class="pill pill-cyan">20 Classi · 28%</span>
+                </div>
+                <div style="font-family:var(--font-mono); font-weight:800; color:#fff; font-size:1.05rem; margin: 4px 0;">~425 Studenti</div>
+                <div style="font-size:0.73rem; color:var(--emerald); font-weight:700;">★ Roccaforte Dario: 3BES (Aula 42R, 2°p)</div>
+                <div style="font-size:0.71rem; color:var(--text-muted); margin-top:2px;">Quasi tutto il LES (15 classi) + Scienze Umane (Alfa/Beta/Delta)</div>
+              </div>
+
+              <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.07);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:0.78rem; color:#fff; font-weight:800;">2. VIA GIUSTINIANO, 3</span>
+                  <span class="pill">22 Classi · 31%</span>
+                </div>
+                <div style="font-family:var(--font-mono); font-weight:800; color:#fff; font-size:1.05rem; margin: 4px 0;">~465 Studenti</div>
+                <div style="font-size:0.73rem; color:var(--cyan);">Sede Centrale & Dirigenza</div>
+                <div style="font-size:0.71rem; color:var(--text-muted); margin-top:2px;">Tutto il Classico (9 classi CL) + Musicale (1M-5M) + SU Beta/Gamma</div>
+              </div>
+
+              <div style="background:rgba(168,85,247,0.05); padding:12px; border-radius:10px; border:1px solid rgba(168,85,247,0.25);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:0.78rem; color:var(--purple); font-weight:800;">3. VIA CORSI, 1</span>
+                  <span class="pill pill-purple">22 Classi · 31%</span>
+                </div>
+                <div style="font-family:var(--font-mono); font-weight:800; color:#fff; font-size:1.05rem; margin: 4px 0;">~465 Studenti</div>
+                <div style="font-size:0.73rem; color:var(--amber);">⚠️ Presidio Lista Next (4D LIN, Aula 35C)</div>
+                <div style="font-size:0.71rem; color:var(--text-muted); margin-top:2px;">Tutto il Linguistico (10 classi C/D LIN) + SU Alfa/Delta/Epsilon + 1D ES</div>
+              </div>
+
+              <div style="background:rgba(245,158,11,0.05); padding:12px; border-radius:10px; border:1px solid rgba(245,158,11,0.25);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:0.78rem; color:var(--amber); font-weight:800;">4. VIA BATTISTI, 27</span>
+                  <span class="pill pill-amber">7 Classi · 10%</span>
+                </div>
+                <div style="font-family:var(--font-mono); font-weight:800; color:#fff; font-size:1.05rem; margin: 4px 0;">~150 Studenti</div>
+                <div style="font-size:0.73rem; color:var(--emerald);">Bacino Affine LES (Stesso Indirizzo di Dario)</div>
+                <div style="font-size:0.71rem; color:var(--text-muted); margin-top:2px;">Triennio LES: 3C ES (p.terra), 4A, 4B, 4C, 4D, 5A, 5C ES (3° piano)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Electoral Simulator -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">🧮 Simulatore Matematico Seggi CdI</div>
+              <div class="panel-subtitle">Calcolo D'Hondt su 4 seggi studenteschi (O.M. 215/91)</div>
+            </div>
+            <span class="pill pill-green">4 Seggi</span>
+          </div>
+
+          <div class="slider-wrap">
+            <div class="slider-label">
+              <span>Affluenza alle Urne (su 1.505 Studenti)</span>
+              <strong id="sim-affluenza-val" style="color:var(--cyan); font-family:var(--font-mono);">65% (978 votanti)</strong>
+            </div>
+            <input type="range" id="sim-affluenza" min="40" max="90" value="65" oninput="updateSimulator()">
+          </div>
+
+          <div class="slider-wrap">
+            <div class="slider-label">
+              <span>Conversione Attuale Views (617) in Voti</span>
+              <strong id="sim-conv-val" style="color:var(--emerald); font-family:var(--font-mono);">38% (234 voti)</strong>
+            </div>
+            <input type="range" id="sim-conv" min="10" max="75" value="38" oninput="updateSimulator()">
+          </div>
+
+          <div style="background: rgba(0, 0, 0, 0.45); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.07);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span style="font-size:0.8rem; color:var(--text-muted);">Quoziente Sicurezza 1° Seggio:</span>
+              <span style="font-family:var(--font-mono); font-weight:700; color:#fff;" id="sim-threshold">233 voti</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <span style="font-size:0.8rem; color:var(--text-muted);">Voti Proiettati per Dario:</span>
+              <span style="font-family:var(--font-mono); font-weight:800; font-size:1.2rem; color:var(--emerald);" id="sim-voti-dario">234 voti</span>
+            </div>
+            
+            <div class="bar-track" style="height: 12px; margin-bottom: 10px;">
+              <div id="sim-progress-bar" class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #10b981, #00e5ff);"></div>
+            </div>
+            <div id="sim-result-badge" style="text-align:center; font-size:0.8rem; font-weight:800; color:var(--emerald);">
+              ✓ SEGGIO IN CONSIGLIO MATEMATICAMENTE CONQUISTATO
+            </div>
+          </div>
+
+          <div class="prop-box" style="margin-top: 4px;">
+            <strong>🎯 Piano Voti per Plesso per Superare quota 250 Voti:</strong>
+            <ul style="margin-top: 6px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px;">
+              <li><strong>Via Rismondo (Casa, 20 classi):</strong> target ~110 voti (5-6 voti a classe).</li>
+              <li><strong>Via Battisti (Triennio LES, 7 classi):</strong> target ~40 voti (stesso indirizzo di Dario).</li>
+              <li><strong>Via Giustiniano (22 classi):</strong> target ~55 voti (2-3 voti a classe).</li>
+              <li><strong>Via Corsi (22 classi):</strong> target ~45 voti (2 voti a classe sul tema verifiche).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== SEZIONE 2: ANALISI DETTAGLIATA PROPOSTE ==================== -->
+    <div id="sec-proposte" class="section-block">
+      <div class="section-banner">
+        <div>
+          <h2>⚖️ Analisi Tecnica & Giuridica delle Nostre Proposte</h2>
+          <p>Tutte le basi legali, gli organi competenti, i testi di delibera e i "Pitch da 30 secondi" pronti per l'Assemblea e il confronto</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <a href="programma" target="_blank" class="btn">📄 Apri Pagina Programma</a>
+          <a href="registro" target="_blank" class="btn">🛠️ Apri Cantiere Aperto</a>
+        </div>
+      </div>
+
+      <!-- Punto Principale 4.1 Flagship -->
+      <div class="proposal-card flagship">
+        <div class="prop-meta">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="pill pill-cyan">PUNTO PRINCIPALE #1 · SEZIONE 4.1</span>
+            <span class="pill pill-green">Cavallo di Battaglia Elettorale</span>
+          </div>
+          <span class="pill pill-purple">Competenza: Consiglio d'Istituto + Collegio Docenti</span>
+        </div>
+        <div class="prop-title">Tutela della Valutazione: Stop a Verifiche a Sorpresa e Divieto di Voti/Interrogazioni Punitive</div>
+        
+        <div class="grid-equal">
+          <div class="prop-box">
+            <strong>📚 Blindatura Giuridica Inattaccabile (Fonti Normative):</strong><br>
+            1. <strong>Art. 4, comma 3 dello Statuto degli Studenti (D.P.R. 249/1998):</strong> <em>«Nessuna infrazione disciplinare connessa al comportamento può influire sulla valutazione del profitto.»</em> È illegittimo usare un voto sul registro o un'interrogazione punitiva per punire chiacchiericcio, dimenticanze o ritardi.<br>
+            2. <strong>Art. 1 D.Lgs. 62/2017 & Art. 2 c. 4 Statuto:</strong> La valutazione deve essere formativa, tempestiva e trasparente.<br>
+            3. <strong>Circolare Interna n. 35 (27/09/2026):</strong> Separa nettamente il Regolamento di Disciplina dalla valutazione didattica.
+          </div>
+
+          <div class="prop-box">
+            <strong>📝 I 4 Punti della Delibera che Depositiamo al 1° Consiglio d'Istituto:</strong><br>
+            • <strong>Preavviso obbligatorio di 5 giorni:</strong> ogni verifica scritta deve essere segnata su Nuvola almeno 5 giorni prima (vietati i compiti scritti a sorpresa).<br>
+            • <strong>Limite carico settimanale:</strong> massimo <strong>1 verifica scritta al giorno</strong> e massimo <strong>3 a settimana</strong> per classe.<br>
+            • <strong>Divieto espresso di voti punitivi:</strong> nullità di qualsiasi valutazione sul profitto usata come sanzione disciplinare.<br>
+            • <strong>Griglie preventive:</strong> obbligo di mostrare i criteri di punteggio prima della prova.
+          </div>
+        </div>
+
+        <div class="pitch-box">
+          <strong>🎙️ PITCH DA ASSEMBLEA (30 Secondi):</strong>
+          <em>«Quanti di voi si sono ritrovati con una verifica fissata dalla sera alla mattina o con un'interrogazione usata per punire la classe perché c'era confusione? L'Articolo 4 comma 3 dello Statuto degli Studenti lo vieta per legge: la condotta non può mai diventare un voto di profitto. Noi non facciamo promesse vaghe: al primo Consiglio d'Istituto depositiamo la delibera scritta per imporre 5 giorni di preavviso obbligatorio su Nuvola, massimo una scritta al giorno e zero voti punitivi, aprendo uno sportello del Comitato per difendere ogni classe in cui questa regola viene violata.»</em>
+        </div>
+      </div>
+
+      <!-- Altre 4 Proposte in Griglia -->
+      <div class="grid-equal">
+        
+        <!-- 4.2 Libri Digitali -->
+        <div class="proposal-card">
+          <div class="prop-meta">
+            <span class="pill pill-amber">PROPOSTA 4.2 · SCADENZA 15 GIORNI</span>
+            <span class="pill">Collegio Docenti / CdI</span>
+          </div>
+          <div class="prop-title">Regole Chiare e Uniformi su Libri Digitali e Tablet</div>
+          <div class="prop-box">
+            <strong>Problema:</strong> Oggi ogni docente applica regole diverse: in una lezione puoi usare l'iPad per leggere il libro digitale, nell'ora successiva ti viene vietato costringendoti a portare zaini pesantissimi.<br>
+            <strong>Intervento:</strong> Entro <strong>15 giorni dalla proclamazione</strong>, depositiamo un protocollo scritto per regolamentare l'uso didattico di tablet/ebook durante le lezioni, tutelando anche chi non possiede dispositivi.
+          </div>
+          <div class="pitch-box">
+            <strong>💡 Perché vince:</strong> Impegno con scadenza cronometrata verificabile (15 giorni). Nessun'altra lista ha toccato il tema dei libri digitali.
+          </div>
+        </div>
+
+        <!-- 4.3 Assemblee e Rispetto -->
+        <div class="proposal-card">
+          <div class="prop-meta">
+            <span class="pill pill-purple">PROPOSTA 4.3 · DIRITTI & DIALOGO</span>
+            <span class="pill">Dirigenza & CdI</span>
+          </div>
+          <div class="prop-title">Assemblee Partecipate e Proporzionalità dei Provvedimenti</div>
+          <div class="prop-box">
+            <strong>Problema:</strong> Spesso per episodi minimi (una risata o una distrazione) partono minacce di sospensione o note collettive sproporzionate, e le assemblee faticano a essere organizzate tra i 4 plessi.<br>
+            <strong>Intervento:</strong> Tavolo fisso con la Dirigenza per garantire proporzionalità disciplinare (in linea con la Circolare 35) e organizzazione ordinata delle assemblee senza dipendere da sponsor commerciali.
+          </div>
+          <div class="pitch-box">
+            <strong>💡 Differenza con Lista Next:</strong> Next promette "ospiti e agenzie esterne (Futura)"; noi difendiamo gli studenti dalle sanzioni sproporzionate.
+          </div>
+        </div>
+
+        <!-- 4.4 Spazi, Riscaldamento e Bagni -->
+        <div class="proposal-card">
+          <div class="prop-meta">
+            <span class="pill pill-rose">PROPOSTA 4.4 · I 4 PLESSI</span>
+            <span class="pill">Dirigenza & EDR Trieste</span>
+          </div>
+          <div class="prop-title">Dossier Manutenzione, Riscaldamento e Bagni (Giustiniano, Rismondo, Corsi, Battisti)</div>
+          <div class="prop-box">
+            <strong>Problema:</strong> Termosifoni freddi o bloccati, bagni fuori uso o privi di materiale e finestre difettose nei 4 plessi restano senza risposta perché segnalati solo a voce.<br>
+            <strong>Intervento:</strong> Raccolta mensile tramite i 142 rappresentanti di classe, invio tramite <strong>PEC/Protocollo formale</strong> alla Dirigenza e all'Ente di Decentramento Regionale (EDR) e pubblicazione delle risposte nel <em>Cantiere Aperto</em>.
+          </div>
+          <div class="pitch-box">
+            <strong>💡 Perché è onesta:</strong> Non promettiamo di aggiustare noi le caldaie, ma costringiamo l'ente responsabile a rispondere per iscritto con numero di protocollo.
+          </div>
+        </div>
+
+        <!-- 4.5 Rete 142 Rappresentanti & Cantiere Aperto -->
+        <div class="proposal-card">
+          <div class="prop-meta">
+            <span class="pill pill-green">PROPOSTA 4.5 · REALIZZABILE AL 100% DA SUBITO</span>
+            <span class="pill">Competenza Diretta Studenti</span>
+          </div>
+          <div class="prop-title">Rete dei 142 Rappresentanti di Classe & Registro "Cantiere Aperto"</div>
+          <div class="prop-box">
+            <strong>Problema:</strong> Una volta eletti, i rappresentanti d'istituto spariscono fino all'anno successivo e nessuno sa cosa viene votato in Consiglio d'Istituto.<br>
+            <strong>Intervento:</strong> Riunioni mensili con i 142 eletti (Decreto 14128), sondaggi rapidi prima di ogni Consiglio d'Istituto e aggiornamento live del <strong>Cantiere Aperto</strong> sul sito web (data, stato, risposta di ogni proposta).
+          </div>
+          <div class="pitch-box">
+            <strong>💡 Il nostro vantaggio:</strong> Il registro Cantiere Aperto esiste GIÀ oggi su <code>sito-sonnet.vercel.app/registro</code>. Gli altri promettono, noi l'abbiamo già costruito.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== SEZIONE 3: DOSSIER ALTRE LISTE (COMPETITOR) ==================== -->
+    <div id="sec-competitor" class="section-block">
+      <div class="section-banner">
+        <div>
+          <h2>🕵️ Intelligence & Dossier Altre Liste (Dati Reali Scraping Apify)</h2>
+          <p>Analisi dettagliata di post, like, candidati, proposte e punti deboli di tutti gli avversari all'ISIS Carducci-Dante</p>
+        </div>
+        <button class="btn btn-purple" onclick="triggerApify()">🔄 Aggiorna Dati Apify Ora</button>
+      </div>
+
+      <!-- Matrice di Confronto Diretto -->
       <div class="panel">
         <div class="panel-header">
           <div>
-            <div class="panel-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
-              Composizione del Pubblico & Provenienza
-            </div>
-            <div class="panel-subtitle">Dati reali estratti dagli Insights ufficiali di Instagram</div>
-          </div>
-          <span class="pill pill-cyan">Ultimo Post</span>
-        </div>
-
-        <div class="breakdown-bars">
-          <div class="bar-item">
-            <div class="bar-label-wrap">
-              <span class="bar-name">Dalla Home (Feed Algoritmico)</span>
-              <span class="bar-value">520 visualizzazioni (84.3%)</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: 84.3%; background: linear-gradient(90deg, #00e5ff, #0083b0);"></div>
-            </div>
-          </div>
-
-          <div class="bar-item">
-            <div class="bar-label-wrap">
-              <span class="bar-name">Dal Profilo (Visite Dirette / Curiosità)</span>
-              <span class="bar-value">81 visualizzazioni (13.1%)</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: 13.1%; background: linear-gradient(90deg, #a855f7, #6366f1);"></div>
-            </div>
-          </div>
-
-          <div class="bar-item">
-            <div class="bar-label-wrap">
-              <span class="bar-name">Da Altri Luoghi (DM, Condivisioni Storie, Esplora)</span>
-              <span class="bar-value">16 visualizzazioni (2.6%)</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: 2.6%; background: linear-gradient(90deg, #f59e0b, #d97706);"></div>
-            </div>
-          </div>
-
-          <div class="bar-item" style="margin-top: 10px;">
-            <div class="bar-label-wrap">
-              <span class="bar-name">Segmentazione: Non-Follower vs Follower</span>
-              <span class="bar-value" style="color: var(--emerald);">84.9% Non-Follower (524) vs 15.1% Follower (93)</span>
-            </div>
-            <div class="bar-track" style="height: 14px; display: flex;">
-              <div style="width: 84.9%; background: var(--purple); height: 100%; border-radius: 6px 0 0 6px;" title="Non Follower 84.9%"></div>
-              <div style="width: 15.1%; background: var(--rose); height: 100%; border-radius: 0 6px 6px 0;" title="Follower 15.1%"></div>
-            </div>
+            <div class="panel-title">⚔️ Matrice di Confronto Strategico tra le Liste</div>
+            <div class="panel-subtitle">Perché Dalla Nostra Parte è oggettivamente superiore sui contenuti</div>
           </div>
         </div>
-
-        <div class="panel-header" style="margin-top: 12px;">
-          <div>
-            <div class="panel-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              Radar Competitor · Share of Voice Carducci-Dante
-            </div>
-            <div class="panel-subtitle">Monitoraggio profili con Apify Instagram Scraper</div>
-          </div>
-          <span class="pill pill-green">5 Liste Censite</span>
-        </div>
-
         <div class="table-wrap">
           <table class="comp-table">
             <thead>
               <tr>
                 <th>Lista & Account</th>
-                <th>Follower</th>
-                <th>Post</th>
-                <th>Reach / Views</th>
-                <th>Viral Power Ratio</th>
-                <th>Stato Tattico</th>
+                <th>Candidati & Plesso</th>
+                <th>Follower / Post</th>
+                <th>Reach / Engagement</th>
+                <th>Sito Web & Programma Scritto</th>
+                <th>Focus Principale</th>
+                <th>Vulnerabilità Critica</th>
               </tr>
             </thead>
-            <tbody id="competitor-table-body">
+            <tbody>
               <tr class="highlight-row">
-                <td>
-                  <strong>DALLA NOSTRA PARTE</strong><br>
-                  <span style="font-size:0.75rem; color:var(--cyan);">@listanostraparte_cd</span>
-                </td>
-                <td style="font-family:var(--font-mono);">17</td>
-                <td style="font-family:var(--font-mono);">1</td>
-                <td style="font-family:var(--font-mono); color:var(--cyan); font-weight:700;">617</td>
-                <td><span class="pill pill-cyan">36.3x</span></td>
-                <td><span class="pill pill-green">In ascesa virale</span></td>
+                <td><strong>⭐ DALLA NOSTRA PARTE</strong><br><span style="font-size:0.74rem; color:var(--cyan);">@listanostraparte_cd</span></td>
+                <td><strong>Dario Nitu</strong> (3BES)<br><span style="font-size:0.72rem; color:var(--emerald);">Via Rismondo (1° Eletto)</span></td>
+                <td style="font-family:var(--font-mono);">17 foll · 1 post</td>
+                <td><span class="pill pill-cyan">617 views (36.3x)</span><br><small>84.9% Non-Follower</small></td>
+                <td><span class="pill pill-green">✓ Sito Attivo + PDF + Registro</span></td>
+                <td>Stop verifiche a sorpresa, libri digitali, 4 plessi, trasparenza</td>
+                <td>Convertire rapidamente le 81 visite profilo in follower</td>
               </tr>
               <tr>
-                <td>
-                  Alleanza Studentesca<br>
-                  <span style="font-size:0.75rem;">@alleanzastudentesca.ts</span>
-                </td>
-                <td style="font-family:var(--font-mono);">255</td>
-                <td style="font-family:var(--font-mono);">11</td>
-                <td style="font-family:var(--font-mono);">~180</td>
-                <td><span class="pill">0.7x</span></td>
-                <td>Base storica, reach statico</td>
+                <td><strong>Alleanza Studentesca</strong><br><span style="font-size:0.74rem;">@alleanzastudentesca.ts</span></td>
+                <td>Matej Gon, Iacopo Tenze<br><span style="font-size:0.72rem;">Lista 1 (Storica)</span></td>
+                <td style="font-family:var(--font-mono);">255 foll · 11 post</td>
+                <td><span class="pill">24-72 like/post</span><br><small>Ratio 0.7x (Bolla chiusa)</small></td>
+                <td><span class="pill pill-rose">✗ Nessun sito / Zero programma 26/27</span></td>
+                <td>Rivendicano solo risultati dell'anno scorso (Circolare 253 ritardi)</td>
+                <td>Nessuna proposta nuova per quest'anno; tono ideologico e autoreferenziale</td>
               </tr>
               <tr>
-                <td>
-                  Next CD (Futura)<br>
-                  <span style="font-size:0.75rem;">@lista_next_cd</span>
-                </td>
-                <td style="font-family:var(--font-mono);">104</td>
-                <td style="font-family:var(--font-mono);">5</td>
-                <td style="font-family:var(--font-mono);">~95</td>
-                <td><span class="pill">0.9x</span></td>
-                <td>Attività moderata</td>
+                <td><strong>Lista Next CD</strong><br><span style="font-size:0.74rem;">@lista_next_cd</span></td>
+                <td>Giovanna & Felisja (4D LIN)<br><span style="font-size:0.72rem;">Via Corsi · Lista 3</span></td>
+                <td style="font-family:var(--font-mono);">104 foll · 5 post</td>
+                <td><span class="pill pill-purple">Reel 85 like</span><br><small>Post grafici: 23-28 like</small></td>
+                <td><span class="pill pill-rose">✗ Nessun sito</span></td>
+                <td>Sponsor commerciali: Merch Ecosum, App United, Agenzia Futura, Gite</td>
+                <td>Zero proposte su didattica/valutazioni; promettono gite (fuori competenza CdI)</td>
               </tr>
               <tr>
-                <td>
-                  Arcadia CD<br>
-                  <span style="font-size:0.75rem;">@lista.arcadia.cd</span>
-                </td>
-                <td style="font-family:var(--font-mono);">41</td>
-                <td style="font-family:var(--font-mono);">1</td>
-                <td style="font-family:var(--font-mono);">~40</td>
-                <td><span class="pill">1.0x</span></td>
-                <td>Non conforme, marginale</td>
+                <td><strong>Lista Arcadia CD</strong><br><span style="font-size:0.74rem;">@lista.arcadia.cd</span></td>
+                <td>@bbenveee_, @matteotrieste_<br><span style="font-size:0.72rem;">Rete col Sandrinelli</span></td>
+                <td style="font-family:var(--font-mono);">41 foll · 1 post</td>
+                <td><span class="pill">42 like · 2 comm</span><br><small>Post condiviso con hub TS</small></td>
+                <td><span class="pill pill-rose">✗ Nessun sito / Zero dettagli</span></td>
+                <td>Slogan "La lista non conforme!" con logo pirata</td>
+                <td>Pagina copia-incolla con il Sandrinelli; nessun contenuto sul Carducci-Dante</td>
               </tr>
               <tr>
-                <td>
-                  Levante<br>
-                  <span style="font-size:0.75rem;">@lista_levante</span>
-                </td>
-                <td style="font-family:var(--font-mono);">0</td>
-                <td style="font-family:var(--font-mono);">0</td>
-                <td style="font-family:var(--font-mono);">-</td>
-                <td>-</td>
+                <td><strong>Lista Levante</strong><br><span style="font-size:0.74rem;">@lista_levante</span></td>
+                <td>Non dichiarati</td>
+                <td style="font-family:var(--font-mono);">0 foll · 0 post</td>
                 <td>Inattiva</td>
+                <td><span class="pill">Assente</span></td>
+                <td>Nessuna attività</td>
+                <td>Lista fantasma</td>
               </tr>
             </tbody>
           </table>
         </div>
-
       </div>
 
-      <!-- Right: Electoral Simulator & Carducci vs Dante Model -->
-      <div class="panel">
-        <div class="panel-header">
-          <div>
-            <div class="panel-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              Simulatore Elezione Consiglio
+      <!-- Dossier Singoli Competitor -->
+      <div class="grid-3">
+        
+        <!-- Dossier 1: Alleanza Studentesca -->
+        <div class="dossier-card">
+          <div class="dossier-header">
+            <div>
+              <span class="pill pill-amber">COMPETITOR #1 · LISTA STORICA</span>
+              <h3 style="font-size:1.05rem; color:#fff; margin-top:6px;">Alleanza Studentesca (@alleanzastudentesca.ts)</h3>
+              <p style="font-size:0.76rem; color:var(--text-muted);">Candidati: Matej Gon & Iacopo Tenze · "Vota Lista 1"</p>
             </div>
-            <div class="panel-subtitle">Modello reale Carducci-Dante (1.500 Studenti)</div>
+          </div>
+          <div class="dossier-stats">
+            <div><div class="dossier-stat-val">255</div><div class="dossier-stat-lbl">Follower</div></div>
+            <div><div class="dossier-stat-val">11</div><div class="dossier-stat-lbl">Post Totali</div></div>
+            <div><div class="dossier-stat-val">35</div><div class="dossier-stat-lbl">Like Ultimo Post</div></div>
+          </div>
+          <div class="post-list">
+            <div style="font-size:0.73rem; font-weight:700; color:var(--text-dim); text-transform:uppercase;">Analisi dei loro Post estratti da Apify:</div>
+            <div class="post-item">
+              <strong>Post Recente (35 like, 0 comm):</strong> <em>"Eccoci di nuovo... nei prossimi giorni ripercorreremo le conquiste dell'anno scorso, in attesa di presentarvi le proposte per quest'anno!"</em> → <strong>Non hanno ancora pubblicato il programma nuovo!</strong>
+            </div>
+            <div class="post-item">
+              <strong>Cavalli di battaglia passati (56-72 like):</strong> Rivendicano il Comitato Studentesco al mattino e la <strong>Circolare n. 253</strong> su ingressi in ritardo e uscite anticipate maggiorenni.
+            </div>
+          </div>
+          <div class="counter-box">
+            <strong>🎯 Come Smontarli in Assemblea:</strong><br>
+            Non attaccarli frontalmente, ma evidenzia che guardare al passato non basta: <em>«Bene aver chiarito i ritardi l'anno scorso, ma oggi nelle classi il vero problema sono le verifiche scritte fissate senza preavviso e i voti usati come punizione. Noi portiamo la delibera nuova per quest'anno.»</em>
           </div>
         </div>
 
-        <div class="slider-wrap">
-          <div class="slider-label">
-            <span>Affluenza Studenti Stimata (Totale 1.500)</span>
-            <strong id="sim-affluenza-val" style="color:var(--cyan); font-family:var(--font-mono);">65% (975 votanti)</strong>
+        <!-- Dossier 2: Lista Next CD -->
+        <div class="dossier-card">
+          <div class="dossier-header">
+            <div>
+              <span class="pill pill-purple">COMPETITOR #2 · SPONSOR & MERCH</span>
+              <h3 style="font-size:1.05rem; color:#fff; margin-top:6px;">Lista Next CD (@lista_next_cd)</h3>
+              <p style="font-size:0.76rem; color:var(--text-muted);">Candidate: Giovanna & Felisja (4D Linguistico - Via Corsi) · "Lista 3"</p>
+            </div>
           </div>
-          <input type="range" id="sim-affluenza" min="40" max="90" value="65" oninput="updateSimulator()">
+          <div class="dossier-stats">
+            <div><div class="dossier-stat-val">104</div><div class="dossier-stat-lbl">Follower (-2)</div></div>
+            <div><div class="dossier-stat-val">5</div><div class="dossier-stat-lbl">Post Totali</div></div>
+            <div><div class="dossier-stat-val">85 / 23</div><div class="dossier-stat-lbl">Like (Reel / Post)</div></div>
+          </div>
+          <div class="post-list">
+            <div style="font-size:0.73rem; font-weight:700; color:var(--text-dim); text-transform:uppercase;">Analisi dei loro 5 Post estratti da Apify:</div>
+            <div class="post-item">
+              <strong>1. Reel Virale (85 like):</strong> <em>"Se dobbiamo starci 5 anni, almeno facciamola bene"</em> (solo video estetico, zero proposte).
+            </div>
+            <div class="post-item">
+              <strong>2. Post Merch ECOSUM (23 like):</strong> Vendita felpe/magliette d'istituto tramite azienda esterna Ecosum + contest simbolo.
+            </div>
+            <div class="post-item">
+              <strong>3. Post App UNITED (28 like):</strong> Promozione app esterna <code>@united.italia</code> per sconti nei bar e spotted.
+            </div>
+            <div class="post-item">
+              <strong>4. Post Sponsor FUTURA (23 like):</strong> Pubblicità a <code>@futura</code> (corsi TOLC, sconti agenzie EF e Brum) + promessa di <em>"più uscite didattiche e gite"</em>.
+            </div>
+          </div>
+          <div class="counter-box">
+            <strong>🎯 Come Smontarli (Senza Nominarli):</strong><br>
+            1. <strong>Le gite non le decide Futura:</strong> Per legge le gite le approvano i docenti nei singoli Consigli di Classe (pagina <em>Chi decide cosa</em> del nostro sito!).<br>
+            2. <strong>Rappresentanti, non promoter:</strong> <em>«Un rappresentante d'istituto deve difendere gli studenti in Consiglio d'Istituto, non fare pubblicità ad app esterne o agenzie commerciali.»</em>
+          </div>
         </div>
 
-        <div class="slider-wrap">
-          <div class="slider-label">
-            <span>Conversione Visualizzazioni in Voti (su 617)</span>
-            <strong id="sim-conv-val" style="color:var(--emerald); font-family:var(--font-mono);">38% (234 voti)</strong>
-          </div>
-          <input type="range" id="sim-conv" min="10" max="70" value="38" oninput="updateSimulator()">
-        </div>
-
-        <div style="background: rgba(0, 0, 0, 0.4); border-radius: 10px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
-          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-            <span style="font-size:0.8rem; color:var(--text-muted);">Soglia Quoziente 1° Seggio:</span>
-            <span style="font-family:var(--font-mono); font-weight:700; color:#fff;" id="sim-threshold">230 voti</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
-            <span style="font-size:0.8rem; color:var(--text-muted);">Voti Stimati Dario:</span>
-            <span style="font-family:var(--font-mono); font-weight:800; font-size:1.15rem; color:var(--emerald);" id="sim-voti-dario">234 voti</span>
-          </div>
-          
-          <div class="bar-track" style="height: 12px; margin-bottom: 8px;">
-            <div id="sim-progress-bar" class="bar-fill" style="width: 102%; background: linear-gradient(90deg, #10b981, #00e5ff);"></div>
-          </div>
-          <div id="sim-result-badge" style="text-align:center; font-size:0.8rem; font-weight:700; color:var(--emerald);">
-            ✓ SEGGIO IN CONSIGLIO MATEMATICAMENTE CONQUISTATO
-          </div>
-        </div>
-
-        <div style="margin-top: 10px;">
-          <h4 style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Mappa Reale dei 4 Plessi (Circolare 23 · 71 Classi · 1.505 Studenti)</h4>
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-            <div style="background:rgba(255,255,255,0.02); padding:9px 10px; border-radius:8px; border:1px solid rgba(0,229,255,0.25);">
-              <div style="font-size:0.75rem; color:var(--cyan); font-weight:700;">Via Rismondo 8 · 20 Classi</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:0.95rem;">~425 Studenti (28%)</div>
-              <div style="font-size:0.68rem; color:var(--emerald); font-weight:600;">★ Sede 3BES Dario (Aula 42R, p.2) · LES + SU</div>
+        <!-- Dossier 3: Arcadia & Levante -->
+        <div class="dossier-card">
+          <div class="dossier-header">
+            <div>
+              <span class="pill">COMPETITOR #3 & #4 · OUTSIDER</span>
+              <h3 style="font-size:1.05rem; color:#fff; margin-top:6px;">Arcadia (@lista.arcadia.cd) & Levante</h3>
+              <p style="font-size:0.76rem; color:var(--text-muted);">Candidati Arcadia: @bbenveee_ & @matteotrieste_</p>
             </div>
-            <div style="background:rgba(255,255,255,0.02); padding:9px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">Via Giustiniano 3 · 22 Classi</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:0.95rem;">~465 Studenti (31%)</div>
-              <div style="font-size:0.68rem; color:var(--text-dim);">Liceo Classico + SU + Musicale (1M-5M)</div>
+          </div>
+          <div class="dossier-stats">
+            <div><div class="dossier-stat-val">41</div><div class="dossier-stat-lbl">Follower Arcadia</div></div>
+            <div><div class="dossier-stat-val">1</div><div class="dossier-stat-lbl">Post Carosello</div></div>
+            <div><div class="dossier-stat-val">42</div><div class="dossier-stat-lbl">Like (Condivisi)</div></div>
+          </div>
+          <div class="post-list">
+            <div style="font-size:0.73rem; font-weight:700; color:var(--text-dim); text-transform:uppercase;">Analisi Strategica:</div>
+            <div class="post-item">
+              <strong>Arcadia CD:</strong> Unico post in collab con <code>@lista.arcadia_ts</code> e <code>@lista.arcadia.sandrinelli</code> (per questo ha 42 like: sommano gli amici del Sandrinelli). Slogan: <em>"Vota Arcadia! La lista non conforme!"</em>. Zero storie in evidenza, zero programma specifico per i 4 plessi del Carducci-Dante.
             </div>
-            <div style="background:rgba(255,255,255,0.02); padding:9px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="font-size:0.75rem; color:var(--purple); font-weight:700;">Via Corsi 1 · 22 Classi</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:0.95rem;">~465 Studenti (31%)</div>
-              <div style="font-size:0.68rem; color:var(--text-dim);">Liceo Linguistico (C-D) + Scienze Umane</div>
+            <div class="post-item">
+              <strong>Lista Levante (@lista_levante):</strong> 0 follower, 0 seguiti, 0 post. Inattiva.
             </div>
-            <div style="background:rgba(255,255,255,0.02); padding:9px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="font-size:0.75rem; color:var(--amber); font-weight:700;">Via Battisti 27 · 7 Classi</div>
-              <div style="font-family:var(--font-mono); font-weight:700; color:#fff; font-size:0.95rem;">~150 Studenti (10%)</div>
-              <div style="font-size:0.68rem; color:var(--text-dim);">Triennio Economico-Sociale (p. terra e p.3)</div>
-            </div>
+          </div>
+          <div class="counter-box">
+            <strong>🎯 Strategia verso l'elettorato di Arcadia:</strong><br>
+            Chi simpatizza per Arcadia è arrabbiato con la scuola o i prof. Il nostro <strong>Punto 4.1 (Stop voti punitivi e verifiche a sorpresa)</strong> intercetta esattamente quella rabbia ma la trasforma in una delibera legale che vince davvero!
           </div>
         </div>
 
       </div>
-
     </div>
 
-    <!-- Antigravity AI Command Hub -->
-    <div class="panel" style="border-color: rgba(0, 229, 255, 0.25); background: radial-gradient(ellipse at top left, rgba(0, 229, 255, 0.05), transparent 70%), var(--card-bg);">
-      <div class="panel-header">
+    <!-- ==================== SEZIONE 4: HUB INSTAGRAM & COPY PRONTI ==================== -->
+    <div id="sec-instagram" class="section-block">
+      <div class="section-banner">
         <div>
-          <div class="panel-title" style="color: var(--cyan);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M12 16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z"></path><path d="M4.93 4.93a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1-2.83 2.83L4.93 7.76a2 2 0 0 1 0-2.83z"></path><path d="M16.24 16.24a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1-2.83 2.83l-1.41-1.41a2 2 0 0 1 0-2.83z"></path><path d="M2 12a2 2 0 0 1 2-2h2a2 2 0 0 1 0 4H4a2 2 0 0 1-2-2z"></path><path d="M18 12a2 2 0 0 1 2-2h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-2-2z"></path></svg>
-            Antigravity Tactical Intelligence · Briefing Strategico
-          </div>
-          <div class="panel-subtitle">Analisi algoritmica automatica basata sui dati social e la demografia scolastica (1.500 studenti)</div>
+          <h2>📸 Hub Instagram @listanostraparte_cd & Copy Pronti all'Uso</h2>
+          <p>Testi studiati sui dati reali (617 views / 81 visite profilo) pronti da copiare con 1 click</p>
         </div>
-        <span class="pill pill-cyan">Live Strategy Model v2.4</span>
+        <a href="https://www.instagram.com/listanostraparte_cd/" target="_blank" class="btn btn-primary">📱 Apri @listanostraparte_cd</a>
       </div>
 
-      <div class="ai-hub-grid">
+      <div class="grid-equal">
         
-        <!-- Left: Strategic Insights -->
+        <!-- Script 1: Bio & Storie -->
+        <div class="copy-card">
+          <div class="copy-header">
+            <span class="pill pill-cyan">1. OTTIMIZZAZIONE BIO + STORIA SONDAGGIO OGGI</span>
+            <button class="btn" onclick="copyText('copy-1', this)">📋 Copia Testo</button>
+          </div>
+          <div class="copy-text" id="copy-1">BIO CONSIGLIATA PER @listanostraparte_cd:
+🦉 DALLA NOSTRA PARTE · ISIS Carducci-Dante
+👤 Candidato: Dario Nitu (@_dd.nitu) · 3BES
+⚖️ Stop verifiche a sorpresa e voti punitivi
+👇 Leggi il Programma e il Cantiere Aperto:
+https://sito-sonnet.vercel.app
+
+---
+TESTO STORIA 1 (Sfondo scuro + Sticker Sondaggio):
+Oltre 600 di voi hanno visto il nostro primo post 🔥
+Domanda secca per tutte le 71 classi (Giustiniano, Rismondo, Corsi, Battisti):
+Vi è mai capitata una verifica fissata senza preavviso o un voto usato come punizione?
+[SÌ, TROPPE VOLTE]  [CAPITA SPESSO]
+
+TESTO STORIA 2 (Con Sticker Link a https://sito-sonnet.vercel.app):
+L'Art. 4 comma 3 dello Statuto degli Studenti VIETA che la condotta influisca sui voti di profitto.
+Nel nostro programma trovi la delibera pronta per il Consiglio d'Istituto:
+✅ Minimo 5 giorni di preavviso su Nuvola
+✅ Max 1 scritta al giorno e 3 a settimana
+🔗 Leggi tutto sul sito ufficiale!</div>
+        </div>
+
+        <!-- Script 2: Carosello Punto 4.1 -->
+        <div class="copy-card">
+          <div class="copy-header">
+            <span class="pill pill-green">2. COPY SECONDO POST / CAROSELLO (PUNTO 4.1)</span>
+            <button class="btn" onclick="copyText('copy-2', this)">📋 Copia Testo</button>
+          </div>
+          <div class="copy-text" id="copy-2">TITOLO SLIDE 1:
+STOP VERIFICHE A SORPRESA E VOTI PUNITIVI.
+Non è uno slogan: è la legge (Art. 4 c. 3 Statuto degli Studenti).
+
+CAPTION DEL POST:
+Il voto misura la preparazione didattica, non serve a punire. 📌
+
+Lo Statuto delle Studentesse e degli Studenti (D.P.R. 249/1998, Art. 4 comma 3) parla chiaro: «Nessuna infrazione disciplinare connessa al comportamento può influire sulla valutazione del profitto».
+
+Come lista DALLA NOSTRA PARTE (candidato Dario Nitu, 3BES) porteremo al primo Consiglio d'Istituto utile una delibera formale per inserire nel Regolamento del Carducci-Dante:
+1️⃣ Preavviso obbligatorio di almeno 5 giorni su Nuvola per ogni verifica scritta.
+2️⃣ Divieto espresso di interrogazioni o compiti a sorpresa usati come sanzione disciplinare.
+3️⃣ Limite massimo di 1 prova scritta al giorno e 3 a settimana.
+4️⃣ Griglie di valutazione chiare e condivise prima della prova.
+
+Zero promesse irrealizzabili, zero fuffa. Solo regole chiare per tutelare tutte le 71 classi di Giustiniano, Rismondo, Corsi e Battisti.
+
+🔗 Programma completo e Cantiere Aperto nel link in bio!
+#dallanostraparte #carduccidante #trieste</div>
+        </div>
+
+        <!-- Script 3: Discorso Assemblea 3 Minuti -->
+        <div class="copy-card" style="grid-column: 1 / -1;">
+          <div class="copy-header">
+            <span class="pill pill-amber">3. DISCORSO UFFICIALE ASSEMBLEA D'ISTITUTO (SCALETTA CRONOMETRATA 2m 45s)</span>
+            <button class="btn" onclick="copyText('copy-3', this)">📋 Copia Discorso Completo</button>
+          </div>
+          <div class="copy-text" id="copy-3">[0:00 - 0:30 | IL GANCIO - ROMPERE LO SCHEMA]
+"Ciao a tutti, sono Dario Nitu della 3BES e mi candido con la lista DALLA NOSTRA PARTE.
+Ve lo dico subito: oggi non sono qui per vendervi felpe, non sono qui per pubblicizzare app di sconti e non vi prometterò gite scolastiche che, come sapete, per legge decidono i singoli Consigli di Classe e non i rappresentanti d'istituto.
+Sono qui per parlare di quello che viviamo ogni mattina nelle nostre 71 classi, tra via Giustiniano, via Rismondo, via Corsi e via Battisti."
+
+[0:30 - 1:35 | IL PUNTO PRINCIPALE: VERIFICHE E VOTI PUNITIVI]
+"Quanti di voi si sono trovati con una verifica scritta comunicata due giorni prima, o con un'interrogazione a tappeto usata per punire la classe perché c'era confusione?
+L'Articolo 4 comma 3 dello Statuto degli Studenti dice una cosa precisa: nessuna infrazione disciplinare può mai influire sul voto di profitto.
+Per questo la nostra priorità numero uno è depositare al primo Consiglio d'Istituto una delibera scritta con 4 regole nette:
+Primo: obbligo di segnare ogni verifica scritta su Nuvola con almeno 5 giorni di anticipo.
+Secondo: stop totale a voti o interrogazioni punitive.
+Terzo: tetto massimo di una verifica scritta al giorno e tre a settimana.
+Quarto: uno sportello di tutela del Comitato Studentesco per intervenire subito con la Dirigenza quando in una classe queste regole non vengono rispettate."
+
+[1:35 - 2:20 | LIBRI DIGITALI, 4 PLESSI E TRASPARENZA]
+"Secondo impegno con scadenza fissa: entro 15 giorni dall'elezione presenteremo la proposta per avere regole uniformi su libri digitali e tablet, perché non è possibile che in un'ora il tablet sia permesso e nell'ora dopo sia vietato.
+E per i problemi di riscaldamento, bagni e spazi nei nostri 4 plessi, abbiamo già attivato sul nostro sito il CANTIERE APERTO: un registro pubblico — che potete aprire già adesso dai vostri telefoni — dove ogni segnalazione delle classi ha una data, un numero di protocollo inviato alla scuola e la risposta ufficiale ricevuta."
+
+[2:20 - 2:45 | CHIUSURA]
+"Il 30 novembre non votate chi vi promette l'impossibile o chi vive sugli slogan dell'anno scorso. Votate un metodo concreto, trasparente e verificabile. Votate DALLA NOSTRA PARTE. Grazie a tutti!"</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== SEZIONE 5: SITO WEB & ATTI NUVOLA ==================== -->
+    <div id="sec-sito" class="section-block">
+      <div class="section-banner">
         <div>
-          <div class="ai-card-item" style="border-left: 3px solid var(--amber);">
-            <div class="ai-card-title">
-              <span class="pill pill-cyan">Bacheca Nuvola · Rete Eletti</span>
-              Dario 1° Eletto 3BES & Rete dei 142 Rappresentanti di Classe
-            </div>
-            <div class="ai-card-desc">
-              Dai decreti ufficiali Nuvola (prot. 14128): Dario è ufficialmente <strong>1° Rappresentante di Classe della 3BES</strong>. In tutto l'istituto sono stati eletti <strong>142 rappresentanti di classe</strong> su 71 classi: questo è il Comitato Studentesco. Parlando a loro durante gli intervalli nei 4 plessi si assicura un passaparola a cascata in ogni singola aula.
-            </div>
-          </div>
+          <h2>🌐 Controllo Sito Web (`sito-sonnet.vercel.app`) & Documenti Ufficiali Nuvola</h2>
+          <p>Tutte le pagine online con Clean URLs attivi e i riferimenti normativi della scuola</p>
+        </div>
+        <button class="btn btn-primary" onclick="navigator.clipboard.writeText('https://sito-sonnet.vercel.app')">🔗 Copia URL Sito per Bio IG</button>
+      </div>
 
-          <div class="ai-card-item" style="border-left: 3px solid var(--emerald);">
-            <div class="ai-card-title">
-              <span class="pill pill-green">Priorità 1</span>
-              Convertire le 81 visite al profilo in Follower e Voti
+      <div class="grid-equal">
+        <!-- Pagine Sito Web -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">🚀 Stato Pagine Sito Ufficiale (Vercel Clean URLs)</div>
+              <div class="panel-subtitle">Redirect 308 da /index.html a / attivo e verificato</div>
             </div>
-            <div class="ai-card-desc">
-              81 studenti sono usciti dal feed ed entrati sulla pagina dopo aver visto il post. Significa un tasso di curiosità del <strong>13.1%</strong> (altissimo). Azione immediata: inserire il link al sito web in bio e pubblicare una storia con box domande ("Cosa non funziona nella tua classe?").
-            </div>
+            <span class="pill pill-green">ONLINE · HTTPS</span>
           </div>
-
-          <div class="ai-card-item" style="border-left: 3px solid var(--cyan);">
-            <div class="ai-card-title">
-              <span class="pill pill-cyan">Vantaggio Tattico</span>
-              Penetrazione del 41.1% su 1.500 studenti con 1 solo post
-            </div>
-            <div class="ai-card-desc">
-              Su 1.500 studenti reali del polo Carducci-Dante, 617 visualizzazioni significano che oltre <strong>4 studenti su 10</strong> hanno già visto il logo della Civetta e il brand della lista. All'Assemblea d'Istituto Dario parte con un riconoscimento di massa già acquisito.
-            </div>
-          </div>
-
-          <div class="ai-card-item" style="border-left: 3px solid var(--purple);">
-            <div class="ai-card-title">
-              <span class="pill pill-purple">Competitor Breached</span>
-              Alleanza Studentesca e Next CD battute sul reach organico
-            </div>
-            <div class="ai-card-desc">
-              Mentre Alleanza ha 255 follower con un reach stimato inferiore a 200 persone (parlano solo ai loro amici), Dalla Nostra Parte ha raggiunto 524 non-follower. Abbiamo spezzato le bolle elettorali tradizionali.
-            </div>
+          <div class="table-wrap">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Pagina</th>
+                  <th>URL Pulito</th>
+                  <th>Contenuto Strategico</th>
+                  <th>Azione</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Home Page</strong></td>
+                  <td style="font-family:var(--font-mono); color:var(--cyan);">/</td>
+                  <td>Hero Civetta, Punto 4.1 in evidenza, Countdown 30 Nov, Chi è Dario, FAQ</td>
+                  <td><a href="https://sito-sonnet.vercel.app/" target="_blank" class="btn">Apri ↗</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Programma Completo</strong></td>
+                  <td style="font-family:var(--font-mono); color:var(--cyan);">/programma</td>
+                  <td>Testo integrale 7 sezioni + pulsante Stampa/Salva in PDF</td>
+                  <td><a href="https://sito-sonnet.vercel.app/programma" target="_blank" class="btn">Apri ↗</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Cantiere Aperto</strong></td>
+                  <td style="font-family:var(--font-mono); color:var(--cyan);">/registro</td>
+                  <td>Registro pubblico interattivo con le 5 proposte e filtro per stato</td>
+                  <td><a href="https://sito-sonnet.vercel.app/registro" target="_blank" class="btn">Apri ↗</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Chi Decide Cosa</strong></td>
+                  <td style="font-family:var(--font-mono); color:var(--cyan);">/chi-decide-cosa</td>
+                  <td>Guida alle competenze degli organi scolastici (smonta le promesse altrui)</td>
+                  <td><a href="https://sito-sonnet.vercel.app/chi-decide-cosa" target="_blank" class="btn">Apri ↗</a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Right: AI Co-Pilot Terminal -->
-        <div class="copilot-box">
-          <div class="copilot-header">
-            <span>● ANTIGRAVITY CO-PILOT CHAT</span>
-            <span style="font-size:0.7rem; color:var(--text-dim);">GEMINI PRO ENGINE</span>
+        <!-- Atti Ufficiali Nuvola -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">🏛️ Dossier Atti Ufficiali Bacheca Nuvola (`TSIS00400D`)</div>
+              <div class="panel-subtitle">Dati estratti dai decreti firmati dalla DS Carmela Testa</div>
+            </div>
+            <a href="https://nuvola.madisoft.it/bacheca-digitale/bacheca/ricerca/TSIS00400D/3/show" target="_blank" class="btn">Bacheca Nuvola ↗</a>
           </div>
-          <div class="copilot-messages" id="chat-messages">
-            <div class="msg msg-ai">
-              Ciao Dario! Ho ricalcolato tutto sui dati reali dei <strong>1.500 studenti</strong> del Carducci-Dante: <strong>617 visualizzazioni</strong> significa che hai già raggiunto il <strong>41.1%</strong> dell'intero istituto! Vuoi che prepariamo una storia mirata per la sede Dante o la scaletta per l'Assemblea?
+          <div class="post-list">
+            <div class="post-item">
+              <strong>📌 Circolare N. 179 & Decreto Indizione CDI (Prot. 13061):</strong><br>
+              • Consegna liste: <strong>9 nov (ore 9:00) → 14 nov (ore 12:00)</strong> in segreteria (sabato via mail a <code>tsis00400d@istruzione.it</code>).<br>
+              • Firme necessarie: min. <strong>20 presentatori</strong> (non candidati). Autentica diretta in segreteria.<br>
+              • Istanza riunioni/assemblea: entro <strong>19 novembre 2026</strong>.<br>
+              • Voto: Dom 29 nov (8:00-12:00) e <strong>Lun 30 nov (8:00-13:30)</strong>. Scrutinio dalle 13:30.
+            </div>
+            <div class="post-item">
+              <strong>📌 Decreto Nomina Eletti Consigli di Classe (Prot. 14128 del 02/11/2026):</strong><br>
+              • <strong>3B ES:</strong> 1° Eletto <strong>N. D. S. (Nitu Dario Sebastian)</strong> · 2° Eletto F. G.<br>
+              • Totale eletti nell'istituto: <strong>142 rappresentanti di classe</strong> su 71 classi (Comitato Studentesco).
+            </div>
+            <div class="post-item">
+              <strong>📌 Deposito Elenchi Elettori (Prot. 14181 del 04/11/2026):</strong><br>
+              • Presidente Commissione Elettorale: <strong>Prof.ssa Sara Radin</strong>.
+            </div>
+            <div class="post-item">
+              <strong>📌 Proclamazione Eletti Consulta Provinciale (Prot. 14034 del 30/10/2026):</strong><br>
+              • Eletti per il Carducci-Dante: <strong>William Stuart Brown</strong> ed <strong>Emma Zampatti</strong>.
             </div>
           </div>
-          <div class="copilot-input-wrap">
-            <input type="text" id="chat-input" class="copilot-input" placeholder="Chiedi ad Antigravity (es: 'Scrivi storia sondaggio per oggi')..." onkeydown="if(event.key==='Enter') sendMessage()">
-            <button class="btn btn-primary" onclick="sendMessage()">Invia</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SEZIONE 6: ANTIGRAVITY CO-PILOT ==================== -->
+    <div id="sec-ai" class="section-block">
+      <div class="panel" style="border-color: rgba(0, 229, 255, 0.3); background: radial-gradient(ellipse at top left, rgba(0, 229, 255, 0.06), transparent 70%), var(--card-bg);">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title" style="color: var(--cyan);">
+              🤖 Antigravity Tactical Co-Pilot & Azioni Prioritarie
+            </div>
+            <div class="panel-subtitle">Chiedi simulazioni, risposte ai competitor, copy per storie o strategie sui 4 plessi</div>
+          </div>
+          <span class="pill pill-cyan">Connesso a server.py</span>
+        </div>
+
+        <div class="grid-2">
+          <!-- Left: Roadmap Checklist -->
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <h4 style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Checklist Operativa della Settimana</h4>
+            
+            <label class="prop-box" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; accent-color:var(--emerald);">
+              <div>
+                <strong>1. Deposito Modulo Lista in Segreteria (entro Venerdì / Sabato ore 12:00)</strong><br>
+                Consegnare in via Giustiniano 3 con almeno 20-25 firme di presentatori + tua firma di accettazione candidatura e farsi dare ricevuta protocollata.
+              </div>
+            </label>
+
+            <label class="prop-box" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; accent-color:var(--emerald);">
+              <div>
+                <strong>2. Inserire Link Sito in Bio su @listanostraparte_cd</strong><br>
+                Inserire <code>https://sito-sonnet.vercel.app</code> nella bio per convertire le 81 visite al profilo.
+              </div>
+            </label>
+
+            <label class="prop-box" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; accent-color:var(--emerald);">
+              <div>
+                <strong>3. Pubblicare Storia Sondaggio sulle Verifiche a Sorpresa</strong><br>
+                Usare il Copy #1 della sezione Instagram per scaldare i 524 non-follower raggiunti.
+              </div>
+            </label>
+
+            <label class="prop-box" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; accent-color:var(--emerald);">
+              <div>
+                <strong>4. Contattare i Rappresentanti di Classe di Via Rismondo e Via Battisti</strong><br>
+                Unire tutte le 22 classi dell'indirizzo Economico-Sociale attorno alla tua candidatura.
+              </div>
+            </label>
+
+            <label class="prop-box" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; accent-color:var(--emerald);">
+              <div>
+                <strong>5. Depositare Istanza Assemblea alla DS (entro 19 Novembre)</strong><br>
+                Presentare richiesta scritta dei presentatori di lista per parlare all'Assemblea d'Istituto.
+              </div>
+            </label>
+          </div>
+
+          <!-- Right: Terminal Chat -->
+          <div class="copilot-box">
+            <div class="copilot-header">
+              <span>● ANTIGRAVITY STRATEGIC TERMINAL</span>
+              <span style="font-size:0.7rem; color:var(--text-dim);">READY</span>
+            </div>
+            <div class="quick-prompts">
+              <button class="chip-btn" onclick="quickAsk('Come smonto Lista Next sulle gite e Futura?')">⚔️ Smonta Lista Next</button>
+              <button class="chip-btn" onclick="quickAsk('Come rispondo ad Alleanza Studentesca?')">🛡️ Rispondi ad Alleanza</button>
+              <button class="chip-btn" onclick="quickAsk('Dammi la scaletta del discorso per l\'Assemblea')">🎙️ Discorso Assemblea</button>
+              <button class="chip-btn" onclick="quickAsk('Strategia per prendere voti nei 4 plessi')">🏛️ Strategia 4 Plessi</button>
+              <button class="chip-btn" onclick="quickAsk('Cosa pubblico oggi nelle storie Instagram?')">📸 Storia di Oggi</button>
+            </div>
+            <div class="copilot-messages" id="chat-messages">
+              <div class="msg msg-ai">
+                Ciao Dario! La <strong>War Room v3.0</strong> è operativa: ora hai in un'unica schermata i dati sui <strong>1.505 studenti (71 classi in 4 plessi)</strong>, l'analisi completa delle nostre <strong>5 proposte</strong> e i dossier con tutti i post di <strong>Alleanza, Next e Arcadia</strong>. Clicca uno dei pulsanti rapidi qui sopra o scrivimi qualsiasi domanda!
+              </div>
+            </div>
+            <div class="copilot-input-wrap">
+              <input type="text" id="chat-input" class="copilot-input" placeholder="Scrivi ad Antigravity..." onkeydown="if(event.key==='Enter') sendMessage()">
+              <button class="btn btn-primary" onclick="sendMessage()">Invia</button>
+            </div>
           </div>
         </div>
 
       </div>
-
     </div>
 
   </div>
@@ -1036,21 +1702,24 @@
   <!-- Modal for Updating Metrics -->
   <div class="modal-overlay" id="update-modal">
     <div class="modal">
-      <div class="modal-title">Aggiorna Statistiche Instagram</div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="font-size:1.05rem; color:#fff;">📊 Aggiorna Statistiche Instagram</h3>
+        <button class="btn" onclick="closeModal()">✕</button>
+      </div>
       <div class="form-group">
         <label>Visualizzazioni Totali Post</label>
         <input type="number" id="input-views" class="form-input" value="617">
       </div>
       <div class="form-group">
-        <label>Dalla Home</label>
+        <label>Visualizzazioni dalla Home</label>
         <input type="number" id="input-home" class="form-input" value="520">
       </div>
       <div class="form-group">
-        <label>Dal Profilo (Visite)</label>
+        <label>Visite al Profilo dal Post</label>
         <input type="number" id="input-profile" class="form-input" value="81">
       </div>
       <div class="form-group">
-        <label>% Non Follower</label>
+        <label>% Non-Follower Raggiunti</label>
         <input type="number" step="0.1" id="input-nonfollower" class="form-input" value="84.9">
       </div>
       <div class="form-group">
@@ -1058,23 +1727,22 @@
         <input type="number" id="input-interactions" class="form-input" value="29">
       </div>
       <div class="form-group">
-        <label>Follower Profilo Attuali</label>
+        <label>Follower Attuali @listanostraparte_cd</label>
         <input type="number" id="input-followers" class="form-input" value="17">
       </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:6px;">
         <button class="btn" onclick="closeModal()">Annulla</button>
-        <button class="btn btn-primary" onclick="saveMetrics()">Salva & Ricalcola</button>
+        <button class="btn btn-primary" onclick="saveMetrics()">Salva & Ricalcola Tutto</button>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    DALLA NOSTRA PARTE · Dashboard Elettorale Intelligente connessa ad Antigravity · ISIS Carducci-Dante Trieste (1.500 Studenti) · Dati riservati al Comitato Elettorale
+    DALLA NOSTRA PARTE · War Room Command Center v3.0 connessa ad Antigravity · ISIS Carducci-Dante Trieste (TSIS00400D · 71 Classi · 1.505 Studenti)
   </footer>
 
   <script>
-    // PIN Security Check
+    // PIN Security Gate
     const CORRECT_PIN = "2026";
     function checkPin() {
       const input = document.getElementById('pin-input');
@@ -1088,12 +1756,40 @@
         input.focus();
       }
     }
-    // Auto-unlock if already authenticated on this device
+    function lockWarRoom() {
+      localStorage.removeItem('warroom_unlocked');
+      document.getElementById('pin-gate').style.display = 'flex';
+    }
     if (localStorage.getItem('warroom_unlocked') === 'true') {
       document.getElementById('pin-gate').style.display = 'none';
     }
 
-    // State Store (Aggiornato a 1.500 studenti reali)
+    // Tab Switching
+    function switchTab(sectionId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const blocks = document.querySelectorAll('.section-block');
+      if (sectionId === 'all') {
+        blocks.forEach(b => b.classList.remove('hidden'));
+      } else {
+        blocks.forEach(b => {
+          if (b.id === sectionId) b.classList.remove('hidden');
+          else b.classList.add('hidden');
+        });
+      }
+    }
+
+    // Copy helper
+    function copyText(elementId, btn) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.innerText;
+        btn.innerText = '✓ Copiato!';
+        setTimeout(() => { btn.innerText = old; }, 1800);
+      });
+    }
+
+    // State Store
     let state = {
       views: 617,
       home: 520,
@@ -1102,8 +1798,26 @@
       nonFollowerPct: 84.9,
       interactions: 29,
       followers: 17,
-      totalStudents: 1500
+      totalStudents: 1505
     };
+
+    // Load saved state from localStorage if updated on mobile
+    const savedState = localStorage.getItem('dnp_warroom_state');
+    if (savedState) {
+      try { state = Object.assign(state, JSON.parse(savedState)); } catch(e) {}
+    }
+
+    function renderKPIs() {
+      document.getElementById('val-views').innerText = state.views;
+      document.getElementById('val-nonfollower').innerText = state.nonFollowerPct + '%';
+      const sat = ((state.views / state.totalStudents) * 100).toFixed(1);
+      document.getElementById('badge-saturation').innerText = `${sat}% dell'Istituto`;
+      const mult = (state.views / Math.max(state.followers, 1)).toFixed(1);
+      document.getElementById('val-multiplier').innerText = `${mult}x`;
+      document.getElementById('lbl-followers').innerText = state.followers;
+      document.getElementById('val-profile-visits').innerText = state.profile;
+      document.getElementById('val-interactions').innerText = state.interactions;
+    }
 
     // Countdowns
     function updateTimers() {
@@ -1113,7 +1827,7 @@
       const electionDate = new Date('2026-11-30T08:00:00');
 
       function formatDiff(diff) {
-        if (diff <= 0) return "SCADUTO";
+        if (diff <= 0) return "COMPLETATO";
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const mins = Math.floor((diff / 1000 / 60) % 60);
@@ -1134,7 +1848,6 @@
       const conv = parseInt(document.getElementById('sim-conv').value, 10);
 
       const totalVoters = Math.round(state.totalStudents * (affluenza / 100));
-      // Con 4 seggi al Carducci-Dante, quoziente è approx totalVoters / 4.2
       const quota = Math.round(totalVoters / 4.2);
       const darioVotes = Math.round(state.views * (conv / 100));
 
@@ -1144,15 +1857,15 @@
       document.getElementById('sim-voti-dario').innerText = `${darioVotes} voti`;
       document.getElementById('kpi-target-votes').innerText = `${quota} Voti`;
 
-      const progressPct = Math.min(Math.round((darioVotes / quota) * 100), 200);
+      const progressPct = Math.min(Math.round((darioVotes / quota) * 100), 100);
       const bar = document.getElementById('sim-progress-bar');
       bar.style.width = `${progressPct}%`;
 
       const badge = document.getElementById('sim-result-badge');
-      if (darioVotes >= quota * 1.5) {
+      if (darioVotes >= quota * 1.45) {
         bar.style.background = 'linear-gradient(90deg, #10b981, #00e5ff)';
         badge.style.color = '#10b981';
-        badge.innerText = '★ VITTORIA SCHIACCIANTE: 1° ELETTO IN CONSIGLIO D\'ISTITUTO';
+        badge.innerText = '★ VITTORIA SCHIACCIANTE: 1° ELETTO ASSOLUTO IN CONSIGLIO';
       } else if (darioVotes >= quota) {
         bar.style.background = 'linear-gradient(90deg, #10b981, #00e5ff)';
         badge.style.color = '#10b981';
@@ -1160,9 +1873,10 @@
       } else {
         bar.style.background = 'linear-gradient(90deg, #f59e0b, #ef4444)';
         badge.style.color = '#f59e0b';
-        badge.innerText = `MANCANO ${quota - darioVotes} VOTI PER IL SEGGIO SICURO`;
+        badge.innerText = `MANCANO ${quota - darioVotes} VOTI PER BLINDARE IL SEGGIO`;
       }
     }
+    renderKPIs();
     updateSimulator();
 
     // Modal
@@ -1186,19 +1900,11 @@
       state.interactions = parseInt(document.getElementById('input-interactions').value, 10) || state.interactions;
       state.followers = parseInt(document.getElementById('input-followers').value, 10) || state.followers;
 
-      // Recalculate KPI cards
-      document.getElementById('val-views').innerText = state.views;
-      document.getElementById('val-nonfollower').innerText = state.nonFollowerPct + '%';
-      const sat = ((state.views / state.totalStudents) * 100).toFixed(1);
-      document.getElementById('badge-saturation').innerText = `+${sat}% Scuola`;
-      const mult = (state.views / Math.max(state.followers, 1)).toFixed(1);
-      document.getElementById('val-multiplier').innerText = `${mult}x`;
-      document.getElementById('val-interactions').innerText = state.interactions;
-
+      localStorage.setItem('dnp_warroom_state', JSON.stringify(state));
+      renderKPIs();
       updateSimulator();
       closeModal();
 
-      // Send to local server if running
       fetch('/api/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1206,15 +1912,24 @@
       }).catch(() => {});
     }
 
-    // Co-Pilot Chat
+    function triggerApify() {
+      fetch('/api/scrape', { method: 'POST' })
+        .then(r => r.json())
+        .then(d => alert(d.message || 'Scraper Apify avviato!'))
+        .catch(() => alert('Per avviare lo scraper Apify dal browser, apri la War Room tramite Avvia_Dashboard_Statistiche.bat sul tuo PC!'));
+    }
+
+    function quickAsk(q) {
+      document.getElementById('chat-input').value = q;
+      sendMessage();
+    }
+
     function sendMessage() {
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
 
       const container = document.getElementById('chat-messages');
-
-      // User Message
       const userDiv = document.createElement('div');
       userDiv.className = 'msg msg-user';
       userDiv.innerText = text;
@@ -1222,14 +1937,12 @@
       input.value = '';
       container.scrollTop = container.scrollHeight;
 
-      // AI Response Placeholder
       const aiDiv = document.createElement('div');
       aiDiv.className = 'msg msg-ai';
-      aiDiv.innerHTML = '<span style="color:var(--cyan)">Antigravity sta elaborando la strategia...</span>';
+      aiDiv.innerHTML = '<span style="color:var(--cyan)">Antigravity sta elaborando la risposta tattica...</span>';
       container.appendChild(aiDiv);
       container.scrollTop = container.scrollHeight;
 
-      // Try local Python server API first
       fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1242,29 +1955,34 @@
       })
       .catch(() => {
         setTimeout(() => {
-          let reply = "";
           const lower = text.toLowerCase();
-          if (lower.includes('storia') || lower.includes('instagram') || lower.includes('pubblicare') || lower.includes('post')) {
-            reply = `<strong>Strategia Storia per Oggi:</strong><br>
-              1. <em>Sfondo nero minimal</em> con sticker sondaggio: <code>"Verifiche a sorpresa o comunicate 24h prima: ti è mai successo?"</code> [SÌ, UN INCUBO / NO]<br>
-              2. Seconda storia: <em>"Il punto 4.1 del nostro programma propone il divieto formale in Consiglio d'Istituto. Leggi il piano completo su dallanostraparte.it"</em> con sticker link.<br>
-              3. Questo converte le 81 persone che già guardano il profilo in interazioni dirette!`;
-          } else if (lower.includes('dante')) {
-            reply = `<strong>Strategia Sede Dante (via Diaz - ~650 studenti):</strong><br>
-              Il Dante rappresenta il 43% dell'intero elettorato. La maggior parte delle liste storiche è focalizzata solo sul Carducci. Facciamo un post dedicato alla sede Dante: laboratori scientifici, spazi studio e orari. Chi vince al Dante vince le elezioni.`;
+          let reply = "";
+          if (lower.includes('next') || lower.includes('gite') || lower.includes('futura')) {
+            reply = `<strong>Contromossa su Lista Next (@lista_next_cd):</strong><br>
+              1. <strong>Sponsor vs Diritti:</strong> 3 dei loro 5 post sono sponsorizzazioni di aziende esterne (<em>Futura, app United, Ecosum</em>). Noi portiamo delibere gratuite sui diritti in classe.<br>
+              2. <strong>La promessa delle gite:</strong> Le uscite didattiche dipendono per legge dai docenti accompagnatori nei Consigli di Classe, mai da un'agenzia esterna.<br>
+              3. <strong>Sfida in Via Corsi:</strong> Le candidate sono della 4D LIN (Via Corsi). Porta lì la proposta 4.1 sulle verifiche programmate!`;
+          } else if (lower.includes('alleanza')) {
+            reply = `<strong>Contromossa su Alleanza Studentesca (@alleanzastudentesca.ts):</strong><br>
+              1. <strong>Zero programma nuovo:</strong> Nei loro post parlano solo dell'anno scorso (Circolare 253 ritardi).<br>
+              2. <strong>Bolla chiusa:</strong> Con 255 follower fanno 24-56 like. Tu con 17 follower hai fatto <strong>617 visualizzazioni (84.9% non-follower)</strong>.<br>
+              3. <strong>Risposta in Assemblea:</strong> <em>"Ringraziamo per la circolare sui ritardi dell'anno scorso, ma oggi l'emergenza nelle classi sono le verifiche a sorpresa e i voti punitivi."</em>`;
           } else if (lower.includes('assemblea') || lower.includes('discorso')) {
-            reply = `<strong>Gancio per l'Assemblea:</strong><br>
-              Non iniziare con <em>"Ciao a tutti mi chiamo Dario"</em> come fanno le altre liste. Inizia così:<br>
-              <em>"Alzi la mano chi nelle ultime due settimane si è trovato con tre verifiche nello stesso giorno o una verifica a sorpresa fissata dalla sera alla mattina. [Pausa]. Oltre 600 di voi hanno già visto il nostro post. Non siamo qui per promettere tornei di calcetto irrealizzabili: siamo qui per far votare al Consiglio una delibera che vi tuteli da subito."</em>`;
-          } else if (lower.includes('alleanza') || lower.includes('competitor') || lower.includes('next')) {
-            reply = `<strong>Analisi Competitor:</strong><br>
-              Alleanza ha 255 follower ma il loro reach è fermo a circa 180 visualizzazioni (zero espansione sui nuovi primini o sulla sede Dante). Tu hai raggiunto 524 non-follower con 1 solo post! Non attaccarli sul piano personale: attaccali sui contenuti.`;
+            reply = `<strong>Scaletta Discorso Assemblea (2m 45s):</strong><br>
+              Trovi il testo integrale pronto da copiare nella sezione <strong>📸 Hub Instagram & Copy (Box #3)</strong>! Parte smontando merch e gite, attacca col punto 4.1 (Statuto Art. 4 c.3), cita l'impegno dei 15 giorni sui libri digitali e chiude col Cantiere Aperto.`;
+          } else if (lower.includes('plessi') || lower.includes('rismondo') || lower.includes('corsi')) {
+            reply = `<strong>Strategia sui 4 Plessi (71 Classi):</strong><br>
+              • <strong>Via Rismondo (20 classi):</strong> casa tua (3BES, aula 42R), punta a 110+ voti.<br>
+              • <strong>Via Battisti (7 classi):</strong> tutto triennio LES, tuo stesso indirizzo, punta a 40+ voti.<br>
+              • <strong>Via Corsi (22 classi):</strong> roccaforte Linguistico, attacca coi temi verifiche e riscaldamento.<br>
+              • <strong>Via Giustiniano (22 classi):</strong> Classico + Musicale + SU, presidia coi rappresentanti di classe.`;
           } else {
-            reply = `Ricevuto! Con <strong>${state.views} visualizzazioni</strong> attuali (pari al <strong>41.1%</strong> dei 1.500 studenti del polo scolastico), abbiamo l'onda giusta. Chiedimi pure qualsiasi copy o simulazione!`;
+            reply = `<strong>Stato Storia & Campagna:</strong><br>
+              Pubblica oggi il sondaggio sulle verifiche a sorpresa (copia il testo dalla sezione <em>Hub Instagram</em>) e inserisci <code>https://sito-sonnet.vercel.app</code> nella bio per convertire le 81 visite al profilo!`;
           }
           aiDiv.innerHTML = reply;
           container.scrollTop = container.scrollHeight;
-        }, 600);
+        }, 400);
       });
     }
   </script>
